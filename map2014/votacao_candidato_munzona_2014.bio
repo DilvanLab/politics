@@ -28,16 +28,15 @@ definePrefix wd,	"http://www.wikidata.org/entity/"
 
 uriBase "http://purl.org/politics/id/"
 
-uri tionURI, csv.'anoEleicao', "coalition", csv.'nomeColigacao'
-uri electionURI, "election", csv.'anoEleicao'
-uri partyURI, "party", csv.'nomePartido'
-uri candidacyURI, csv.'anoEleicao', csv.'siglaUF', "candidacy", csv.'sqCandidato'
-uri stateURI, "state", csv.'siglaUF'
-uri municipalityURI, "municipality", csv.'nomeMunicipio'
-uri turnURI, "turn", csv.'anoEleicao', csv.'numTurno'
-uri electoralDistrictURI, "electoralDistrict", csv.'anoEleicao', csv.'numeroZona'
-uri districtVotingURI, "districtVoting", csv.'numeroZona', csv.'nomePartido', csv.'descricaoCargo'
-uri candidacySituationURI, "situation", csv.'anoEleicao', csv.'sqCandidato', csv.'numTurno'
+uri electionURI,		"election", csv.'anoEleicao'
+uri partyURI,			"party", csv.'nomePartido'
+uri stateURI,			"state", csv.'siglaUF'
+uri municipalityURI,	"municipality", csv.'nomeMunicipio'
+uri candidacyURI, 			csv.'anoEleicao', csv.'siglaUF', "candidacy", csv.'sqCandidato'
+uri turnURI, 				csv.'anoEleicao', "turn", csv.'numTurno'
+uri electoralDistrictURI,	csv.'anoEleicao', "electoralDistrict", csv.'nomeMunicipio', csv.'numeroZona'
+uri districtVotingURI,		csv.'anoEleicao', "districtVoting", csv.'nomeMunicipio', csv.'numeroZona', csv.'nomePartido', csv.'descricaoCargo'
+uri candidacySituationURI,	csv.'anoEleicao', "situation", csv.'sqCandidato', csv.'numTurno'
 
 
 // District Voting
@@ -86,20 +85,6 @@ map(turn, turnLOD) {
 }
 
 
-// COALITION
-matching(coalitionLOD) {
-	endpoint    "http://java.icmc.usp.br:2472/repositories/Politics"
-	vendor      VIRTUOSO
-	search      csv.nomeColigacao
-	type	    pol.coalition
-	defaultURI  coalitionURI
-}
-
-map(coalition, coalitionLOD) {
-	pol.candidacy candidacy
-}
-
-
 // ELECTION
 matching(electionLOD) {
     endpoint    "http://java.icmc.usp.br:2472/repositories/Politics"
@@ -111,7 +96,6 @@ matching(electionLOD) {
 
 map(election, electionLOD) {
 	pol.turn 		turn
-	// pol.coalition	mapeado em "consulta_cand_2014.bio"
 }
 
 
@@ -173,8 +157,8 @@ matching(stateLOD) {
 }
 
 map(state, stateLOD) {
-	rdfs.label			csv.siglaUE
-	pol.abbreviation	csv.siglaUE
+	rdfs.label			csv.siglaUF
+	pol.abbreviation	csv.siglaUF
 	pol.municipality	municipality
 	// Coutry, adicionar em alguma planilha que apareça wd.P17
 }
