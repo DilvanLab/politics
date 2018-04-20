@@ -2,10 +2,12 @@ pom.xml
 pom.xml.asc
 *.jar
 *.class
+*.owl
 /lib/
 /classes/
 /target/
 /checkouts/
+/owls/
 .lein-deps-sum
 .lein-repl-history
 .lein-plugins/
