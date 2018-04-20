@@ -28,7 +28,7 @@ definePrefix wd,	"http://www.wikidata.org/entity/"
 
 uriBase "http://purl.org/politics/id/"
 
-uri coalitionURI, csv.'anoEleicao', "coalition", csv.'nomeColigacao'
+uri tionURI, csv.'anoEleicao', "coalition", csv.'nomeColigacao'
 uri electionURI, "election", csv.'anoEleicao'
 uri partyURI, "party", csv.'nomePartido'
 uri candidacyURI, csv.'anoEleicao', csv.'siglaUF', "candidacy", csv.'sqCandidato'
@@ -39,7 +39,52 @@ uri electoralDistrictURI, "electoralDistrict", csv.'anoEleicao', csv.'numeroZona
 uri districtVotingURI, "districtVoting", csv.'numeroZona', csv.'nomePartido', csv.'descricaoCargo'
 uri candidacySituationURI, "situation", csv.'anoEleicao', csv.'sqCandidato', csv.'numTurno'
 
-// LODS COMUNS A OUTROS ARQUIVOS
+
+// District Voting
+matching(districtVotingLOD) {
+	endpoint	""
+	vendor		VIRTUOSO
+	search		csv.nomeCandidato
+	type		pol.districtVoting
+	defaultURI	districtVotingURI
+}
+
+map(districtVoting, districtVotingLOD) {
+	rdfs.label				csv.nomeUrnaCandidato
+	pol.votes				csv.totalVotos
+	rdf.type				pol.districtVoting
+}
+
+
+// CANDIDACY
+matching(candidacyLOD){
+    endpoint   "http://purl.org/politics/triplestore/Politics"
+    vendor      VIRTUOSO
+    search      csv.sqCandidato
+    defaultURI  candidacyURI
+	type        pol.candidacy
+}
+
+map (candidacy, candidacyLOD) {
+	pol.situation		csv.descSitCandTot //Diz se foi pro 2 turno ou não e se foi eleito
+	pol.districtVoting	districtVoting
+}
+
+
+// Turn
+matching(turnLOD) {
+	endpoint	"http://java.icmc.usp.br:2472/repositories/Politics"
+	vendor		VIRTUOSO
+	search		csv.numTurno
+	type		pol.turn
+	defaultURI	turnURI
+}
+
+map(turn, turnLOD) {
+	pol.districtVoting	districtVoting
+	pol.candidacy		candidacy
+}
+
 
 // COALITION
 matching(coalitionLOD) {
@@ -51,7 +96,7 @@ matching(coalitionLOD) {
 }
 
 map(coalition, coalitionLOD) {
-//
+	pol.candidacy candidacy
 }
 
 
@@ -65,7 +110,8 @@ matching(electionLOD) {
 }
 
 map(election, electionLOD) {
-//
+	pol.turn 		turn
+	// pol.coalition	mapeado em "consulta_cand_2014.bio"
 }
 
 
@@ -83,34 +129,22 @@ map(party, partyLOD) {
 }
 
 
-// CANDIDACY
-matching(candidacyLOD){
-    endpoint   "http://purl.org/politics/triplestore/Politics"
-    vendor      VIRTUOSO
-    search      csv.sqCandidato
-    defaultURI  candidacyURI
-	type        pol.candidacy
-}
-
-map (candidacy, candidacyLOD) {
-	pol.situation	csv.descSitCandTot //Diz se foi pro 2 turno ou não e se foi eleito
-}
-
-
-// LODS ADICIONADOS COM VOTACAO POR PARTIDO
-// STATE
-matching(stateLOD) {
+// Electoral District
+matching(electoralDistrictLOD) {
 	endpoint	"http://java.icmc.usp.br:2472/repositories/Politics"
 	vendor		VIRTUOSO
-	search		csv.siglaUF
-	type		pol.state
-	defaultURI	stateURI
+	search		csv.numeroZona
+	type		pol.electoralDistrict
+	defaultURI	electoralDistrictURI
 }
 
-map(state, stateLOD) {
-	rdfs.label	csv.siglaUE
-	// Coutry, adicionar em alguma planilha que apareça wd.P17
+map(electoralDistrict, electoralDistrictLOD) {
+	pol.turn			turn
+	pol.election		election
+	pol.number			csv.numeroZona
+	pol.districtVoting	districtVoting
 }
+
 
 // Municipality
 matching(municipalityLOD) {
@@ -122,55 +156,25 @@ matching(municipalityLOD) {
 }
 
 map(municipality, municipalityLOD) {
-	rdfs.label	csv.nomeMunicipio
-	pol.tseCode	csv.codigoMunicipio
-	rdf.type	pol.municipality
+	rdfs.label				csv.nomeMunicipio
+	pol.tseCode				csv.codigoMunicipio
+	rdf.type				pol.municipality
+    pol.electoralDistrict	electoralDistrict
 }
 
-// Turn
-matching(turnLOD) {
+
+// STATE
+matching(stateLOD) {
 	endpoint	"http://java.icmc.usp.br:2472/repositories/Politics"
 	vendor		VIRTUOSO
-	search		csv.numTurno
-	type		pol.turn
-	defaultURI	turnURI
+	search		csv.siglaUF
+	type		pol.state
+	defaultURI	stateURI
 }
 
-map(turn, turnLOD) {
-	pol.election	election
-}
-
-// Electoral District
-matching(electoralDistrictLOD) {
-	endpoint	"http://java.icmc.usp.br:2472/repositories/Politics"
-	vendor		VIRTUOSO
-	search		csv.numeroZona
-	type		pol.electoralDistrict
-	defaultURI	electoralDistrictURI
-}
-
-map(electoralDistrict, electoralDistrictLOD) {
+map(state, stateLOD) {
+	rdfs.label			csv.siglaUE
+	pol.abbreviation	csv.siglaUE
 	pol.municipality	municipality
-	pol.turn			turn
-	pol.election		election
-	pol.number			csv.numeroZona
-}
-
-// LODS ADICIONADOS
-// District Voting
-matching(districtVotingLOD) {
-	endpoint	""
-	vendor		VIRTUOSO
-	search		csv.nomeCandidato
-	type		pol.districtVoting
-	defaultURI	districtVotingURI
-}
-
-map(districtVoting, districtVotingLOD) {
-	pol.candidacy			candidacy
-	pol.turn				turn
-	pol.electoralDistrict	electoralDistrict
-	rdfs.label				csv.nomeUrnaCandidato
-	pol.votes				csv.totalVotos
-	rdf.type				pol.districtVoting
+	// Coutry, adicionar em alguma planilha que apareça wd.P17
 }

@@ -1,3 +1,6 @@
+// COMO CONSTA NO MAPEAMENTO A SEGUIR, AS PLANILHAS "consulta_legendas_2014" NÃO ACRESCENTAM NADA AOS NOSSOS DADOS
+// PODEM TER POSSÍVEIS ATUALIZAÇÕES EM DADOS QUE FORAM DISPONIBILIZADOS NAS DEMAIS PLANILHAS
+
 addCsv "consulta_legendas_2014_BR.csv" {
 	delimiter ";"
 	charset   "ISO-8859-1"
@@ -36,8 +39,13 @@ matching(electionLOD) {
 
 // Preciso "instanciar" a eleição para referencia-la na coligação
 map(election, electionLOD) {
-	//pol.election electionName
+	// rdfs.label		mapeado em "consulta_cand_2014.bio"
+	// rdf.type			mapeado em "consulta_cand_2014.bio"
+	// pol.year			mapeado em "consulta_cand_2014.bio"
+	// pol.turn			mapeado em "votacao_candidato_munzona_2014.bio"
+	// pol.coalition	mapeado em "votacao_candidato_munzona_2014.bio"
 }
+
 
 // PARTIDO
 matching(partyLOD) {
@@ -50,7 +58,11 @@ matching(partyLOD) {
 
 // Preciso "instanciar" o partido para referencia-lo na coligação
 map(party, partyLOD) {
-	//pol.party csv.nomePartido
+	// rdfs.label		mapeado em "consulta_cand_2014.bio"
+	// pol.number		mapeado em "consulta_cand_2014.bio"
+	// pol.abbreviation	mapeado em "consulta_cand_2014.bio"
+	// rdf.type			mapeado em "consulta_cand_2014.bio"
+	// pol.candidacy	mapeado em "consulta_cand_2014.bio"
 }
 
 
@@ -68,9 +80,9 @@ matching(coalitionLOD) {
 // Coligação referencia um Partido e uma Eleição
 // e possui seus demais atributos
 map(coalition, coalitionLOD) {
-	rdfs.label			csv.nomeColigacao
-	pol.coalition		csv.composicaoColigacao
-	pol.party			party
-	pol.election		election
-	pol.internalNumber	csv.sequencialColigacao
+	// rdfs.label			mapeado em "consulta_cand_2014.bio"
+	// pol.internalNumber	mapeado em "consulta_cand_2014.bio"
+	// pol.coalition		mapeado em "consulta_cand_2014.bio"
+	// rdf.type				mapeado em "consulta_cand_2014.bio"
+	// pol.candidacy		mapeado em "consulta_cand_2014.bio"
 }

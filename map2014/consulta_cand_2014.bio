@@ -5,6 +5,8 @@ addCsv "consulta_cand_2014_BR.csv" {
 	null "#NULO#"
 }
 
+// Os atributos não mapeados mas contidos no header estão comentados
+
 // Codigos integer
 defineType csv.codigoOcupacao, integer, forbidden:"-1,-3"
 defineType csv.codigoLegenda, integer, forbidden:"-1,-3"
@@ -15,7 +17,6 @@ defineType csv.codigoEstadoCivil, integer, forbidden:"-1,-3"
 // defineType csv.codigoCorRaca, integer, forbidden:"-1,-3"
 // defineType csv.codigoCargo, integer, forbidden:"-1,-3"
 // defineType csv.codigoSexo, integer, forbidden:"-1,-3"
-// os não mapeados estão comentados
 
 // Informações integer
 defineType csv.idadeDataEleicao, integer, forbidden:"-1,-3"
@@ -53,93 +54,15 @@ definePrefix wd,    "http://www.wikidata.org/entity/"
 
 uriBase "http://purl.org/politics/id/"
 
-uri partyURI, "party", csv.'nomePartido'
-uri politicianURI, "politician", csv.'cpfCandidato'
-uri candidacyURI, csv.'anoEleicao', csv.'siglaUF', "candidacy", csv.'sequencialCandidato'
-uri civilStatusURI, "civilStatus", csv.'codigoEstadoCivil'
-uri occupationURI, "occupation", csv.'codigoOcupacao'
-uri coalitionURI, csv.'anoEleicao', "coalition", csv.'nomeLegenda'
-
-uri electionURI, "election", csv.'anoEleicao'
-
-
-
-// ELEICAO
-matching(electionLOD) {
-	endpoint	""
-	vendor		VIRTUOSO
-	search		csv.descricaoEleicao
-	type		pol.election
-	defaultURI	electionURI
-}
-
-map(election, electionLOD) {
-	rdfs.label	csv.descricaoEleicao
-	rdf.type	pol.election
-	pol.year	csv.anoEleicao
-}
-
-
-// PARTIDO
-matching(partyLOD) {
-	endpoint	"http://dbpedia.org/sparql"
-	// endpoint	"https://query.wikidata.org/sparql"
-	vendor		VIRTUOSO
-	search		csv.nomePartido
-	defaultURI	partyURI
-	type		pol.party
-}
-
-map(party, partyLOD) {
-	rdfs.label			csv.nomePartido
-	pol.number			csv.numeroPartido
-	pol.abbreviation	csv.siglaPartido
-	rdf.type			pol.party
-}
-
-
-// LEGENDA (COLIGACAO)
-// ate 2020 pode ser do partido ou da coligacao entre partidos
-// feita para disputar uma determinada eleicao
-matching(coalitionLOD) {
-	//endpoint	"http://dbpedia.org/sparql"
-	endpoint	"http://java.icmc.usp.br:2472/repositories/Politics"
-	vendor		VIRTUOSO
-	search		csv.nomeLegenda
-	type		wd.Q124964
-	defaultURI	coalitionURI
-}
-
-map(coalition, coalitionLOD) {
-	rdfs.label			csv.nomeLegenda
-	pol.internalNumber	csv.codigoLegenda
-	rdf.type			wd.Q124964
-	pol.coalition		csv.composicaoLegenda
-	pol.party			party
-}
-
-
-// CANDIDATO (Politico)
-matching(politicianLOD) {
-	endpoint	"http://java.icmc.usp.br:2472/repositories/Politics"
-	vendor		VIRTUOSO
-	search		csv.nomeCandidato
-	type		pol.politician
-	defaultURI	politicianURI
-}
-
-map(politician, politicianLOD) {
-	rdfs.label					csv.nomeCandidato
-	foaf.name					csv.nomeCandidato
-	pol.voterNumber				csv.numTituloEleitoralCandidato
-	foaf.mbox					csv.emailCandidato
-	pol.cpf						csv.cpfCandidato
-	pol.birthday				csv.dataNascimento
-	dbo.hometown				csv.nomeMunicipioNascimento
-	pol.citizenshipDescription	csv.descricaoNacionalidade
-	wd.Q3254959					csv.descricaoCorRaca
-	rdf.type					pol.politician
-}
+uri partyURI,		"party",			csv.'nomePartido'
+uri politicianURI,	"politician",		csv.'cpfCandidato'
+uri civilStatusURI,	"civilStatus",		csv.'codigoEstadoCivil'
+uri occupationURI,	"occupation",		csv.'codigoOcupacao'
+uri electionURI,	"election",			csv.'anoEleicao'
+uri positionURI,	"position",			csv.'codigoCargo'
+uri vacancyURI,		csv.'anoEleicao',	"vacancy",				csv.'descricaoCargo'
+uri candidacyURI,	csv.'anoEleicao',	csv.'siglaUF',			"candidacy", csv.'sequencialCandidato'
+uri coalitionURI,	csv.'anoEleicao',	"coalition",			csv.'nomeLegenda'
 
 
 // ESTADO CIVIL
@@ -177,6 +100,22 @@ map (occupation, occupationLOD) {
 }
 
 
+// Posiçao (Cargo concorrido)
+matching(positionLOD) {
+	endpoint	"http://dbpedia.org/sparql"
+	vendor		VIRTUOSO
+	search		csv.descricaoCargo
+	defaultURI	positionURI
+	type		pol.position
+}
+
+map(position, positionLOD) {
+	rdfs.label	csv.descricaoCargo
+	pol.code	csv.codigoCargo
+}
+
+
+// CANDIDATURA
 matching(candidacyLOD){
 	endpoint	"http://purl.org/politics/triplestore/Politics"
 	// endpoint	"http://dbpedia.org/sparql"
@@ -187,10 +126,6 @@ matching(candidacyLOD){
 }
 
 map (candidacy, candidacyLOD) {
-	pol.politician					politician
-	pol.party						party
-	pol.coalition					coalition
-	pol.election					election
 	pol.civilStatus					civilStatus
 	pol.occupation					occupation
 	rdfs.label						csv.nomeUrnaCandidato
@@ -201,6 +136,106 @@ map (candidacy, candidacyLOD) {
 	pol.age							csv.idadeDataEleicao
 	pol.schooling					csv.descricaoGrauInstrucao
 	pol.partyMaxCampaignExpenses	csv.despesaMaxCampanha
-	pol.position					csv.descricaoCargo
 	rdf.type						pol.candidacy
+}
+
+
+// VAGA
+matching(vacancyLOD) {
+	endpoint	"http://dbpedia.org/sparql"
+	vendor		VIRTUOSO
+	search		csv.descricaoOcupacao
+	defaultURI	vacancyURI
+	type		pol.occupation
+}
+
+map(vacancy, vacancyLOD) {
+	pol.position	position
+	pol.candidacy	candidacy
+	rdfs.label		csv.descricaoCargo
+	rdf.type		pol.vacancy
+}
+
+
+// LEGENDA (COLIGACAO)
+// ate 2020 pode ser do partido ou da coligacao entre partidos
+// feita para disputar uma determinada eleicao
+matching(coalitionLOD) {
+	//endpoint	"http://dbpedia.org/sparql"
+	endpoint	"http://java.icmc.usp.br:2472/repositories/Politics"
+	vendor		VIRTUOSO
+	search		csv.nomeLegenda
+	type		wd.Q124964
+	defaultURI	coalitionURI
+}
+
+map(coalition, coalitionLOD) {
+	rdfs.label			csv.nomeLegenda
+	pol.internalNumber	csv.codigoLegenda
+	pol.coalition		csv.composicaoLegenda
+	rdf.type			wd.Q124964
+	pol.candidacy		candidacy
+}
+
+
+// ELEICAO
+matching(electionLOD) {
+	endpoint	""
+	vendor		VIRTUOSO
+	search		csv.descricaoEleicao
+	type		pol.election
+	defaultURI	electionURI
+}
+
+map(election, electionLOD) {
+	pol.coalition	coalition
+	pol.vacancy		vacancy
+	rdfs.label		csv.descricaoEleicao
+	rdf.type		pol.election
+	pol.year		csv.anoEleicao
+	// pol.turn			mapeado em "votacao_candidato_munzona_2014.bio"
+}
+
+
+// PARTIDO
+matching(partyLOD) {
+	endpoint	"http://dbpedia.org/sparql"
+	// endpoint	"https://query.wikidata.org/sparql"
+	vendor		VIRTUOSO
+	search		csv.nomePartido
+	defaultURI	partyURI
+	type		pol.party
+}
+
+map(party, partyLOD) {
+	pol.coalition		coalition
+	pol.candidacy		candidacy
+	rdfs.label			csv.nomePartido
+	pol.number			csv.numeroPartido
+	pol.abbreviation	csv.siglaPartido
+	rdf.type			pol.party
+}
+
+
+// CANDIDATO (Politico)
+matching(politicianLOD) {
+	endpoint	"http://java.icmc.usp.br:2472/repositories/Politics"
+	vendor		VIRTUOSO
+	search		csv.nomeCandidato
+	type		pol.politician
+	defaultURI	politicianURI
+}
+
+map(politician, politicianLOD) {
+	pol.candidacy				candidacy
+	rdfs.label					csv.nomeCandidato
+	foaf.name					csv.nomeCandidato
+	pol.voterNumber				csv.numTituloEleitoralCandidato
+	foaf.mbox					csv.emailCandidato
+	pol.cpf						csv.cpfCandidato
+	pol.birthday				csv.dataNascimento
+	dbo.hometown				csv.nomeMunicipioNascimento
+	pol.citizenshipDescription	csv.descricaoNacionalidade
+	wd.Q3254959					csv.descricaoCorRaca
+	rdf.type					pol.politician
 }

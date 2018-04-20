@@ -42,18 +42,8 @@ map(assetType, assetTypeLOD) {
 	rdf.type	wd.Q6422240
 }
 
-// Candidatura para Linkar o Bem
-matching(candidacyLOD) {
-	endpoint	"http://purl.org/politics/triplestore/Politics"
-	vendor		VIRTUOSO
-	search		csv.sqCandidato
-	defaultURI	candidacyURI
-}
 
-map(candidacy, candidacyLOD) {
-//
-}
-
+// Bem
 matching (assetLOD) {
 	endpoint	""
 	vendor		VIRTUOSO
@@ -62,11 +52,22 @@ matching (assetLOD) {
 	type		wd.Q6422240
 }
 
-// Entidade Bem (Assets)
 map(asset, assetLOD) {
 	rdfs.label			csv.dsTipoBemCandidato
 	elem.description	csv.detalheBem
-	pol.candidacy		candidacy
 	rdf.type			assetType
 	pol.value			csv.valorBem
+}
+
+
+// Candidatura
+matching(candidacyLOD) {
+	endpoint	"http://purl.org/politics/triplestore/Politics"
+	vendor		VIRTUOSO
+	search		csv.sqCandidato
+	defaultURI	candidacyURI
+}
+
+map(candidacy, candidacyLOD) {
+	pol.asset	asset
 }

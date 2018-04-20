@@ -19,8 +19,28 @@ definePrefix wd,    "http://www.wikidata.org/entity/"
 
 uriBase "http://purl.org/politics/id/"
 
-uri vacancyURI, "vacancy", csv.'anoEleicao', csv.'siglaUE'
-uri electionURI, "election", csv.'anoEleicao', csv.'siglaUE'
+uri vacancyURI,		csv.'anoEleicao',	"vacancy",		csv.'descricaoCargo'
+uri electionURI,	"election",			csv.'anoEleicao'
+
+
+
+// VAGAS
+matching(vacancyLOD) {
+	// endpoint	"http://java.icmc.usp.br:2472/repositories/Politics"
+	endpoint	"https://query.wikidata.org/sparql"
+	vendor		VIRTUOSO
+	search		csv.descricaoCargo
+	type		pol.vacancy
+	defaultURI	vacancyURI
+}
+
+map(vacancy, vacancyLOD) {
+	pol.number		csv.qtdeVagas
+	// rdfs.label	mapeado em "consulta_cand_2014.bio"
+	// pol.position	mapeado em "consulta_cand_2014.bio"
+	// rdf.type		mapeado em "consulta_cand_2014.bio"
+}
+
 
 // ELEICAO
 matching(electionLOD) {
@@ -32,24 +52,5 @@ matching(electionLOD) {
 }
 
 map(election, electionLOD) {
-	// Para criar o "objeto" sem nada, precisa dessa linha com no minimo um comentario
-}
-
-
-// Vacancy possui uma eleição
-matching(vacancyLOD) {
-	// endpoint	"http://java.icmc.usp.br:2472/repositories/Politics"
-	endpoint	"https://query.wikidata.org/sparql"
-	vendor		VIRTUOSO
-	search		csv.descricaoCargo
-	type		pol.vacancy
-	defaultURI	vacancyURI
-}
-
-map(vacancy, vacancyLOD) {
-	rdfs.label		csv.descricaoCargo
-	pol.code		csv.codigoCargo
-	pol.number		csv.qtdeVagas
-	pol.election	election
-	pol.type		pol.vacancy
+	// "votacao_candidato_munzona_2014.bio" e "consulta_cand_2014.bio"
 }
