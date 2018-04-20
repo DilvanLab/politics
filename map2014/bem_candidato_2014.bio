@@ -1,0 +1,72 @@
+addCsv "bem_candidato_2014_BR_COM_LINHAS.csv" {
+    delimiter ";"
+    charset   "ISO-8859-1"
+    header "numeroLinha;dataGeracao;horaGeracao;anoEleicao;descricaoEleicao;siglaUF;sqCandidato;cdTipoBemCandidato;dsTipoBemCandidato;detalheBem;valorBem;dataUltimaAtualizacao;horaUltimaAtualizacao"
+    null "#NULO#"
+}
+
+defineType csv.sqCandidato, integer, forbidden:"-1,-3"
+defineType csv.cdTipoBemCandidato, integer, forbidden:"-1,-3"
+defineType csv.valorBem, decimal, forbidden:"-1,-3"
+defineType csv.anoEleicao, gYear, NOTNULL
+defineType csv.dsTipoBemCandidato, string, NOTNULL
+defineType csv.detalheBem, string, NOTNULL
+
+
+definePrefix pol,   "http://purl.org/onto/politics#"
+definePrefix elem,  "http://purl.org/dc/elements/1.1/"
+definePrefix prop,  "http://dbpedia.org/property/"
+definePrefix dbr,   "http://dbpedia.org/resource/"
+definePrefix dbo,   "http://dbpedia.org/ontology/"
+definePrefix wd,    "http://www.wikidata.org/entity/"
+
+uriBase "http://purl.org/politics/id/"
+
+uri candidacyURI, csv.'anoEleicao', csv.'siglaUF', "candidacy", csv.'sqCandidato'
+uri assetTypeURI, "assetType", csv.'cdTipoBemCandidato'
+uri assetURI, csv.'anoEleicao', csv.'siglaUF', "asset", csv.'numeroLinha'
+
+
+// Tipo do Bem
+matching(assetTypeLOD) {
+	endpoint	"http://purl.org/politics/triplestore/Politics"
+	vendor		VIRTUOSO
+	search		csv.cdTipoBemCandidato
+	defaultURI	assetTypeURI
+	type		wd.Q6422240
+}
+
+map(assetType, assetTypeLOD) {
+	rdfs.label	csv.dsTipoBemCandidato
+	pol.code	csv.cdTipoBemCandidato
+	rdf.type	wd.Q6422240
+}
+
+// Candidatura para Linkar o Bem
+matching(candidacyLOD) {
+	endpoint	"http://purl.org/politics/triplestore/Politics"
+	vendor		VIRTUOSO
+	search		csv.sqCandidato
+	defaultURI	candidacyURI
+}
+
+map(candidacy, candidacyLOD) {
+//
+}
+
+matching (assetLOD) {
+	endpoint	""
+	vendor		VIRTUOSO
+	search		csv.detalheBem
+	defaultURI	assetURI
+	type		wd.Q6422240
+}
+
+// Entidade Bem (Assets)
+map(asset, assetLOD) {
+	rdfs.label			csv.dsTipoBemCandidato
+	elem.description	csv.detalheBem
+	pol.candidacy		candidacy
+	rdf.type			assetType
+	pol.value			csv.valorBem
+}

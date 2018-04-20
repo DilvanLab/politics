@@ -1,0 +1,147 @@
+addCsv "despesas_candidatos_2014_BR_COM_LINHAS.csv" {
+	delimiter ";"
+	charset   "ISO-8859-1"
+	// Essa planilha contém header por natureza
+	null "#NULO#"
+}
+
+// Integer and Real
+defineType csv.codEleicao, integer
+defineType csv.sqCandidato, integer, forbidden:"-1,-3"
+defineType csv.numeroDocumento, integer
+defineType csv.cdSetorEconomicoFornecedor, integer, NOTNULL
+defineType csv.valorDespesa, decimal
+//defineType csv."Número candidato", integer, forbidden:"-1,-3"
+
+// Data e hora da despesa
+defineType csv.dataDespesa, date
+
+// Strings
+defineType csv.cnpjPrestadorConta, string, NOTNULL
+// defineType csv.Cargo, string, NOTNULL
+defineType csv.cpfOrCnpjFornecedor, string, NOTNULL
+defineType csv.nomeFornecedor, string, NOTNULL
+defineType csv.setorEconomicoFornecedor, string, NOTNULL
+// defineType csv."CPF do candidato", string, NOTNULL
+// defineType csv."Nome candidato", string, NOTNULL
+// defineType csv."Sigla Partido", string, NOTNULL
+
+
+definePrefix pol,   "http://purl.org/onto/politics#"
+definePrefix prop,  "http://dbpedia.org/property/"
+definePrefix dbr,   "http://dbpedia.org/resource/"
+definePrefix dbo,   "http://dbpedia.org/ontology/"
+definePrefix foaf,  "http://xmlns.com/foaf/0.1/"
+definePrefix wd,    "http://www.wikidata.org/entity/"
+
+definePrefix w3,      "http://www.w3.org/2001/XMLSchema#"
+
+uriBase "http://purl.org/politics/id/"
+
+uri candidacyURI, "2014", csv.'UF', "candidacy", csv.'sqCandidato'
+uri expenseURI, "2014", csv.'UF', "expense", csv.'numeroDespesa'
+uri expenseTypeURI, "expenseType", csv.'tipoDespesa'
+uri providerURI, "provider", csv.'cpfOrCnpjFornecedor'
+uri economicSectorURI, "economicSector", csv.'cdSetorEconomicoFornecedor'
+uri electionURI, "election", "2014"
+
+// ELEICAO
+matching(electionLOD) {
+	endpoint   "http://purl.org/politics/triplestore/Politics"
+	vendor      VIRTUOSO
+	search      csv.descEleicao
+	type       	pol.election
+	defaultURI  electionURI
+}
+
+// Acrescento um codigo a eleição que é apresentado na planilha
+map(election, electionLOD) {
+    pol.code    csv.codEleicao
+}
+
+
+// CANDIDATURA
+matching(candidacyLOD){
+    endpoint   "http://purl.org/politics/triplestore/Politics"
+    vendor      VIRTUOSO
+    search      csv.sqCandidato
+    defaultURI  candidacyURI
+	type        pol.candidacy
+}
+
+map (candidacy, candidacyLOD) {
+	//pol.cnpj    csv.cnpjPrestadorConta
+}
+
+
+// TIPO DE DESPESA
+matching(expenseTypeLOD){
+    endpoint   "http://purl.org/politics/triplestore/Politics"
+    vendor      VIRTUOSO
+    search      csv.tipoDespesa
+    defaultURI  expenseTypeURI
+	type        wd.Q13516686
+}
+
+map (expenseType, expenseTypeLOD) {
+    rdfs.label          csv.tipoDespesa
+    // rdf.type            wd.Q13516686
+}
+
+
+// SETOR ECONOMICO DO FORNECEDOR
+matching(economicSectorLOD){
+    endpoint   "http://purl.org/politics/triplestore/Politics"
+    vendor      VIRTUOSO
+    search     csv.setorEconomicoFornecedor
+    defaultURI  economicSectorURI
+	type        pol.economicSector
+}
+
+map (economicSector, economicSectorLOD) {
+	rdfs.label          csv.setorEconomicoFornecedor
+	pol.code            csv.cdSetorEconomicoFornecedor
+	rdf.type            pol.economicSector
+}
+
+
+// FORNECEDOR
+matching(providerLOD){
+    endpoint   "http://purl.org/politics/triplestore/Politics"
+    vendor      VIRTUOSO
+    search      csv.nomeFornecedor
+    defaultURI  providerURI
+	type        wd.Q24229398
+}
+
+map (provider, providerLOD) {
+    rdfs.label          csv.nomeFornecedor
+    pol.beneficiary     csv.nomeFornecedorReceitaFederal
+    rdf.type            wd.Q24229398
+    pol.cnpj            csv.cpfOrCnpjFornecedor
+    pol.economicSector  economicSector
+}
+
+
+// DESPESA
+matching(expenseLOD){
+    endpoint   "http://purl.org/politics/triplestore/Politics"
+    vendor      VIRTUOSO
+    search      csv.descricaoDespesa
+    defaultURI  expenseURI
+	type        wd.Q13516686
+}
+
+
+map (expense, expenseLOD) {
+    rdfs.label          csv.tipoDespesa
+    rdf.type            expenseType
+    pol.description     csv.descricaoDespesa
+    pol.candidacy       candidacy
+    pol.value           csv.valorDespesa
+    w3.dateTime         csv.dataDespesa
+    pol.documentType    csv.tipoDocumento
+    pol.number          csv.numeroDocumento
+    pol.beneficiary     provider
+    pol.payer           csv.cnpjPrestadorConta
+}

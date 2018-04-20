@@ -1,0 +1,55 @@
+addCsv "consulta_vagas_2014_BR.csv" {
+	delimiter ";"
+	charset   "ISO-8859-1"
+	header "dataGeracao;horaGeracao;anoEleicao;descricaoEleicao;siglaUF;siglaUE;nomeUE;codigoCargo;descricaoCargo;qtdeVagas"
+	null "#NULO#"
+}
+
+defineType csv.descricaoEleicao, string, NOTNULL
+defineType csv.descricaoCargo, string, NOTNULL
+defineType csv.codigoCargo, integer, forbidden:"-1,-3"
+defineType csv.qtdeVagas, integer, forbidden:"-1,-3"
+
+definePrefix pol,   "http://purl.org/onto/politics#"
+definePrefix prop,  "http://dbpedia.org/property/"
+definePrefix dbr,   "http://dbpedia.org/resource/"
+definePrefix dbo,   "http://dbpedia.org/ontology/"
+definePrefix foaf,  "http://xmlns.com/foaf/0.1/"
+definePrefix wd,    "http://www.wikidata.org/entity/"
+
+uriBase "http://purl.org/politics/id/"
+
+uri vacancyURI, "vacancy", csv.'anoEleicao', csv.'siglaUE'
+uri electionURI, "election", csv.'anoEleicao', csv.'siglaUE'
+
+// ELEICAO
+matching(electionLOD) {
+	endpoint	"http://java.icmc.usp.br:2472/repositories/Politics"
+	vendor		VIRTUOSO
+	search		csv.descricaoEleicao
+	type		pol.election
+	defaultURI	electionURI
+}
+
+map(election, electionLOD) {
+	// Para criar o "objeto" sem nada, precisa dessa linha com no minimo um comentario
+}
+
+
+// Vacancy possui uma eleição
+matching(vacancyLOD) {
+	// endpoint	"http://java.icmc.usp.br:2472/repositories/Politics"
+	endpoint	"https://query.wikidata.org/sparql"
+	vendor		VIRTUOSO
+	search		csv.descricaoCargo
+	type		pol.vacancy
+	defaultURI	vacancyURI
+}
+
+map(vacancy, vacancyLOD) {
+	rdfs.label		csv.descricaoCargo
+	pol.code		csv.codigoCargo
+	pol.number		csv.qtdeVagas
+	pol.election	election
+	pol.type		pol.vacancy
+}

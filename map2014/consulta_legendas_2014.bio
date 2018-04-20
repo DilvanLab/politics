@@ -1,0 +1,76 @@
+addCsv "consulta_legendas_2014_BR.csv" {
+	delimiter ";"
+	charset   "ISO-8859-1"
+	header "dataGeracao;horaGeracao;anoEleicao;numTurno;descricaoEleicao;siglaUF;siglaUE;nomeUE;codigoCargo;descricaoCargo;tipoLegenda;numPartido;siglaPartido;nomePartido;siglaColigacao;nomeColigacao;composicaoColigacao;sequencialColigacao"
+	null "#NULO#"
+}
+
+
+defineType csv.nomeColigacao, string, NOTNULL
+defineType csv.composicaoColigacao, string, NOTNULL, forbidden:"#NE#"
+defineType csv.sequencialColigacao, integer, forbidden:"-1,-3"
+
+
+definePrefix pol,   "http://purl.org/onto/politics#"
+definePrefix prop,  "http://dbpedia.org/property/"
+definePrefix dbr,   "http://dbpedia.org/resource/"
+definePrefix dbo,   "http://dbpedia.org/ontology/"
+definePrefix foaf,  "http://xmlns.com/foaf/0.1/"
+definePrefix wd,    "http://www.wikidata.org/entity/"
+
+uriBase "http://purl.org/politics/id/"
+
+uri coalitionURI, csv.'anoEleicao', "coalition", csv.'nomeColigacao'
+uri partyURI, "party", csv.'nomePartido'
+
+uri electionURI, "election", csv.'anoEleicao'
+
+// ELEICAO
+matching(electionLOD) {
+	endpoint	"http://java.icmc.usp.br:2472/repositories/Politics"
+	vendor		VIRTUOSO
+	search		csv.descricaoEleicao
+	type		pol.election
+	defaultURI	electionURI
+}
+
+// Preciso "instanciar" a eleição para referencia-la na coligação
+map(election, electionLOD) {
+	//pol.election electionName
+}
+
+// PARTIDO
+matching(partyLOD) {
+	endpoint	"http://java.icmc.usp.br:2472/repositories/Politics"
+	vendor		VIRTUOSO
+	search		csv.nomePartido
+	defaultURI	partyURI
+	type		pol.party
+}
+
+// Preciso "instanciar" o partido para referencia-lo na coligação
+map(party, partyLOD) {
+	//pol.party csv.nomePartido
+}
+
+
+// LEGENDA (Coligações)
+// ate 2020 pode ser do partido ou da coligacao entre partidos
+// feita para disputar uma determinada eleicao
+matching(coalitionLOD) {
+	endpoint	"http://java.icmc.usp.br:2472/repositories/Politics"
+	vendor		VIRTUOSO
+	search		csv.nomeColigacao
+	type		wd.Q124964
+	defaultURI	coalitionURI
+}
+
+// Coligação referencia um Partido e uma Eleição
+// e possui seus demais atributos
+map(coalition, coalitionLOD) {
+	rdfs.label			csv.nomeColigacao
+	pol.coalition		csv.composicaoColigacao
+	pol.party			party
+	pol.election		election
+	pol.internalNumber	csv.sequencialColigacao
+}
