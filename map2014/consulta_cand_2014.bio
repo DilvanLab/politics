@@ -53,16 +53,17 @@ definePrefix wd,    "http://www.wikidata.org/entity/"
 
 uriBase "http://purl.org/politics/id/"
 
-uri partyURI,		"party",			csv.'nomePartido'
+// uri partyURI,		"party",			csv.'nomePartido'
+uri partyURI,		"party",			csv.'sequencialLegenda'
 uri politicianURI,	"politician",		csv.'cpfCandidato'
 uri civilStatusURI,	"civilStatus",		csv.'codigoEstadoCivil'
 uri occupationURI,	"occupation",		csv.'codigoOcupacao'
 uri positionURI,	"position",			csv.'codigoCargo'
 uri electionURI,	csv.'anoEleicao',	"election"
 uri turnURI,		csv.'anoEleicao',	"turn",				csv.'numTurno'
-uri vacancyURI,		csv.'anoEleicao', 	csv.'siglaUE',		"vacancy",			csv.'descricaoCargo'
-uri candidacyURI,	csv.'anoEleicao',	csv.'siglaUF',		"candidacy", 		csv.'sequencialCandidato'
 uri coalitionURI,	csv.'anoEleicao',	"coalition",		csv.'nomeLegenda'
+uri vacancyURI,		csv.'anoEleicao',	csv.'siglaUE',		"vacancy",			csv.'descricaoCargo'
+uri candidacyURI,	csv.'anoEleicao',	csv.'siglaUF',		"candidacy", 		csv.'sequencialCandidato'
 
 
 // ESTADO CIVIL

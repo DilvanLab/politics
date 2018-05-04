@@ -28,8 +28,6 @@ uri vacancyURI,		csv.'anoEleicao',	csv.'siglaUE',	"vacancy",	csv.'descricaoCargo
 uri electionURI,	csv.'anoEleicao',	"election"
 
 
-
-
 // ELEICAO
 matching(electionLOD) {
 	endpoint	"http://java.icmc.usp.br:2472/repositories/Politics"
