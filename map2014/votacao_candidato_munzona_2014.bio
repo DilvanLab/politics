@@ -1,6 +1,4 @@
-// addCsv "votacao_candidato_munzona_2014_SP_mini.csv"
-
-addCsv "votacao_candidato_munzona_2014_BR.csv" {
+csv {
 	delimiter ";"
 	charset   "ISO-8859-1"
 	header "dataGeracao;horaGeracao;anoEleicao;numTurno;descricaoEleicao;siglaUF;siglaUE;codigoMunicipio;nomeMunicipio;numeroZona;codigoCargo;numeroCand;sqCandidato;nomeCandidato;nomeUrnaCandidato;descricaoCargo;codSitCandSuperior;descSitCandSuperior;codigoSitCandidato;descSitCandidato;codigoSitCandTot;descSitCandTot;numeroPartido;siglaPartido;nomePartido;sequencialLegenda;nomeColigacao;composicaoLegenda;totalVotos;transito"
@@ -14,9 +12,9 @@ defineType csv.sqCandidato, integer
 defineType csv.totalVotos, integer
 defineType csv.numeroCand, integer
 
-defineType csv.nomeMunicipio, string, NOTNULL
-defineType csv.nomeCandidato, string, NOTNULL
-defineType csv.nomeUrnaCandidato, string, NOTNULL
+defineType csv.nomeMunicipio, string
+defineType csv.nomeCandidato, string
+defineType csv.nomeUrnaCandidato, string
 
 
 definePrefix pol, 	"http://purl.org/onto/politics#"
@@ -28,10 +26,10 @@ definePrefix wd,	"http://www.wikidata.org/entity/"
 
 uriBase "http://purl.org/politics/id/"
 
-uri electionURI,		"election", csv.'anoEleicao'
 uri partyURI,			"party", csv.'nomePartido'
 uri stateURI,			"state", csv.'siglaUF'
 uri municipalityURI,	"municipality", csv.'nomeMunicipio'
+uri electionURI,			csv.'anoEleicao', "election"
 uri candidacyURI, 			csv.'anoEleicao', csv.'siglaUF', "candidacy", csv.'sqCandidato'
 uri turnURI, 				csv.'anoEleicao', "turn", csv.'numTurno'
 uri electoralDistrictURI,	csv.'anoEleicao', "electoralDistrict", csv.'nomeMunicipio', csv.'numeroZona'
