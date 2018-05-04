@@ -1,49 +1,48 @@
-addCsv "consulta_cand_2014_BR.csv" {
+csv {
 	delimiter ";"
 	charset   "ISO-8859-1"
 	header "dataGeracao;horaGeracao;anoEleicao;numTurno;descricaoEleicao;siglaUF;siglaUE;descricaoUE;codigoCargo;descricaoCargo;nomeCandidato;sequencialCandidato;numeroCandidato;cpfCandidato;nomeUrnaCandidato;codSituacaoCandidatura;desSituacaoCandidatura;numeroPartido;siglaPartido;nomePartido;codigoLegenda;siglaLegenda;composicaoLegenda;nomeLegenda;codigoOcupacao;descricaoOcupacao;dataNascimento;numTituloEleitoralCandidato;idadeDataEleicao;codigoSexo;descricaoSexo;codGrauIntrucao;descricaoGrauInstrucao;codigoEstadoCivil;descricaoEstadoCivil;codigoCorRaca;descricaoCorRaca;codigoNacionalidade;descricaoNacionalidade;siglaUFNacimento;codigoMunicipioNascimento;nomeMunicipioNascimento;despesaMaxCampanha;codigoSitTotTurno;descricaoSitTotTurno;emailCandidato"
 	null "#NULO#"
 }
 
-// Os atributos não mapeados mas contidos no header estão comentados
 
 // Codigos integer
-defineType csv.codigoOcupacao, integer, forbidden:"-1,-3"
-defineType csv.codigoLegenda, integer, forbidden:"-1,-3"
-defineType csv.codigoEstadoCivil, integer, forbidden:"-1,-3"
-// defineType csv.codigoSitTotTurno, integer, forbidden:"-1,-3"
-// defineType csv.codigoMunicipioNascimento, integer, forbidden:"-1,-3"
-// defineType csv.codigoNacionalidade, integer, forbidden:"-1,-3"
-// defineType csv.codigoCorRaca, integer, forbidden:"-1,-3"
-// defineType csv.codigoCargo, integer, forbidden:"-1,-3"
-// defineType csv.codigoSexo, integer, forbidden:"-1,-3"
+defineType csv.codigoOcupacao, integer{
+	forbidden "-1,-3"
+}
+defineType csv.codigoLegenda, integer{
+	forbidden "-1,-3"
+}
+defineType csv.codigoEstadoCivil, integer{
+	forbidden "-1,-3"
+}
+
 
 // Informações integer
-defineType csv.idadeDataEleicao, integer, forbidden:"-1,-3"
-defineType csv.sequencialCandidato, integer, forbidden:"-1,-3"
-defineType csv.numeroCandidato, integer, forbidden:"-1,-3"
-defineType csv.numeroPartido, integer, forbidden:"-1,-3"
-defineType csv.numTituloEleitoralCandidato, integer, forbidden:"-1,-3"
-defineType csv.despesaMaxCampanha, decimal, forbidden:"-1,-3"
+defineType csv.idadeDataEleicao, integer {
+	forbidden "-1,-3"
+}
+defineType csv.sequencialCandidato, integer {
+	forbidden "-1,-3"
+}
+defineType csv.numeroCandidato, integer{
+	forbidden "-1,-3"
+}
+defineType csv.numeroPartido, integer{
+	forbidden "-1,-3"
+}
+defineType csv.numTituloEleitoralCandidato, integer{
+	forbidden "-1,-3"
+}
+defineType csv.despesaMaxCampanha, decimal{
+	forbidden "-1,-3"
+}
 
 // Strings de descrições, nomes e demais informações
-defineType csv.anoEleicao, gYear, NOTNULL
-defineType csv.emailCandidato, string, NOTNULL
-defineType csv.descricaoCargo, string, NOTNULL
-defineType csv.descricaoSitTotTurno, string, NOTNULL
-defineType csv.descricaoUE, string
-defineType csv.descricaoOcupacao, string
-defineType csv.descricaoSexo, string
-defineType csv.descricaoEleicao, string
-defineType csv.descricaoEstadoCivil, string
-defineType csv.descricaoGrauInstrucao, string
-defineType csv.descricaoNacionalidade, string
-defineType csv.nomeLegenda, string, forbidden:"PARTIDO ISOLADO"
-defineType csv.nomePartido, string
-defineType csv.nomeCandidato, string
-defineType csv.nomeUrnaCandidato, string
-defineType csv.nomeMunicipioNascimento, string
-defineType csv.descricaoCargo, string
+defineType csv.anoEleicao, gYear
+defineType csv.nomeLegenda, string {
+	forbidden "PARTIDO ISOLADO"
+}
 
 definePrefix pol,   "http://purl.org/onto/politics#"
 definePrefix prop,  "http://dbpedia.org/property/"
@@ -115,28 +114,21 @@ map(position, positionLOD) {
 }
 
 
-// CANDIDATURA
-matching(candidacyLOD){
-	endpoint	"http://purl.org/politics/triplestore/Politics"
-	// endpoint	"http://dbpedia.org/sparql"
+// ELEICAO
+matching(electionLOD) {
+	endpoint	""
 	vendor		VIRTUOSO
-	search		csv.sequencialCandidato
-	defaultURI	candidacyURI
-	type		pol.candidacy
+	search		csv.descricaoEleicao
+	type		pol.election
+	defaultURI	electionURI
 }
 
-map (candidacy, candidacyLOD) {
-	pol.civilStatus					civilStatus
-	pol.occupation					occupation
-	rdfs.label						csv.nomeUrnaCandidato
-	pol.internalNumber				csv.sequencialCandidato
-	pol.electionName				csv.nomeUrnaCandidato
-	pol.number						csv.numeroCandidato
-	pol.candidacySituation			csv.desSituacaoCandidatura
-	pol.age							csv.idadeDataEleicao
-	pol.schooling					csv.descricaoGrauInstrucao
-	pol.partyMaxCampaignExpenses	csv.despesaMaxCampanha
-	rdf.type						pol.candidacy
+map(election, electionLOD) {
+	// pol.coalition	coalition
+	// pol.vacancy		vacancy
+	rdfs.label		csv.descricaoEleicao
+	rdf.type		pol.election
+	pol.year		csv.anoEleicao
 }
 
 
@@ -150,10 +142,47 @@ matching(vacancyLOD) {
 }
 
 map(vacancy, vacancyLOD) {
+	//pol.candidacy	candidacy
+	pol.election	election
 	pol.position	position
-	pol.candidacy	candidacy
 	rdfs.label		csv.descricaoCargo
 	rdf.type		pol.vacancy
+}
+
+
+// TURNO
+matching(turnLOD) {
+	endpoint	"http://java.icmc.usp.br:2472/repositories/Politics"
+	vendor		VIRTUOSO
+	search		csv.numTurno
+	type		pol.turn
+	defaultURI	turnURI
+}
+
+map(turn, turnLOD) {
+	pol.label		csv.numTurno
+	pol.number		csv.numTurno
+	pol.election	election
+}
+
+
+// PARTIDO
+matching(partyLOD) {
+	endpoint	"http://dbpedia.org/sparql"
+	// endpoint	"https://query.wikidata.org/sparql"
+	vendor		VIRTUOSO
+	search		csv.nomePartido
+	defaultURI	partyURI
+	type		pol.party
+}
+
+map(party, partyLOD) {
+	//pol.coalition		coalition
+	//pol.candidacy		candidacy
+	rdfs.label			csv.nomePartido
+	pol.number			csv.numeroPartido
+	pol.abbreviation	csv.siglaPartido
+	rdf.type			pol.party
 }
 
 
@@ -174,46 +203,9 @@ map(coalition, coalitionLOD) {
 	pol.internalNumber	csv.codigoLegenda
 	pol.coalition		csv.composicaoLegenda
 	rdf.type			wd.Q124964
-	pol.candidacy		candidacy
-}
-
-
-// ELEICAO
-matching(electionLOD) {
-	endpoint	""
-	vendor		VIRTUOSO
-	search		csv.descricaoEleicao
-	type		pol.election
-	defaultURI	electionURI
-}
-
-map(election, electionLOD) {
-	pol.coalition	coalition
-	pol.vacancy		vacancy
-	rdfs.label		csv.descricaoEleicao
-	rdf.type		pol.election
-	pol.year		csv.anoEleicao
-	// pol.turn			mapeado em "votacao_candidato_munzona_2014.bio"
-}
-
-
-// PARTIDO
-matching(partyLOD) {
-	endpoint	"http://dbpedia.org/sparql"
-	// endpoint	"https://query.wikidata.org/sparql"
-	vendor		VIRTUOSO
-	search		csv.nomePartido
-	defaultURI	partyURI
-	type		pol.party
-}
-
-map(party, partyLOD) {
-	pol.coalition		coalition
-	pol.candidacy		candidacy
-	rdfs.label			csv.nomePartido
-	pol.number			csv.numeroPartido
-	pol.abbreviation	csv.siglaPartido
-	rdf.type			pol.party
+	pol.party			party
+	pol.election		election
+	// pol.candidacy		candidacy
 }
 
 
@@ -227,7 +219,7 @@ matching(politicianLOD) {
 }
 
 map(politician, politicianLOD) {
-	pol.candidacy				candidacy
+	//pol.candidacy				candidacy
 	rdfs.label					csv.nomeCandidato
 	foaf.name					csv.nomeCandidato
 	pol.voterNumber				csv.numTituloEleitoralCandidato
@@ -238,4 +230,34 @@ map(politician, politicianLOD) {
 	pol.citizenshipDescription	csv.descricaoNacionalidade
 	wd.Q3254959					csv.descricaoCorRaca
 	rdf.type					pol.politician
+}
+
+
+// CANDIDATURA
+matching(candidacyLOD){
+endpoint	"http://purl.org/politics/triplestore/Politics"
+// endpoint	"http://dbpedia.org/sparql"
+vendor		VIRTUOSO
+search		csv.sequencialCandidato
+defaultURI	candidacyURI
+type		pol.candidacy
+}
+
+map (candidacy, candidacyLOD) {
+pol.civilStatus					civilStatus
+pol.occupation					occupation
+pol.politician					politician
+pol.vacancy						vacancy
+pol.turn						turn
+pol.party						party
+pol.coalition					coalition
+rdfs.label						csv.nomeUrnaCandidato
+pol.internalNumber				csv.sequencialCandidato
+pol.electionName				csv.nomeUrnaCandidato
+pol.number						csv.numeroCandidato
+pol.candidacySituation			csv.desSituacaoCandidatura
+pol.age							csv.idadeDataEleicao
+pol.schooling					csv.descricaoGrauInstrucao
+pol.partyMaxCampaignExpenses	csv.despesaMaxCampanha
+rdf.type						pol.candidacy
 }

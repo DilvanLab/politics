@@ -81,7 +81,6 @@ matching(turnLOD) {
 
 map(turn, turnLOD) {
 	pol.districtVoting	districtVoting
-	pol.candidacy		candidacy
 }
 
 
@@ -95,7 +94,7 @@ matching(electionLOD) {
 }
 
 map(election, electionLOD) {
-	pol.turn 		turn
+//
 }
 
 
