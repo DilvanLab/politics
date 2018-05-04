@@ -62,7 +62,7 @@ matching(electionLOD) {
 // Acrescento um codigo a eleição que é apresentado na planilha
 map(election, electionLOD) {
     pol.code    csv.'Cód. Eleição'
-}}
+}
 
 
 // SETOR ECONOMICO DO FORNECEDOR
@@ -81,33 +81,6 @@ map (economicSector, economicSectorLOD) {
 }
 
 
-// DESPESA
-matching(expenseLOD){
-    endpoint   "http://purl.org/politics/triplestore/Politics"
-    vendor      VIRTUOSO
-    search      csv.'Descriçao da despesa'
-    defaultURI  expenseURI
-	type        wd.Q13516686
-}
-
-
-map (expense, expenseLOD) {
-	rdf.type            wd.Q13516686
-	pol.documentType    csv.'Tipo do documento'
-	pol.number          csv.'Número do documento'
-	w3.dateTime         csv.'Data da despesa'
-	pol.description     csv.'Descriçao da despesa'
-	pol.value           csv.'Valor despesa'
-	rdfs.label          csv.'Tipo despesa'
-    pol.payer           candidacy
-
-	// Mapeio os dois possíveis fornecedores,
-	pol.beneficiary		business
-	pol.beneficiary		person
-	//csv.'CNPJ Prestador Conta'
-}
-
-
 // FORNECEDOR (Negócio ou Pessoa)
 matching(businessLOD) {
     endpoint   "http://purl.org/politics/triplestore/Politics"
@@ -118,7 +91,6 @@ matching(businessLOD) {
 }
 
 map (business, businessLOD) {
-	pol.expense			expense
 	pol.economicSector  economicSector
 	rdfs.label          csv.'Nome do fornecedor (Receita Federal)'
 	pol.cnpj            csv.'CPF/CNPJ do fornecedor'
@@ -152,4 +124,31 @@ matching(candidacyLOD){
 
 map (candidacy, candidacyLOD) {
 //
+}
+
+
+// DESPESA
+matching(expenseLOD){
+    endpoint   "http://purl.org/politics/triplestore/Politics"
+    vendor      VIRTUOSO
+    search      csv.'Descriçao da despesa'
+    defaultURI  expenseURI
+	type        wd.Q13516686
+}
+
+
+map (expense, expenseLOD) {
+	rdf.type            wd.Q13516686
+	pol.documentType    csv.'Tipo do documento'
+	pol.number          csv.'Número do documento'
+	w3.dateTime         csv.'Data da despesa'
+	pol.description     csv.'Descriçao da despesa'
+	pol.value           csv.'Valor despesa'
+	rdfs.label          csv.'Tipo despesa'
+    pol.payer           candidacy
+
+	// Mapeio os dois possíveis fornecedores,
+	pol.beneficiary		business
+	pol.beneficiary		person
+	//csv.'CNPJ Prestador Conta'
 }
