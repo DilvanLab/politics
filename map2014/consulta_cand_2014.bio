@@ -7,13 +7,13 @@ csv {
 
 
 // Codigos integer
-defineType csv.codigoOcupacao, integer{
+defineType csv.codigoOcupacao, integer {
 	forbidden "-1,-3"
 }
-defineType csv.codigoLegenda, integer{
+defineType csv.codigoLegenda, integer {
 	forbidden "-1,-3"
 }
-defineType csv.codigoEstadoCivil, integer{
+defineType csv.codigoEstadoCivil, integer {
 	forbidden "-1,-3"
 }
 
@@ -25,16 +25,16 @@ defineType csv.idadeDataEleicao, integer {
 defineType csv.sequencialCandidato, integer {
 	forbidden "-1,-3"
 }
-defineType csv.numeroCandidato, integer{
+defineType csv.numeroCandidato, integer {
 	forbidden "-1,-3"
 }
-defineType csv.numeroPartido, integer{
+defineType csv.numeroPartido, integer {
 	forbidden "-1,-3"
 }
-defineType csv.numTituloEleitoralCandidato, integer{
+defineType csv.numTituloEleitoralCandidato, integer {
 	forbidden "-1,-3"
 }
-defineType csv.despesaMaxCampanha, decimal{
+defineType csv.despesaMaxCampanha, decimal {
 	forbidden "-1,-3"
 }
 
@@ -59,8 +59,8 @@ uri civilStatusURI,	"civilStatus",		csv.'codigoEstadoCivil'
 uri occupationURI,	"occupation",		csv.'codigoOcupacao'
 uri positionURI,	"position",			csv.'codigoCargo'
 uri electionURI,	"election",			csv.'anoEleicao'
-uri vacancyURI,		csv.'anoEleicao',	"vacancy",			csv.'descricaoCargo'
-uri candidacyURI,	csv.'anoEleicao',	csv.'siglaUF',		"candidacy", csv.'sequencialCandidato'
+uri vacancyURI,		"vacancy",			csv.'anoEleicao',	csv.'siglaUE',		csv.'descricaoCargo'
+uri candidacyURI,	csv.'anoEleicao',	csv.'siglaUF',		"candidacy", 		csv.'sequencialCandidato'
 uri coalitionURI,	csv.'anoEleicao',	"coalition",		csv.'nomeLegenda'
 
 
@@ -82,7 +82,7 @@ map (civilStatus, civilStatusLOD) {
 
 
 // OCUPACAO
-matching(occupationLOD){
+matching(occupationLOD) {
 	//endpoint	"http://purl.org/politics/triplestore"
 	//endpoint	"https://query.wikidata.org/sparql"
 	endpoint	"http://dbpedia.org/sparql"
