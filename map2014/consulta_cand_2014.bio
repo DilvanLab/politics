@@ -58,8 +58,8 @@ uri politicianURI,	"politician",		csv.'cpfCandidato'
 uri civilStatusURI,	"civilStatus",		csv.'codigoEstadoCivil'
 uri occupationURI,	"occupation",		csv.'codigoOcupacao'
 uri positionURI,	"position",			csv.'codigoCargo'
-uri electionURI,	"election",			csv.'anoEleicao'
-uri vacancyURI,		"vacancy",			csv.'anoEleicao',	csv.'siglaUE',		csv.'descricaoCargo'
+uri electionURI,	csv.'anoEleicao',	"election"
+uri vacancyURI,		csv.'anoEleicao', 	csv.'siglaUE',		"vacancy",			csv.'descricaoCargo'
 uri candidacyURI,	csv.'anoEleicao',	csv.'siglaUF',		"candidacy", 		csv.'sequencialCandidato'
 uri coalitionURI,	csv.'anoEleicao',	"coalition",		csv.'nomeLegenda'
 

@@ -41,12 +41,12 @@ definePrefix w3,	"http://www.w3.org/2001/XMLSchema#"
 
 uriBase "http://purl.org/politics/id/"
 
-uri candidacyURI, "2014", csv.UF, "candidacy", csv.'Sequencial Candidato'
-uri expenseURI, "2014", csv.UF, "expense", "#LINE"
-uri businessURI, "business", csv.'CPF/CNPJ do fornecedor'
-uri economicSectorURI, "economicSector", csv.'Cod setor econômico do fornecedor'
-uri electionURI, "election", "2014"
-uri personURI, "person", csv.'CPF/CNPJ do fornecedor'
+uri candidacyURI,		"2014", csv.UF,		"candidacy", csv.'Sequencial Candidato'
+uri expenseURI,			"2014", csv.UF,		"expense", "#LINE"
+uri electionURI,		"2014", 			"election"
+uri businessURI,		"business",			csv.'CPF/CNPJ do fornecedor'
+uri economicSectorURI,	"economicSector",	csv.'Cod setor econômico do fornecedor'
+uri personURI, 			"person",			csv.'CPF/CNPJ do fornecedor'
 
 
 
