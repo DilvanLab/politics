@@ -101,7 +101,7 @@ map (business, businessLOD) {
 matching(personLOD){
 	endpoint 	"http://purl.org/politics/triplestore/Politics"
 	vendor		VIRTUOSO
-	search		csv.'Nome do Fornecedor'
+	search		csv.'Nome do fornecedor'
 	defaultURI	personURI
 	type		foaf.Person
 }
