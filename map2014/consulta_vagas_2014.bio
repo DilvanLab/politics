@@ -1,18 +1,14 @@
 csv {
-	delimiter ";"
-	charset   "ISO-8859-1"
-	header "dataGeracao;horaGeracao;anoEleicao;descricaoEleicao;siglaUF;siglaUE;nomeUE;codigoCargo;descricaoCargo;qtdeVagas"
-	null "#NULO#"
+    delimiter   ";"
+    charset     "ISO-8859-1"
+    header      "dataGeracao;horaGeracao;anoEleicao;descricaoEleicao;siglaUF;siglaUE;nomeUE;codigoCargo;descricaoCargo;qtdeVagas"
+    null        "#NULO#"
 }
 
-defineType csv.descricaoEleicao, string
-defineType csv.descricaoCargo, string
-defineType csv.codigoCargo, integer {
-	forbidden "-1,-3"
-}
-defineType csv.qtdeVagas, integer {
-	forbidden "-1,-3"
-}
+
+defineType csv.codigoCargo, integer
+defineType csv.qtdeVagas,   integer
+
 
 definePrefix pol,   "http://purl.org/onto/politics#"
 definePrefix prop,  "http://dbpedia.org/property/"
@@ -24,39 +20,38 @@ definePrefix wd,    "http://www.wikidata.org/entity/"
 
 uriBase "http://purl.org/politics/id/"
 
-uri vacancyURI,		csv.'anoEleicao',	csv.'siglaUE',	"vacancy",	csv.'descricaoCargo'
-uri electionURI,	csv.'anoEleicao',	"election"
+uri electionURI,    csv.'anoEleicao',    "election"
+uri vacancyURI,     csv.'anoEleicao',    csv.'siglaUE',    "vacancy",    csv.'codigoCargo'
 
 
-// ELEICAO
+// Election (Eleição)
 matching(electionLOD) {
-	endpoint	"http://java.icmc.usp.br:2472/repositories/Politics"
-	vendor		VIRTUOSO
-	search		csv.descricaoEleicao
-	type		pol.election
-	defaultURI	electionURI
+    endpoint    "http://java.icmc.usp.br:2472/repositories/Politics"
+    vendor      VIRTUOSO
+    search      csv.descricaoEleicao
+    type        pol.election
+    defaultURI  electionURI
 }
 
 map(election, electionLOD) {
-	// "votacao_candidato_munzona_2014.bio" e "consulta_cand_2014.bio"
+    // "votacao_candidato_munzona_2014.bio" e "consulta_cand_2014.bio"
 }
 
 
-// VAGAS
+// Vacancy (Vagas)
 matching(vacancyLOD) {
-	// endpoint	"http://java.icmc.usp.br:2472/repositories/Politics"
-	endpoint	"https://query.wikidata.org/sparql"
-	vendor		VIRTUOSO
-	search		csv.descricaoCargo
-	type		pol.vacancy
-	defaultURI	vacancyURI
+    endpoint    "http://java.icmc.usp.br:2472/repositories/Politics"
+    vendor      VIRTUOSO
+    search      csv.descricaoCargo
+    type        pol.vacancy
+    defaultURI  vacancyURI
 }
 
 map(vacancy, vacancyLOD) {
-	pol.election	election
-	pol.number		csv.qtdeVagas
+    pol.number      csv.qtdeVagas
 
-	// rdfs.label	mapeado em "consulta_cand_2014.bio"
-	// pol.position	mapeado em "consulta_cand_2014.bio"
-	// rdf.type		mapeado em "consulta_cand_2014.bio"
+    // pol.election election
+    // rdfs.label   mapeado em "consulta_cand_2014.bio"
+    // pol.position mapeado em "consulta_cand_2014.bio"
+    // rdf.type     mapeado em "consulta_cand_2014.bio"
 }

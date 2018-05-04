@@ -2,16 +2,20 @@
 // PODEM TER POSSÍVEIS ATUALIZAÇÕES EM DADOS QUE FORAM DISPONIBILIZADOS NAS DEMAIS PLANILHAS
 
 addCsv "consulta_legendas_2014_BR.csv" {
-	delimiter ";"
-	charset   "ISO-8859-1"
-	header "dataGeracao;horaGeracao;anoEleicao;numTurno;descricaoEleicao;siglaUF;siglaUE;nomeUE;codigoCargo;descricaoCargo;tipoLegenda;numPartido;siglaPartido;nomePartido;siglaColigacao;nomeColigacao;composicaoColigacao;sequencialColigacao"
-	null "#NULO#"
+    delimiter   ";"
+    charset     "ISO-8859-1"
+    header      "dataGeracao;horaGeracao;anoEleicao;numTurno;descricaoEleicao;siglaUF;siglaUE;nomeUE;codigoCargo;descricaoCargo;tipoLegenda;numPartido;siglaPartido;nomePartido;siglaColigacao;nomeColigacao;composicaoColigacao;sequencialColigacao"
+    null        "#NULO#"
 }
 
 
-defineType csv.nomeColigacao, string, NOTNULL
-defineType csv.composicaoColigacao, string, NOTNULL, forbidden:"#NE#"
-defineType csv.sequencialColigacao, integer, forbidden:"-1,-3"
+defineType csv.nomeColigacao, string
+defineType csv.composicaoColigacao, string {
+    forbidden "#NE#"
+}
+defineType csv.sequencialColigacao, integer {
+    forbidden "-1,-3"
+}
 
 
 definePrefix pol,   "http://purl.org/onto/politics#"
@@ -21,68 +25,65 @@ definePrefix dbo,   "http://dbpedia.org/ontology/"
 definePrefix foaf,  "http://xmlns.com/foaf/0.1/"
 definePrefix wd,    "http://www.wikidata.org/entity/"
 
+
 uriBase "http://purl.org/politics/id/"
 
-uri coalitionURI, csv.'anoEleicao', "coalition", csv.'nomeColigacao'
-uri partyURI, "party", csv.'nomePartido'
+uri partyURI,       "party",            csv.'nomePartido'
+uri electionURI,    "election",         csv.'anoEleicao'
+uri coalitionURI,   csv.'anoEleicao',   "coalition",        csv.'nomeColigacao'
 
-uri electionURI, "election", csv.'anoEleicao'
 
-// ELEICAO
+// Election (Eleição)
 matching(electionLOD) {
-	endpoint	"http://java.icmc.usp.br:2472/repositories/Politics"
-	vendor		VIRTUOSO
-	search		csv.descricaoEleicao
-	type		pol.election
-	defaultURI	electionURI
+    endpoint    "http://java.icmc.usp.br:2472/repositories/Politics"
+    vendor      VIRTUOSO
+    search      csv.descricaoEleicao
+    type        pol.election
+    defaultURI  electionURI
 }
 
-// Preciso "instanciar" a eleição para referencia-la na coligação
 map(election, electionLOD) {
-	// rdfs.label		mapeado em "consulta_cand_2014.bio"
-	// rdf.type			mapeado em "consulta_cand_2014.bio"
-	// pol.year			mapeado em "consulta_cand_2014.bio"
-	// pol.turn			mapeado em "votacao_candidato_munzona_2014.bio"
-	// pol.coalition	mapeado em "votacao_candidato_munzona_2014.bio"
+    // rdfs.label       mapeado em "consulta_cand_2014.bio"
+    // rdf.type         mapeado em "consulta_cand_2014.bio"
+    // pol.year         mapeado em "consulta_cand_2014.bio"
+    // pol.turn         mapeado em "votacao_candidato_munzona_2014.bio"
+    // pol.coalition    mapeado em "votacao_candidato_munzona_2014.bio"
 }
 
 
-// PARTIDO
+// Party (Partido)
 matching(partyLOD) {
-	endpoint	"http://java.icmc.usp.br:2472/repositories/Politics"
-	vendor		VIRTUOSO
-	search		csv.nomePartido
-	defaultURI	partyURI
-	type		pol.party
+    endpoint    "http://java.icmc.usp.br:2472/repositories/Politics"
+    vendor      VIRTUOSO
+    search      csv.nomePartido
+    defaultURI  partyURI
+    type        pol.party
 }
 
-// Preciso "instanciar" o partido para referencia-lo na coligação
 map(party, partyLOD) {
-	// rdfs.label		mapeado em "consulta_cand_2014.bio"
-	// pol.number		mapeado em "consulta_cand_2014.bio"
-	// pol.abbreviation	mapeado em "consulta_cand_2014.bio"
-	// rdf.type			mapeado em "consulta_cand_2014.bio"
-	// pol.candidacy	mapeado em "consulta_cand_2014.bio"
+    // rdfs.label       mapeado em "consulta_cand_2014.bio"
+    // pol.number       mapeado em "consulta_cand_2014.bio"
+    // pol.abbreviation mapeado em "consulta_cand_2014.bio"
+    // rdf.type         mapeado em "consulta_cand_2014.bio"
+    // pol.candidacy    mapeado em "consulta_cand_2014.bio"
 }
 
 
-// LEGENDA (Coligações)
+// Coalition (Coligações/Legendas)
 // ate 2020 pode ser do partido ou da coligacao entre partidos
 // feita para disputar uma determinada eleicao
 matching(coalitionLOD) {
-	endpoint	"http://java.icmc.usp.br:2472/repositories/Politics"
-	vendor		VIRTUOSO
-	search		csv.nomeColigacao
-	type		wd.Q124964
-	defaultURI	coalitionURI
+    endpoint    "http://java.icmc.usp.br:2472/repositories/Politics"
+    vendor      VIRTUOSO
+    search      csv.nomeColigacao
+    type        wd.Q124964
+    defaultURI  coalitionURI
 }
 
-// Coligação referencia um Partido e uma Eleição
-// e possui seus demais atributos
 map(coalition, coalitionLOD) {
-	// rdfs.label			mapeado em "consulta_cand_2014.bio"
-	// pol.internalNumber	mapeado em "consulta_cand_2014.bio"
-	// pol.coalition		mapeado em "consulta_cand_2014.bio"
-	// rdf.type				mapeado em "consulta_cand_2014.bio"
-	// pol.candidacy		mapeado em "consulta_cand_2014.bio"
+    // rdfs.label           mapeado em "consulta_cand_2014.bio"
+    // pol.internalNumber   mapeado em "consulta_cand_2014.bio"
+    // pol.coalition        mapeado em "consulta_cand_2014.bio"
+    // rdf.type             mapeado em "consulta_cand_2014.bio"
+    // pol.candidacy        mapeado em "consulta_cand_2014.bio"
 }

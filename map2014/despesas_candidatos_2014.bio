@@ -1,16 +1,16 @@
 csv {
-	delimiter ";"
-	charset   "ISO-8859-1"
-	null "#NULO"
+    delimiter  ";"
+    charset    "ISO-8859-1"
+    null       "#NULO"
 }
 
 
-// Integer and Real
 defineType csv.'Cód. Eleição', integer
+defineType csv.'Cod setor econômico do fornecedor', integer
 defineType csv.'Sequencial Candidato', integer {
     forbidden "-1,-3"
 }
-defineType csv.'Cod setor econômico do fornecedor', integer
+
 defineType csv.'Valor despesa', decimal
 
 // Numero composto, com traços, pontos, aleatóriamente
@@ -18,108 +18,103 @@ defineType csv.'Número do documento', string {
     forbidden "SN"
 }
 
-// Data e hora da despesa
+// Data composta por data e hora da despesa
 defineType csv.'Data da despesa', date {
    template "dd/MM/yyyyHH:mm:ss"
 }
 
-// Strings
-defineType csv.'CNPJ Prestador Conta', string
-defineType csv.'CPF/CNPJ do fornecedor', string
-defineType csv.'Nome do fornecedor', string
-defineType csv.'Setor econômico do fornecedor', string
 
+definePrefix pol,   "http://purl.org/onto/politics#"
+definePrefix prop,  "http://dbpedia.org/property/"
+definePrefix dbr,   "http://dbpedia.org/resource/"
+definePrefix dbo,   "http://dbpedia.org/ontology/"
+definePrefix foaf,  "http://xmlns.com/foaf/0.1/"
+definePrefix wd,    "http://www.wikidata.org/entity/"
+definePrefix w3,    "http://www.w3.org/2001/XMLSchema#"
 
-definePrefix pol,	"http://purl.org/onto/politics#"
-definePrefix prop,	"http://dbpedia.org/property/"
-definePrefix dbr,	"http://dbpedia.org/resource/"
-definePrefix dbo,	"http://dbpedia.org/ontology/"
-definePrefix foaf,	"http://xmlns.com/foaf/0.1/"
-definePrefix wd,	"http://www.wikidata.org/entity/"
-
-definePrefix w3,	"http://www.w3.org/2001/XMLSchema#"
 
 uriBase "http://purl.org/politics/id/"
 
-uri candidacyURI,		"2014", csv.UF,		"candidacy", csv.'Sequencial Candidato'
-uri expenseURI,			"2014", csv.UF,		"expense", "#LINE"
-uri electionURI,		"2014", 			"election"
-uri businessURI,		"business",			csv.'CPF/CNPJ do fornecedor'
-uri economicSectorURI,	"economicSector",	csv.'Cod setor econômico do fornecedor'
-uri personURI, 			"person",			csv.'CPF/CNPJ do fornecedor'
+// Essas planilhas não possuem campo com apenas o ano, por isso, o uso literal "2014"
+uri electionURI,        "2014",             "election"
+uri expenseURI,         "2014",             csv.UF,                     "expense",      "#LINE"
+uri candidacyURI,       "2014",             csv.UF,                     "candidacy",    csv.'Sequencial Candidato'
+uri personURI,          "person",           csv.'CPF/CNPJ do fornecedor'
+uri businessURI,        "business",         csv.'CPF/CNPJ do fornecedor'
+uri economicSectorURI,  "economicSector",   csv.'Cod setor econômico do fornecedor'
 
 
-
-// ELEICAO
+// Election (Eleição)
 matching(electionLOD) {
-	endpoint   "http://purl.org/politics/triplestore/Politics"
-	vendor      VIRTUOSO
-	search      csv.'Desc. Eleição'
-	type       	pol.election
-	defaultURI  electionURI
+    endpoint    "http://purl.org/politics/triplestore/Politics"
+    vendor      VIRTUOSO
+    search      csv.'Desc. Eleição'
+    type        pol.election
+    defaultURI  electionURI
 }
 
-// Acrescento um codigo a eleição que é apresentado na planilha
 map(election, electionLOD) {
     pol.code    csv.'Cód. Eleição'
 }
 
 
-// SETOR ECONOMICO DO FORNECEDOR
-matching(economicSectorLOD){
-    endpoint	"http://purl.org/politics/triplestore/Politics"
-    vendor		VIRTUOSO
-    search		csv.'Setor econômico do fornecedor'
-    defaultURI	economicSectorURI
-	type		pol.economicSector
+// Economic Sector (Setor Econômico do Fornecedor - Só PJ possui)
+matching(economicSectorLOD) {
+    endpoint    "http://purl.org/politics/triplestore/Politics"
+    vendor      VIRTUOSO
+    search      csv.'Setor econômico do fornecedor'
+    defaultURI  economicSectorURI
+    type        pol.economicSector
 }
 
 map (economicSector, economicSectorLOD) {
-	rdfs.label          csv.'Setor econômico do fornecedor'
-	pol.code            csv.'Cod setor econômico do fornecedor'
-	rdf.type            pol.economicSector
+    rdfs.label  csv.'Setor econômico do fornecedor'
+    pol.code    csv.'Cod setor econômico do fornecedor'
+    rdf.type    pol.economicSector
 }
 
 
-// FORNECEDOR (Negócio ou Pessoa)
+// Possíveis Fornecedores Beneficiários
+
+// Business (Negócio)
 matching(businessLOD) {
-    endpoint   "http://purl.org/politics/triplestore/Politics"
+    endpoint    "http://purl.org/politics/triplestore/Politics"
     vendor      VIRTUOSO
     search      csv.'Nome do fornecedor'
     defaultURI  businessURI
-	type        wd.Q4830453
+    type        wd.Q4830453
 }
 
 map (business, businessLOD) {
-	pol.economicSector  economicSector
-	rdfs.label          csv.'Nome do fornecedor (Receita Federal)'
-	pol.cnpj            csv.'CPF/CNPJ do fornecedor'
-	rdf.type            wd.Q4830453
+    pol.economicSector  economicSector
+    rdfs.label          csv.'Nome do fornecedor (Receita Federal)'
+    pol.cnpj            csv.'CPF/CNPJ do fornecedor'
+    rdf.type            wd.Q4830453
 }
 
-
+// Person (Pessoa)
 matching(personLOD){
-	endpoint 	"http://purl.org/politics/triplestore/Politics"
-	vendor		VIRTUOSO
-	search		csv.'Nome do fornecedor'
-	defaultURI	personURI
-	type		foaf.Person
+    endpoint    "http://purl.org/politics/triplestore/Politics"
+    vendor      VIRTUOSO
+    search      csv.'Nome do fornecedor'
+    defaultURI  personURI
+    type        foaf.Person
 }
 
 map(person, personLOD) {
-	rdfs.label	csv.'Nome do fornecedor (Receita Federal)'
-	pol.cpf		csv.'CPF/CNPJ do fornecedor'
-	rdf.type	foaf.Person
+    rdfs.label  csv.'Nome do fornecedor (Receita Federal)'
+    pol.cpf     csv.'CPF/CNPJ do fornecedor'
+    rdf.type    foaf.Person
 }
 
 
-// CANDIDATURA
+// Candidacy (Candidatura - Pagador)
 matching(candidacyLOD){
-    endpoint   "http://purl.org/politics/triplestore/Politics"
+    endpoint    "http://purl.org/politics/triplestore/Politics"
     vendor      VIRTUOSO
     search      csv.'Sequencial Candidato'
     defaultURI  candidacyURI
-	type        pol.candidacy
+    type        pol.candidacy
 }
 
 map (candidacy, candidacyLOD) {
@@ -127,28 +122,26 @@ map (candidacy, candidacyLOD) {
 }
 
 
-// DESPESA
+// Expense (Despesa)
 matching(expenseLOD){
-    endpoint   "http://purl.org/politics/triplestore/Politics"
+    endpoint    "http://purl.org/politics/triplestore/Politics"
     vendor      VIRTUOSO
     search      csv.'Descriçao da despesa'
     defaultURI  expenseURI
-	type        wd.Q13516686
+    type        wd.Q13516686
 }
 
-
 map (expense, expenseLOD) {
-	rdf.type            wd.Q13516686
-	pol.documentType    csv.'Tipo do documento'
-	pol.number          csv.'Número do documento'
-	w3.dateTime         csv.'Data da despesa'
-	pol.description     csv.'Descriçao da despesa'
-	pol.value           csv.'Valor despesa'
-	rdfs.label          csv.'Tipo despesa'
+    rdf.type            wd.Q13516686
+    pol.documentType    csv.'Tipo do documento'
+    pol.number          csv.'Número do documento'
+    w3.dateTime         csv.'Data da despesa'
+    pol.description     csv.'Descriçao da despesa'
+    pol.value           csv.'Valor despesa'
+    rdfs.label          csv.'Tipo despesa'
     pol.payer           candidacy
 
-	// Mapeio os dois possíveis fornecedores,
-	pol.beneficiary		business
-	pol.beneficiary		person
-	//csv.'CNPJ Prestador Conta'
+    // Mapeio os dois possíveis beneficiários fornecedores,
+    pol.beneficiary     business
+    pol.beneficiary     person
 }
