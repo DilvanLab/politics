@@ -1,7 +1,7 @@
 csv {
     delimiter   ";"
     charset     "ISO-8859-1"
-    header  "dataGeracao;horaGeracao;anoEleicao;numTurno;descricaoEleicao;siglaUF;siglaUE;descricaoUE;codigoCargo;descricaoCargo;nomeCandidato;sequencialCandidato;numeroCandidato;cpfCandidato;nomeUrnaCandidato;codSituacaoCandidatura;desSituacaoCandidatura;numeroPartido;siglaPartido;nomePartido;codigoLegenda;siglaLegenda;composicaoLegenda;nomeLegenda;codigoOcupacao;descricaoOcupacao;dataNascimento;numTituloEleitoralCandidato;idadeDataEleicao;codigoSexo;descricaoSexo;codGrauIntrucao;descricaoGrauInstrucao;codigoEstadoCivil;descricaoEstadoCivil;codigoCorRaca;descricaoCorRaca;codigoNacionalidade;descricaoNacionalidade;siglaUFNacimento;codigoMunicipioNascimento;nomeMunicipioNascimento;despesaMaxCampanha;codigoSitTotTurno;descricaoSitTotTurno;emailCandidato"
+    header      "dataGeracao;horaGeracao;anoEleicao;numTurno;descricaoEleicao;siglaUF;siglaUE;descricaoUE;codigoCargo;descricaoCargo;nomeCandidato;sequencialCandidato;numeroCandidato;cpfCandidato;nomeUrnaCandidato;codSituacaoCandidatura;desSituacaoCandidatura;numeroPartido;siglaPartido;nomePartido;codigoLegenda;siglaLegenda;composicaoLegenda;nomeLegenda;codigoOcupacao;descricaoOcupacao;dataNascimento;numTituloEleitoralCandidato;idadeDataEleicao;codigoSexo;descricaoSexo;codGrauIntrucao;descricaoGrauInstrucao;codigoEstadoCivil;descricaoEstadoCivil;codigoCorRaca;descricaoCorRaca;codigoNacionalidade;descricaoNacionalidade;siglaUFNacimento;codigoMunicipioNascimento;nomeMunicipioNascimento;despesaMaxCampanha;codigoSitTotTurno;descricaoSitTotTurno;emailCandidato"
     null        "#NULO#"
 }
 
@@ -13,6 +13,11 @@ defineType csv.idadeDataEleicao,            integer
 defineType csv.codigoEstadoCivil,           integer
 defineType csv.sequencialCandidato,         integer
 defineType csv.numTituloEleitoralCandidato, integer
+
+
+defineType csv.dataNascimento, date {
+    template "dd/MM/yyyy"
+}
 
 defineType csv.despesaMaxCampanha, decimal {
     forbidden "-1,-3"
