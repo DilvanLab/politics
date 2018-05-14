@@ -1,3 +1,4 @@
+// Mapeamento das planilhas "bem_candidato_2014"
 csv {
     delimiter   ";"
     charset     "ISO-8859-1"
@@ -30,28 +31,13 @@ uri assetURI,       csv.'anoEleicao',   csv.'siglaUF',  "asset",        "#LINE"
 
 
 // Candidacy (Candidatura)
-matching(candidacyLOD) {
-    endpoint    "http://purl.org/politics/triplestore/Politics"
-    vendor      VIRTUOSO
-    search      csv.sqCandidato
-    defaultURI  candidacyURI
-}
-
-map(candidacy, candidacyLOD) {
-    //
+map(candidacy, candidacyURI) {
+//
 }
 
 
 // Asset (Bem)
-matching (assetLOD) {
-    endpoint    ""
-    vendor      VIRTUOSO
-    search      csv.detalheBem
-    defaultURI  assetURI
-    type        wd.Q6422240
-}
-
-map(asset, assetLOD) {
+map(asset, assetURI) {
     pol.candidacy       candidacy
     rdfs.label          csv.dsTipoBemCandidato
     pol.code            csv.cdTipoBemCandidato

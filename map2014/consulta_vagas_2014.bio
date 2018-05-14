@@ -1,3 +1,4 @@
+// Mapeamento das planilhas "consulta_vagas_2014"
 csv {
     delimiter   ";"
     charset     "ISO-8859-1"
@@ -25,29 +26,13 @@ uri vacancyURI,     csv.'anoEleicao',    csv.'siglaUE',    "vacancy",    csv.'co
 
 
 // Election (Eleição)
-matching(electionLOD) {
-    endpoint    "http://java.icmc.usp.br:2472/repositories/Politics"
-    vendor      VIRTUOSO
-    search      csv.descricaoEleicao
-    type        pol.election
-    defaultURI  electionURI
-}
-
-map(election, electionLOD) {
+map(election, electionURI) {
     // "votacao_candidato_munzona_2014.bio" e "consulta_cand_2014.bio"
 }
 
 
 // Vacancy (Vagas)
-matching(vacancyLOD) {
-    endpoint    "http://java.icmc.usp.br:2472/repositories/Politics"
-    vendor      VIRTUOSO
-    search      csv.descricaoCargo
-    type        pol.vacancy
-    defaultURI  vacancyURI
-}
-
-map(vacancy, vacancyLOD) {
+map(vacancy, vacancyURI) {
     pol.number      csv.qtdeVagas
 
     // pol.election election
