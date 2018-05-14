@@ -1,3 +1,4 @@
+// Mapeamento das planilhas "consulta_cand_2014"
 csv {
     delimiter   ";"
     charset     "ISO-8859-1"
@@ -49,7 +50,7 @@ uri politicianURI,  "politician",       csv.'cpfCandidato'
 uri positionURI,    "position",         csv.'codigoCargo'
 uri electionURI,    csv.'anoEleicao',   "election"
 uri turnURI,        csv.'anoEleicao',   "turn",         csv.'numTurno'
-uri coalitionURI,   csv.'anoEleicao',   "coalition",    csv.'sequencialLegenda'
+uri coalitionURI,   csv.'anoEleicao',   "coalition",    csv.'codigoLegenda'
 uri vacancyURI,     csv.'anoEleicao',   csv.'siglaUE',  "vacancy",          csv.'codigoCargo'
 uri candidacyURI,   csv.'anoEleicao',   csv.'siglaUE',  "candidacy",        csv.'sequencialCandidato'
 
@@ -103,15 +104,7 @@ map(position, positionLOD) {
 
 
 // Election (Eleição)
-matching(electionLOD) {
-    endpoint    ""
-    vendor      VIRTUOSO
-    search      csv.descricaoEleicao
-    type        pol.election
-    defaultURI  electionURI
-}
-
-map(election, electionLOD) {
+map(election, electionURI) {
     rdfs.label  csv.descricaoEleicao
     rdf.type    pol.election
     pol.year    csv.anoEleicao
@@ -137,15 +130,7 @@ map(vacancy, vacancyLOD) {
 
 
 // Turn (Turno)
-matching(turnLOD) {
-    endpoint    "http://java.icmc.usp.br:2472/repositories/Politics"
-    vendor      VIRTUOSO
-    search      csv.numTurno
-    defaultURI  turnURI
-    type        pol.turn
-}
-
-map(turn, turnLOD) {
+map(turn, turnURI) {
     pol.label       csv.numTurno
     pol.number      csv.numTurno
     pol.election    election
@@ -172,15 +157,7 @@ map(party, partyLOD) {
 // Coalition (Legenda/Coligação)
 // Só até 2020 pode ser do partido ou da coligacao entre partidos
 // feita para disputar uma determinada eleicao
-matching(coalitionLOD) {
-    endpoint    "http://java.icmc.usp.br:2472/repositories/Politics"
-    vendor      VIRTUOSO
-    search      csv.nomeLegenda
-    type        wd.Q124964
-    defaultURI  coalitionURI
-}
-
-map(coalition, coalitionLOD) {
+map(coalition, coalitionURI) {
     rdfs.label          csv.nomeLegenda
     pol.internalNumber  csv.codigoLegenda
     pol.coalition       csv.composicaoLegenda
@@ -191,15 +168,7 @@ map(coalition, coalitionLOD) {
 
 
 // Politician (Politico - Pessoa de uma Candidatura)
-matching(politicianLOD) {
-    endpoint    "http://java.icmc.usp.br:2472/repositories/Politics"
-    vendor      VIRTUOSO
-    search      csv.nomeCandidato
-    type        pol.politician
-    defaultURI  politicianURI
-}
-
-map(politician, politicianLOD) {
+map(politician, politicianURI) {
     rdfs.label                  csv.nomeCandidato
     foaf.name                   csv.nomeCandidato
     pol.voterNumber             csv.numTituloEleitoralCandidato
@@ -214,15 +183,7 @@ map(politician, politicianLOD) {
 
 
 // Candidacy (Candidatura)
-matching(candidacyLOD){
-    endpoint    "http://purl.org/politics/triplestore/Politics"
-    vendor      VIRTUOSO
-    search      csv.sequencialCandidato
-    defaultURI  candidacyURI
-    type        pol.candidacy
-}
-
-map(candidacy, candidacyLOD) {
+map(candidacy, candidacyURI) {
     pol.turn                        turn
     pol.party                       party
     pol.vacancy                     vacancy
