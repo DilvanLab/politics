@@ -1,47 +1,47 @@
-// Mapeamento das planilhas "despesas_candidatos_2014"
+// Mapeamento das planilhas 'despesas_candidatos_2014'
 csv {
-    delimiter  ";"
-    charset    "ISO-8859-1"
-    null       "#NULO"
+    delimiter  ';'
+    charset    'ISO-8859-1'
+    null       '#NULO'
 }
 
 
-defineType csv.'Cód. Eleição', integer
-defineType csv.'Cod setor econômico do fornecedor', integer
-defineType csv.'Sequencial Candidato', integer {
-    forbidden "-1,-3"
+type csv.'Cód. Eleição', integer
+type csv.'Cod setor econômico do fornecedor', integer
+type csv.'Sequencial Candidato', integer {
+    forbidden '-1,-3'
 }
 
-defineType csv.'Valor despesa', decimal
+type csv.'Valor despesa', decimal
 
 // Numero composto, com traços, pontos, aleatóriamente
-defineType csv.'Número do documento', string {
-    forbidden "SN"
+type csv.'Número do documento', string {
+    forbidden 'SN'
 }
 
 // Data composta por data e hora da despesa
-defineType csv.'Data da despesa', date {
-   template "dd/MM/yyyyHH:mm:ss"
+type csv.'Data da despesa', date {
+   template 'dd/MM/yyyyHH:mm:ss'
 }
 
 
-definePrefix pol,   "http://purl.org/onto/politics#"
-definePrefix prop,  "http://dbpedia.org/property/"
-definePrefix dbr,   "http://dbpedia.org/resource/"
-definePrefix dbo,   "http://dbpedia.org/ontology/"
-definePrefix foaf,  "http://xmlns.com/foaf/0.1/"
-definePrefix wd,    "http://www.wikidata.org/entity/"
-definePrefix w3,    "http://www.w3.org/2001/XMLSchema#"
+prefix pol,   'http://purl.org/onto/politics#'
+prefix prop,  'http://dbpedia.org/property/'
+prefix dbr,   'http://dbpedia.org/resource/'
+prefix dbo,   'http://dbpedia.org/ontology/'
+prefix foaf,  'http://xmlns.com/foaf/0.1/'
+prefix wd,    'http://www.wikidata.org/entity/'
+prefix w3,    'http://www.w3.org/2001/XMLSchema#'
 
 
-uriBase "http://purl.org/politics/id/"
+base 'http://purl.org/politics/id/'
 
-// Essas planilhas não possuem campo com apenas o ano, por isso, o uso literal "2014"
-uri electionURI,        "2014",             "election"
-uri expenseURI,         "2014",             csv.UF,                     "expense",      "#LINE"
-uri candidacyURI,       "2014",             csv.UF,                     "candidacy",    csv.'Sequencial Candidato'
-uri agentURI,           "agent",            csv.'CPF/CNPJ do fornecedor'
-uri economicSectorURI,  "economicSector",   csv.'Cod setor econômico do fornecedor'
+// Essas planilhas não possuem campo com apenas o ano, por isso, o uso literal '2014'
+uri electionURI,        '2014',             'election'
+uri expenseURI,         '2014',             csv.UF,                     'expense',      '#LINE'
+uri candidacyURI,       '2014',             csv.UF,                     'candidacy',    csv.'Sequencial Candidato'
+uri agentURI,           'agent',            csv.'CPF/CNPJ do fornecedor'
+uri economicSectorURI,  'economicSector',   csv.'Cod setor econômico do fornecedor'
 
 
 // Election (Eleição)
@@ -70,9 +70,7 @@ map(agent, agentURI) {
 
 
 // Candidacy (Candidatura - Pagador)
-map (candidacy, candidacyURI) {
-//
-}
+map (candidacy, candidacyURI)
 
 
 // Expense (Despesa)

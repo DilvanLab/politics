@@ -1,34 +1,32 @@
-// Mapeamento das planilhas "consulta_vagas_2014"
+// Mapeamento das planilhas 'consulta_vagas_2014'
 csv {
-    delimiter   ";"
-    charset     "ISO-8859-1"
-    header      "dataGeracao;horaGeracao;anoEleicao;descricaoEleicao;siglaUF;siglaUE;nomeUE;codigoCargo;descricaoCargo;qtdeVagas"
-    null        "#NULO#"
+    delimiter   ';'
+    charset     'ISO-8859-1'
+    header      'dataGeracao;horaGeracao;anoEleicao;descricaoEleicao;siglaUF;siglaUE;nomeUE;codigoCargo;descricaoCargo;qtdeVagas'
+    null        '#NULO#'
 }
 
 
-defineType csv.codigoCargo, integer
-defineType csv.qtdeVagas,   integer
+type csv.codigoCargo, integer
+type csv.qtdeVagas,   integer
 
 
-definePrefix pol,   "http://purl.org/onto/politics#"
-definePrefix prop,  "http://dbpedia.org/property/"
-definePrefix dbr,   "http://dbpedia.org/resource/"
-definePrefix dbo,   "http://dbpedia.org/ontology/"
-definePrefix foaf,  "http://xmlns.com/foaf/0.1/"
-definePrefix wd,    "http://www.wikidata.org/entity/"
+prefix pol,   'http://purl.org/onto/politics#'
+prefix prop,  'http://dbpedia.org/property/'
+prefix dbr,   'http://dbpedia.org/resource/'
+prefix dbo,   'http://dbpedia.org/ontology/'
+prefix foaf,  'http://xmlns.com/foaf/0.1/'
+prefix wd,    'http://www.wikidata.org/entity/'
 
 
-uriBase "http://purl.org/politics/id/"
+base 'http://purl.org/politics/id/'
 
-uri electionURI,    csv.'anoEleicao',    "election"
-uri vacancyURI,     csv.'anoEleicao',    csv.'siglaUE',    "vacancy",    csv.'codigoCargo'
+uri electionURI,    csv.'anoEleicao',    'election'
+uri vacancyURI,     csv.'anoEleicao',    csv.'siglaUE',    'vacancy',    csv.'codigoCargo'
 
 
 // Election (Eleição)
-map(election, electionURI) {
-    // "votacao_candidato_munzona_2014.bio" e "consulta_cand_2014.bio"
-}
+map(election, electionURI)
 
 
 // Vacancy (Vagas)
@@ -36,7 +34,7 @@ map(vacancy, vacancyURI) {
     pol.number      csv.qtdeVagas
 
     // pol.election election
-    // rdfs.label   mapeado em "consulta_cand_2014.bio"
-    // pol.position mapeado em "consulta_cand_2014.bio"
-    // rdf.type     mapeado em "consulta_cand_2014.bio"
+    // rdfs.label   mapeado em 'consulta_cand_2014.bio'
+    // pol.position mapeado em 'consulta_cand_2014.bio'
+    // rdf.type     mapeado em 'consulta_cand_2014.bio'
 }

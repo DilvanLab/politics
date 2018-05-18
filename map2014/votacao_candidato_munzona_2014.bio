@@ -7,22 +7,22 @@ csv {
 }
 
 
-defineType csv.numeroZona,      integer
-defineType csv.totalVotos,      integer
-defineType csv.numeroCand,      integer
-defineType csv.sqCandidato,     integer
-defineType csv.codigoMunicipio, integer
+type csv.numeroZona,      integer
+type csv.totalVotos,      integer
+type csv.numeroCand,      integer
+type csv.sqCandidato,     integer
+type csv.codigoMunicipio, integer
 
 
-definePrefix pol,   "http://purl.org/onto/politics#"
-definePrefix prop,  "http://dbpedia.org/property/"
-definePrefix dbr,   "http://dbpedia.org/resource/"
-definePrefix dbo,   "http://dbpedia.org/ontology/"
-definePrefix foaf,  "http://xmlns.com/foaf/0.1/"
-definePrefix wd,    "http://www.wikidata.org/entity/"
+prefix pol,   "http://purl.org/onto/politics#"
+prefix prop,  "http://dbpedia.org/property/"
+prefix dbr,   "http://dbpedia.org/resource/"
+prefix dbo,   "http://dbpedia.org/ontology/"
+prefix foaf,  "http://xmlns.com/foaf/0.1/"
+prefix wd,    "http://www.wikidata.org/entity/"
 
 
-uriBase "http://purl.org/politics/id/"
+base "http://purl.org/politics/id/"
 
 uri stateURI,               "state",            csv.'siglaUF'
 uri municipalityURI,        "municipality",     csv.'codigoMunicipio'
@@ -39,15 +39,11 @@ map (candidacy, candidacyURI) {
 
 
 // Turn (Turno)
-map(turn, turnURI) {
-//
-}
+map(turn, turnURI)
 
 
 // Election (Eleição)
-map(election, electionURI) {
-//
-}
+map(election, electionURI)
 
 
 // State (Estado)
