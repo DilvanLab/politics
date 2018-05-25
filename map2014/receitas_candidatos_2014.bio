@@ -1,4 +1,4 @@
-// Mapeamento das planilhas 'despesas_candidatos_2014'
+// Mapeamento das planilhas 'receitas_candidatos_2014'
 csv {
     delimiter  ';'
     charset    'ISO-8859-1'
@@ -7,20 +7,20 @@ csv {
 
 
 type csv.'Cód. Eleição', integer
-type csv.'Cod setor econômico do fornecedor', integer
+type csv.'Cod setor econômico do doador', integer
 type csv.'Sequencial Candidato', integer {
     forbidden '-1,-3'
 }
 
-type csv.'Valor despesa', decimal
+type csv.'Valor receita', decimal
 
 // Numero composto, com traços, pontos, aleatóriamente
-type csv.'Número do documento', string {
+type csv.'Numero do documento', string {
     forbidden 'SN'
 }
 
-// Data composta por data e hora da despesa
-type csv.'Data da despesa', date {
+// Data composta por data e hora da receita
+type csv.'Data da receita', date {
    template 'dd/MM/yyyyHH:mm:ss'
 }
 
@@ -38,10 +38,10 @@ base 'http://purl.org/politics/id/'
 
 // Essas planilhas não possuem campo com apenas o ano, por isso, o uso literal '2014'
 uri electionURI,        '2014',             'election'
-uri expenseURI,         '2014',             csv.UF,                     'expense',      '#LINE'
+uri contribuitionURI,   '2014',             csv.UF,                     'contribuition',      '#LINE'
 uri candidacyURI,       '2014',             csv.UF,                     'candidacy',    csv.'Sequencial Candidato'
-uri agentURI,           'agent',            csv.'CPF/CNPJ do fornecedor'
-uri economicSectorURI,  'economicSector',   csv.'Cod setor econômico do fornecedor'
+uri agentURI,           'agent',            csv.'CPF/CNPJ do doador'
+uri economicSectorURI,  'economicSector',   csv.'Cod setor econômico do doador'
 
 
 // Election (Eleição)
@@ -50,20 +50,20 @@ map(election, electionURI) {
 }
 
 
-// Economic Sector (Setor Econômico do Fornecedor - Só PJ possui)
+// Economic Sector (Setor Econômico do doador - Só PJ possui)
 map (economicSector, economicSectorURI) {
-    rdfs.label  csv.'Setor econômico do fornecedor'
-    pol.code    csv.'Cod setor econômico do fornecedor'
+    rdfs.label  csv.'Setor econômico do doador'
+    pol.code    csv.'Cod setor econômico do doador'
     rdf.type    pol.economicSector
 }
 
 
-// Possíveis Fornecedores Beneficiários
+// Possíveis doadores Beneficiários
 
 // Agent (Agente) - Pode ser uma pessoa ou um negócio
 map(agent, agentURI) {
-    rdfs.label          csv.'Nome do fornecedor (Receita Federal)'
-    pol.fiscalId        csv.'CPF/CNPJ do fornecedor'
+    rdfs.label          csv.'Nome do doador (Receita Federal)'
+    pol.fiscalId        csv.'CPF/CNPJ do doador'
     pol.economicSector  economicSector
     rdf.type            wd.Q24229398
 }
@@ -73,17 +73,18 @@ map(agent, agentURI) {
 map (candidacy, candidacyURI)
 
 
-// Expense (Despesa)
-map (expense, expenseURI) {
+// Contribuition (receita)
+map (contribuition, contribuitionURI) {
     rdf.type            wd.Q13516686
-    pol.documentType    csv.'Tipo do documento'
-    pol.number          csv.'Número do documento'
-    w3.dateTime         csv.'Data da despesa'
-    pol.description     csv.'Descriçao da despesa'
-    pol.value           csv.'Valor despesa'
-    rdfs.label          csv.'Tipo despesa'
-    pol.payer           candidacy
+    pol.internalNumber  csv.'Numero Recibo Eleitoral'
+    pol.number          csv.'Numero do documento'
+    w3.dateTime         csv.'Data da receita'
+    pol.description     csv.'Descricao da receita'
+    pol.description     csv.'Especie recurso'
+    pol.value           csv.'Valor receita'
+    rdfs.label          csv.'Tipo receita'
+    pol.payer           agent
 
-    // Mapeio os dois possíveis beneficiários fornecedores,
-    pol.beneficiary     agent
+    // Mapeio os dois possíveis beneficiários doadores,
+    pol.beneficiary     candidacy
 }

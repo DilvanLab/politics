@@ -16,12 +16,12 @@ type csv.valorBem, decimal {
 type csv.anoEleicao, gYear
 
 
-prefix pol,   "http://purl.org/onto/politics#"
-prefix elem,  "http://purl.org/dc/elements/1.1/"
-prefix prop,  "http://dbpedia.org/property/"
-prefix dbr,   "http://dbpedia.org/resource/"
-prefix dbo,   "http://dbpedia.org/ontology/"
-prefix wd,    "http://www.wikidata.org/entity/"
+prefix pol,     "http://purl.org/onto/politics#"
+prefix elem,    "http://purl.org/dc/elements/1.1/"
+prefix prop,    "http://dbpedia.org/property/"
+prefix dbr,     "http://dbpedia.org/resource/"
+prefix dbo,     "http://dbpedia.org/ontology/"
+prefix wd,      "http://www.wikidata.org/entity/"
 
 
 base "http://purl.org/politics/id/"
