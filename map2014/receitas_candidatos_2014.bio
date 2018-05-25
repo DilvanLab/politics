@@ -58,8 +58,7 @@ map (economicSector, economicSectorURI) {
 }
 
 
-// Possíveis doadores Beneficiários
-
+// Possíveis Doadores
 // Agent (Agente) - Pode ser uma pessoa ou um negócio
 map(agent, agentURI) {
     rdfs.label          csv.'Nome do doador (Receita Federal)'
@@ -69,11 +68,11 @@ map(agent, agentURI) {
 }
 
 
-// Candidacy (Candidatura - Pagador)
+// Candidacy (Candidatura - Beneficiário)
 map (candidacy, candidacyURI)
 
 
-// Contribuition (receita)
+// Contribuition (receita - Payer)
 map (contribuition, contribuitionURI) {
     rdf.type            wd.Q13516686
     pol.internalNumber  csv.'Numero Recibo Eleitoral'
@@ -85,6 +84,6 @@ map (contribuition, contribuitionURI) {
     rdfs.label          csv.'Tipo receita'
     pol.payer           agent
 
-    // Mapeio os dois possíveis beneficiários doadores,
+    // Mapeio os dois possíveis beneficiários (Recipientes da doação)
     pol.beneficiary     candidacy
 }
