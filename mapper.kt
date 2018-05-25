@@ -2,7 +2,6 @@ import java.io.File // para abrir cada um dos arquivos
 import java.io.FileWriter // para escrever no log
 import java.lang.Math.ceil
 import java.lang.Math.floor
-import java.lang.System.exit
 import kotlin.system.measureTimeMillis
 
 /**
@@ -247,7 +246,6 @@ fun resumeLastFolder(root: String, logPath: String): List<Dossier> {
             var lastLine = if (line == null) 0 else line.toInt() + 1
             for (b in bios) {
                 val mapScript = Dossier(b)
-                // descobrindo o nome do arquivo a mapear (a BioDSL usa o nome do csv)
                 val base = b.split("/").last().split(".").dropLast(1).joinToString(".")
                 val output = root + base + "_out/"
 
@@ -274,7 +272,6 @@ fun resumeLastFolder(root: String, logPath: String): List<Dossier> {
 }
 
 fun main(args: Array<String>) {
-    // anotando a pasta raiz
     println("Insert the root path for mapping:")
     val location = readLine()!!
     val root = if(location.last() != '/') Dossier(location.plus('/')) else Dossier(location)
@@ -307,7 +304,6 @@ fun main(args: Array<String>) {
 
                 for (b in bios) {
                     val mapScript = Dossier(b)
-                    // descobrindo o nome do arquivo a mapear (a BioDSL usa o nome do csv)
                     val base = b.split("/").last().split(".").dropLast(1).joinToString(".")
                     val output = root.fullPath() + "out/$base/"
 
@@ -327,12 +323,9 @@ fun main(args: Array<String>) {
     }
 }
 
-/* formato do log (plain text)
- * (ENTERED [directory]) ao entrar em uma pasta para mapeamento
- * (USING [bio]) para indicar o mapeamento usado naquele momento
- * (MAPPING [file]) ao começar a mapear um arquivo
- *
- * a execução será feita por blocos nos dados, com um print indicando, sempre
- * que um bloco for terminado, quantas linhas já foram processadas:
- * X lines done
+/* TODO
+ * comment code working
+ * tailor the program by command line arguments
+ * remove hardcoded paths
+ * set graddle to this project
  */
