@@ -1,7 +1,8 @@
-import java.io.File // para abrir cada um dos arquivos
-import java.io.FileWriter // para escrever no log
+import java.io.File
+import java.io.FileWriter
 import java.lang.Math.ceil
 import java.lang.Math.floor
+import java.lang.System.exit
 import kotlin.system.measureTimeMillis
 
 /**
@@ -39,6 +40,7 @@ fun listFolders(root: String): List<Dossier> {
         val path = Dossier(root).fullPath() + it
         if (File(path).isDirectory) folders += Dossier("$path/")
     }
+    folders = folders.sortedWith(compareBy{ it.name })
 
     return folders
 }
@@ -65,6 +67,7 @@ fun listFiles(
 
     var dossiers = listOf<Dossier>()
     if (files.isNotEmpty()) files.forEach { dossiers += Dossier(it) }
+    dossiers = dossiers.sortedWith(compareBy{ it.name })
 
     return dossiers
 }
@@ -114,6 +117,13 @@ fun mapFiles (
         opt: String = "", log: Dossier,
         startSize: Int = 1000, timeLowerBound: Int = 500, timeUpperBound: Int = 1000, firstLine: Int = 0
 ) {
+    if ("ping -c 1 8.8.8.8".runCommand(File(".")) != 0) {
+        FileWriter(log.fullPath(), true).use {
+            it.appendln("Network connection lost")
+        }
+        exit(1)
+    }
+
     var i =
             if (File(output).isDirectory) {
                 File(output).list().count()
@@ -261,6 +271,9 @@ fun resumeLastFolder(root: String, logPath: String): List<Dossier> {
                         files = files.dropWhile { it.fullPath() != file }
                     }
 
+                    /*println("for $b at ${f.fullPath()}")
+                    files.forEach { println("\t + ${it.fullPath()}") }
+                    continue*/
                     mapFiles(command, mapScript, files, base, output, opt, Dossier(logPath), firstLine=lastLine)
                 }
                 lastLine = 0
@@ -310,6 +323,9 @@ fun main(args: Array<String>) {
                     val files = listFiles(f.fullPath(), extensions,
                             strEval={ s -> Regex("$base[0-9a-zA-Z_.]*").matches(s) })
                     if (files.isNotEmpty()) {
+                        /*println("for $b at ${f.fullPath()}")
+                        files.forEach { println("\t + ${it.fullPath()}") }
+                        continue*/
                         println("The mapped files are named $base[X].ttl with X being a number at the folder $output")
                         FileWriter(log.fullPath(), true).use {
                             it.appendln("(USING ${mapScript.fullPath()})")
