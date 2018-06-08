@@ -1,0 +1,45 @@
+// Mapeamento das planilhas "bem_candidato_2010"
+csv {
+    delimiter   ";"
+    charset     "ISO-8859-1"
+    header      "dataGeracao;horaGeracao;anoEleicao;descricaoEleicao;siglaUF;sqCandidato;cdTipoBemCandidato;dsTipoBemCandidato;detalheBem;valorBem;dataUltimaAtualizacao;horaUltimaAtualizacao"
+    null        "#NULO#"
+}
+
+type csv.sqCandidato, integer
+type csv.cdTipoBemCandidato, integer
+
+type csv.valorBem, decimal {
+    forbidden "-1,-3"
+}
+
+type csv.anoEleicao, gYear
+
+
+prefix pol,     "http://purl.org/onto/politics#"
+prefix elem,    "http://purl.org/dc/elements/1.1/"
+prefix prop,    "http://dbpedia.org/property/"
+prefix dbr,     "http://dbpedia.org/resource/"
+prefix dbo,     "http://dbpedia.org/ontology/"
+prefix wd,      "http://www.wikidata.org/entity/"
+
+
+base "http://purl.org/politics/id/"
+
+uri candidacyURI,   csv.'anoEleicao',   csv.'siglaUF',  "candidacy",    csv.'sqCandidato'
+uri assetURI,       csv.'anoEleicao',   csv.'siglaUF',  "asset",        "#LINE"
+
+
+// Candidacy (Candidatura)
+map(candidacy, candidacyURI)
+
+
+// Asset (Bem)
+map(asset, assetURI) {
+    pol.candidacy       candidacy
+    rdfs.label          csv.dsTipoBemCandidato
+    pol.code            csv.cdTipoBemCandidato
+    elem.description    csv.detalheBem
+    rdf.type            wd.Q6422240
+    pol.value           csv.valorBem
+}

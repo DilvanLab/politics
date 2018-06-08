@@ -1,0 +1,85 @@
+// Mapeamento das planilhas "votacao_candidato_munzona_2010"
+csv {
+    delimiter   ";"
+    charset     "ISO-8859-1"
+    header      "dataGeracao;horaGeracao;anoEleicao;numTurno;descricaoEleicao;siglaUF;siglaUE;codigoMunicipio;nomeMunicipio;numeroZona;codigoCargo;numeroCand;sqCandidato;nomeCandidato;nomeUrnaCandidato;descricaoCargo;codSitCandSuperior;descSitCandSuperior;codigoSitCandidato;descSitCandidato;codigoSitCandTot;descSitCandTot;numeroPartido;siglaPartido;nomePartido;sequencialLegenda;nomeColigacao;composicaoLegenda;totalVotos;transito"
+    null        "#NULO#"
+}
+
+
+type csv.numeroZona,      integer
+type csv.totalVotos,      integer
+type csv.numeroCand,      integer
+type csv.sqCandidato,     integer
+type csv.codigoMunicipio, integer
+
+
+prefix pol,     "http://purl.org/onto/politics#"
+prefix prop,    "http://dbpedia.org/property/"
+prefix dbr,     "http://dbpedia.org/resource/"
+prefix dbo,     "http://dbpedia.org/ontology/"
+prefix foaf,    "http://xmlns.com/foaf/0.1/"
+prefix wd,      "http://www.wikidata.org/entity/"
+
+
+base "http://purl.org/politics/id/"
+
+uri stateURI,               "state",            csv.'siglaUF'
+uri municipalityURI,        "municipality",     csv.'codigoMunicipio'
+uri electionURI,            csv.'anoEleicao',   "election"
+uri turnURI,                csv.'anoEleicao',   "turn",                 csv.'numTurno'
+uri candidacyURI,           csv.'anoEleicao',   csv.'siglaUE',          "candidacy",            csv.'sqCandidato'
+uri electoralDistrictURI,   csv.'anoEleicao',   "electoralDistrict",    csv.'codigoMunicipio',  csv.'numeroZona'
+uri districtVotingURI,      csv.'anoEleicao',   "districtVoting",       csv.'codigoMunicipio',  csv.'numeroZona',   csv.'sqCandidato'
+
+// Candidacy (Candidatura)
+map (candidacy, candidacyURI) {
+    pol.situation   csv.descSitCandTot //Diz se foi pro 2 turno ou não e se foi eleito
+}
+
+
+// Turn (Turno)
+map(turn, turnURI)
+
+
+// Election (Eleição)
+map(election, electionURI)
+
+
+// State (Estado)
+map(state, stateURI) {
+    rdfs.label          csv.siglaUF
+    rdf.type            pol.state
+    pol.abbreviation    csv.siglaUF
+    // Coutry, adicionar em alguma planilha que apareça wd.P17
+}
+
+
+// Municipality (Município)
+map(municipality, municipalityURI) {
+    pol.state   state
+    rdfs.label  csv.nomeMunicipio
+    pol.tseCode csv.codigoMunicipio
+    rdf.type    pol.municipality
+}
+
+
+// Electoral District (Distrito Eleitoral)
+map(electoralDistrict, electoralDistrictURI) {
+    pol.turn            turn
+    pol.election        election
+    pol.municipality    municipality
+    pol.number          csv.numeroZona
+    rdf.type            pol.electoralDistrict
+}
+
+
+// District Voting (Votação na Zona Eleitoral)
+map(districtVoting, districtVotingURI) {
+    rdfs.label              csv.nomeUrnaCandidato
+    pol.electoralDistrict   electoralDistrict
+    pol.candidacy           candidacy
+    pol.turn                turn
+    pol.votes               csv.totalVotos
+    rdf.type                pol.districtVoting
+}

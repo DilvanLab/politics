@@ -1,0 +1,89 @@
+// Mapeamento das planilhas 'receitas_candidatos_2010'
+csv {
+    delimiter  ';'
+    charset    'ISO-8859-1'
+    null       '#NULO'
+}
+
+
+type csv.'Cód. Eleição', integer
+type csv.'Cod setor econômico do doador', integer
+type csv.'Sequencial Candidato', integer {
+    forbidden '-1,-3'
+}
+
+type csv.'Valor receita', decimal
+
+// Numero composto, com traços, pontos, aleatóriamente
+type csv.'Numero do documento', string {
+    forbidden 'SN'
+}
+
+// Data composta por data e hora da receita
+type csv.'Data da receita', date {
+   template 'dd/MM/yyyyHH:mm:ss'
+}
+
+
+prefix pol,     'http://purl.org/onto/politics#'
+prefix prop,    'http://dbpedia.org/property/'
+prefix dbr,     'http://dbpedia.org/resource/'
+prefix dbo,     'http://dbpedia.org/ontology/'
+prefix foaf,    'http://xmlns.com/foaf/0.1/'
+prefix wd,      'http://www.wikidata.org/entity/'
+prefix w3,      'http://www.w3.org/2001/XMLSchema#'
+
+
+base 'http://purl.org/politics/id/'
+
+// Essas planilhas não possuem campo com apenas o ano, por isso, o uso literal '2014'
+uri electionURI,        '2014',             'election'
+uri contribuitionURI,   '2014',             csv.UF,                     'contribuition',      '#LINE'
+uri candidacyURI,       '2014',             csv.UF,                     'candidacy',    csv.'Sequencial Candidato'
+uri agentURI,           'agent',            csv.'CPF/CNPJ do doador'
+uri economicSectorURI,  'economicSector',   csv.'Cod setor econômico do doador'
+
+
+// Election (Eleição)
+map(election, electionURI) {
+    pol.code    csv.'Cód. Eleição'
+}
+
+
+// Economic Sector (Setor Econômico do doador - Só PJ possui)
+map (economicSector, economicSectorURI) {
+    rdfs.label  csv.'Setor econômico do doador'
+    pol.code    csv.'Cod setor econômico do doador'
+    rdf.type    pol.economicSector
+}
+
+
+// Possíveis Doadores
+// Agent (Agente) - Pode ser uma pessoa ou um negócio
+map(agent, agentURI) {
+    rdfs.label          csv.'Nome do doador (Receita Federal)'
+    pol.fiscalId        csv.'CPF/CNPJ do doador'
+    pol.economicSector  economicSector
+    rdf.type            wd.Q24229398
+}
+
+
+// Candidacy (Candidatura - Beneficiário)
+map (candidacy, candidacyURI)
+
+
+// Contribuition (receita - Payer)
+map (contribuition, contribuitionURI) {
+    rdf.type            wd.Q13516686
+    pol.internalNumber  csv.'Numero Recibo Eleitoral'
+    pol.number          csv.'Numero do documento'
+    w3.dateTime         csv.'Data da receita'
+    pol.description     csv.'Descricao da receita'
+    pol.description     csv.'Especie recurso'
+    pol.value           csv.'Valor receita'
+    rdfs.label          csv.'Tipo receita'
+    pol.payer           agent
+
+    // Mapeio os dois possíveis beneficiários (Recipientes da doação)
+    pol.beneficiary     candidacy
+}
