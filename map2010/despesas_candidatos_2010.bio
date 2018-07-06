@@ -6,8 +6,8 @@ csv {
 }
 
 
-type csv.'Cód. Eleição', integer
-type csv.'Cod setor econômico do fornecedor', integer
+// type csv.'Cód. Eleição', integer TEM EM 2014
+// type csv.'Cod setor econômico do fornecedor', integer TEM EM 2014
 type csv.'Sequencial Candidato', integer {
     forbidden '-1,-3'
 }
@@ -38,24 +38,26 @@ base 'http://purl.org/politics/id/'
 
 // Essas planilhas não possuem campo com apenas o ano, por isso, o uso literal '2014'
 uri electionURI,        '2014',             'election'
-uri expenseURI,         '2014',             csv.UF,                     'expense',      '#LINE'
-uri candidacyURI,       '2014',             csv.UF,                     'candidacy',    csv.'Sequencial Candidato'
+uri expenseURI,         '2014',             csv.UF,
+            'expense',      '#LINE'
+// ESSA PLANILHA NÃO MOSTRA O SEQUENCIAL CANDIDATO, E AGORA?
+uri candidacyURI,       '2014',             csv.UF,                     'candidacy',    csv.'CPF do candidato'
 uri agentURI,           'agent',            csv.'CPF/CNPJ do fornecedor'
-uri economicSectorURI,  'economicSector',   csv.'Cod setor econômico do fornecedor'
+// TEM EM 2014 uri economicSectorURI,  'economicSector',   csv.'Cod setor econômico do fornecedor'
 
 
 // Election (Eleição)
-map(election, electionURI) {
-    pol.code    csv.'Cód. Eleição'
-}
+//map(election, electionURI) {
+//    pol.code    csv.'Cód. Eleição'
+//} TEM EM 2014
 
 
 // Economic Sector (Setor Econômico do Fornecedor - Só PJ possui)
-map (economicSector, economicSectorURI) {
-    rdfs.label  csv.'Setor econômico do fornecedor'
-    pol.code    csv.'Cod setor econômico do fornecedor'
-    rdf.type    pol.economicSector
-}
+//map (economicSector, economicSectorURI) {
+//    rdfs.label  csv.'Setor econômico do fornecedor'
+//    pol.code    csv.'Cod setor econômico do fornecedor'
+//    rdf.type    pol.economicSector
+//} TEM EM 2014
 
 
 // Possíveis Fornecedores Beneficiários
@@ -64,7 +66,7 @@ map (economicSector, economicSectorURI) {
 map(agent, agentURI) {
     rdfs.label          csv.'Nome do fornecedor (Receita Federal)'
     pol.fiscalId        csv.'CPF/CNPJ do fornecedor'
-    pol.economicSector  economicSector
+//    pol.economicSector  economicSector
     rdf.type            wd.Q24229398
 }
 
