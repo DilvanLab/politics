@@ -2,31 +2,31 @@
 csv {
     delimiter   ";"
     charset     "ISO-8859-1"
-    header      "dataGeracao;horaGeracao;anoEleicao;numTurno;descricaoEleicao;siglaUF;siglaUE;descricaoUE;codigoCargo;descricaoCargo;nomeCandidato;sequencialCandidato;numeroCandidato;cpfCandidato;nomeUrnaCandidato;codSituacaoCandidatura;desSituacaoCandidatura;numeroPartido;siglaPartido;nomePartido;codigoLegenda;siglaLegenda;composicaoLegenda;nomeLegenda;codigoOcupacao;descricaoOcupacao;dataNascimento;numTituloEleitoralCandidato;idadeDataEleicao;codigoSexo;descricaoSexo;codGrauIntrucao;descricaoGrauInstrucao;codigoEstadoCivil;descricaoEstadoCivil;codigoCorRaca;descricaoCorRaca;codigoNacionalidade;descricaoNacionalidade;siglaUFNacimento;codigoMunicipioNascimento;nomeMunicipioNascimento;despesaMaxCampanha;codigoSitTotTurno;descricaoSitTotTurno;emailCandidato"
+    header   "DATA_GERACAO;HORA_GERACAO;ANO_ELEICAO;NUM_TURNO;DESCRICAO_ELEICAO;SIGLA_UF;SIGLA_UE;DESCRICAO_UE;CODIGO_CARGO;DESCRICAO_CARGO;NOME_CANDIDATO;SEQUENCIAL_CANDIDATO;NUMERO_CANDIDATO;CPF_CANDIDATO;NUME_URNA_CANDIDATO;COD_SITUACAO_CANDIDATURA;DES_SITUACAO_CANDIDATURA;NUMERO_PARTIDO;SIGLA_PARTIDO;NOME_PARTIDO;CODIGO_LEGENDA;SIGLA_LEGENDA;COMPOSICAO_LEGENDA;NOME_LEGENDA;CODIGO_OCUPACAO;DESCRICAO_OCUPACAO;DATA_NASCIMENTO;NUM_TITULO_ELEITORAL_CANDIDATO;IDADE_DATA_ELEICAO;CODIGO_SEXO;DESCRICAO_SEXO;CCOD_GRAU_INSTRUCAO;DESCRICAO_GRAU_INSTRUCAO;CODIGO_ESTADO_CIVIL;DESCRICAO_ESTADO_CIVIL;CODIGO_NACIONALIDADE;DESCRICAO_NACIONALIDADE;SIGLA_UF_NASCIMENTO;CODIGO_MUNICIPIO_NASCIMENTO;NOME_MUNICIPIO_NASCIMENTO;DESPESA_MAX_CAMPANHA;COD_SIT_TOT_TURNO;DESC_SIT_TOT_TURNO"
     null        "#NULO#"
 }
 
 
 // Tipos de dados
-type csv.numeroPartido,               integer
-type csv.numeroCandidato,             integer
-type csv.idadeDataEleicao,            integer
-type csv.codigoEstadoCivil,           integer
-type csv.sequencialCandidato,         integer
-type csv.numTituloEleitoralCandidato, integer
+type csv.NUMERO_PARTIDO,               integer
+type csv.NUMERO_CANDIDATO,             integer
+type csv.IDADE_DATA_ELEICAO,            integer
+type csv.CODIGO_ESTADO_CIVIL,           integer
+type csv.SEQUENCIAL_CANDIDATO,         integer
+type csv.NUM_TITULO_ELEITORAL_CANDIDATO, integer
 
 
-type csv.dataNascimento, date {
+type csv.DATA_NASCIMENTO, date {
     template "dd/MM/yyyy"
 }
 
-type csv.despesaMaxCampanha, decimal {
+type csv.DESPESA_MAX_CAMPANHA, decimal {
     forbidden "-1,-3"
 }
 
-type csv.anoEleicao, gYear
+type csv.ANO_ELEICAO, gYear
 
-type csv.nomeLegenda, string {
+type csv.NOME_LEGENDA, string {
     forbidden "PARTIDO ISOLADO"
 }
 
@@ -43,16 +43,16 @@ prefix wd,      "http://www.wikidata.org/entity/"
 // URIs
 base "http://purl.org/politics/id/"
 
-uri partyURI,       "party",            csv.'numeroPartido'
-uri civilStatusURI, "civilStatus",      csv.'codigoEstadoCivil'
-uri occupationURI,  "occupation",       csv.'codigoOcupacao'
-uri politicianURI,  "politician",       csv.'cpfCandidato'
-uri positionURI,    "position",         csv.'codigoCargo'
-uri electionURI,    csv.'anoEleicao',   "election"
-uri turnURI,        csv.'anoEleicao',   "turn",         csv.'numTurno'
-uri coalitionURI,   csv.'anoEleicao',   "coalition",    csv.'codigoLegenda'
-uri vacancyURI,     csv.'anoEleicao',   csv.'siglaUE',  "vacancy",          csv.'codigoCargo'
-uri candidacyURI,   csv.'anoEleicao',   csv.'siglaUE',  "candidacy",        csv.'sequencialCandidato'
+uri partyURI,       "party",            csv.'NUMERO_PARTIDO'
+uri civilStatusURI, "civilStatus",      csv.'CODIGO_ESTADO_CIVIL'
+uri occupationURI,  "occupation",       csv.'CODIGO_OCUPACAO'
+uri politicianURI,  "politician",       csv.'CPF_CANDIDATO'
+uri positionURI,    "position",         csv.'CODIGO_CARGO'
+uri electionURI,    csv.'ANO_ELEICAO',   "election"
+uri turnURI,        csv.'ANO_ELEICAO',   "turn",         csv.'NUM_TURNO'
+uri coalitionURI,   csv.'ANO_ELEICAO',   "coalition",    csv.'CODIGO_LEGENDA'
+uri vacancyURI,     csv.'ANO_ELEICAO',   csv.'SIGLA_UE',  "vacancy",          csv.'CODIGO_CARGO'
+uri candidacyURI,   csv.'ANO_ELEICAO',   csv.'SIGLA_UE',  "candidacy",        csv.'SEQUENCIAL_CANDIDATO'
 
 
 // Mapeamento
@@ -60,14 +60,14 @@ uri candidacyURI,   csv.'anoEleicao',   csv.'siglaUE',  "candidacy",        csv.
 matching(civilStatusLOD) {
     endpoint    "http://dbpedia.org/sparql"
     vendor      VIRTUOSO
-    search      csv.descricaoEstadoCivil
+    search      csv.DESCRICAO_ESTADO_CIVIL
     defaultURI  civilStatusURI
     type        pol.CivilStatus
 }
 
 map(civilStatus, civilStatusLOD) {
-    rdfs.label  csv.descricaoEstadoCivil
-    pol.code    csv.codigoEstadoCivil
+    rdfs.label  csv.DESCRICAO_ESTADO_CIVIL
+    pol.code    csv.CODIGO_ESTADO_CIVIL
     rdf.type    pol.CivilStatus
 }
 
@@ -76,14 +76,14 @@ map(civilStatus, civilStatusLOD) {
 matching(occupationLOD) {
     endpoint    "http://dbpedia.org/sparql"
     vendor      VIRTUOSO
-    search      csv.descricaoOcupacao
+    search      csv.DESCRICAO_OCUPACAO
     defaultURI  occupationURI
     type        pol.occupation
 }
 
 map(occupation, occupationLOD) {
-    rdfs.label  csv.descricaoOcupacao
-    pol.code    csv.codigoOcupacao
+    rdfs.label  csv.DESCRICAO_OCUPACAO
+    pol.code    csv.CODIGO_OCUPACAO
     rdf.type    pol.occupation
 }
 
@@ -92,22 +92,22 @@ map(occupation, occupationLOD) {
 matching(positionLOD) {
     endpoint    "http://dbpedia.org/sparql"
     vendor      VIRTUOSO
-    search      csv.descricaoCargo
+    search      csv.DESCRICAO_CARGO
     defaultURI  positionURI
     type        pol.position
 }
 
 map(position, positionLOD) {
-    rdfs.label  csv.descricaoCargo
-    pol.code    csv.codigoCargo
+    rdfs.label  csv.DESCRICAO_CARGO
+    pol.code    csv.CODIGO_CARGO
 }
 
 
 // Election (Eleição)
 map(election, electionURI) {
-    rdfs.label  csv.descricaoEleicao
+    rdfs.label  csv.DESCRICAO_ELEICAO
     rdf.type    pol.election
-    pol.year    csv.anoEleicao
+    pol.year    csv.ANO_ELEICAO
 }
 
 
@@ -115,14 +115,14 @@ map(election, electionURI) {
 matching(vacancyLOD) {
     endpoint    "http://dbpedia.org/sparql"
     vendor      VIRTUOSO
-    search      csv.descricaoCargo
+    search      csv.DESCRICAO_CARGO
     defaultURI  vacancyURI
     type        pol.vacancy
 }
 
 map(vacancy, vacancyLOD) {
-    rdfs.label      csv.descricaoCargo
-    pol.code        csv.codigoCargo
+    rdfs.label      csv.DESCRICAO_CARGO
+    pol.code        csv.CODIGO_CARGO
     rdf.type        pol.vacancy
     pol.election    election
     pol.position    position
@@ -131,8 +131,8 @@ map(vacancy, vacancyLOD) {
 
 // Turn (Turno)
 map(turn, turnURI) {
-    pol.label       csv.numTurno
-    pol.number      csv.numTurno
+    pol.label       csv.NUM_TURNO
+    pol.number      csv.NUM_TURNO
     pol.election    election
 }
 
@@ -141,15 +141,15 @@ map(turn, turnURI) {
 matching(partyLOD) {
     endpoint    "http://dbpedia.org/sparql"
     vendor      VIRTUOSO
-    search      csv.nomePartido
+    search      csv.NOME_PARTIDO
     defaultURI  partyURI
     type        pol.party
 }
 
 map(party, partyLOD) {
-    rdfs.label          csv.nomePartido
-    pol.number          csv.numeroPartido
-    pol.abbreviation    csv.siglaPartido
+    rdfs.label          csv.NOME_PARTIDO
+    pol.number          csv.NUMERO_PARTIDO
+    pol.abbreviation    csv.SIGLA_PARTIDO
     rdf.type            pol.party
 }
 
@@ -158,9 +158,9 @@ map(party, partyLOD) {
 // Só até 2020 pode ser do partido ou da coligacao entre partidos
 // feita para disputar uma determinada eleicao
 map(coalition, coalitionURI) {
-    rdfs.label          csv.nomeLegenda
-    pol.internalNumber  csv.codigoLegenda
-    pol.coalition       csv.composicaoLegenda
+    rdfs.label          csv.NOME_LEGENDA
+    pol.internalNumber  csv.CODIGO_LEGENDA
+    pol.coalition       csv.COMPOSICAO_LEGENDA
     rdf.type            wd.Q124964
     pol.party           party
     pol.election        election
@@ -169,16 +169,16 @@ map(coalition, coalitionURI) {
 
 // Politician (Politico - Pessoa de uma Candidatura)
 map(politician, politicianURI) {
-    rdfs.label                  csv.nomeCandidato
-    foaf.name                   csv.nomeCandidato
-    pol.voterNumber             csv.numTituloEleitoralCandidato
-    foaf.mbox                   csv.emailCandidato
-    pol.cpf                     csv.cpfCandidato
-    pol.birthday                csv.dataNascimento
-    dbo.hometown                csv.nomeMunicipioNascimento
-    pol.citizenshipDescription  csv.descricaoNacionalidade
-    wd.Q3254959                 csv.descricaoCorRaca
+    rdfs.label                  csv.NOME_CANDIDATO
+    foaf.name                   csv.NOME_CANDIDATO
+    pol.voterNumber             csv.NUM_TITULO_ELEITORAL_CANDIDATO
+    pol.cpf                     csv.CPF_CANDIDATO
+    pol.birthday                csv.DATA_NASCIMENTO
+    dbo.hometown                csv.NOME_MUNICIPIO_NASCIMENTO
+    pol.citizenshipDescription  csv.DESCRICAO_NACIONALIDADE
     rdf.type                    pol.politician
+    // foaf.mbox                   csv.emailCandidato A PARTIR DE 2014
+    // wd.Q3254959                 csv.descricaoCorRaca A PARTIR DE 2014
 }
 
 
@@ -191,13 +191,13 @@ map(candidacy, candidacyURI) {
     pol.occupation                  occupation
     pol.politician                  politician
     pol.civilStatus                 civilStatus
-    pol.age                         csv.idadeDataEleicao
+    pol.age                         csv.IDADE_DATA_ELEICAO
     rdf.type                        pol.candidacy
-    rdfs.label                      csv.nomeUrnaCandidato
-    pol.number                      csv.numeroCandidato
-    pol.schooling                   csv.descricaoGrauInstrucao
-    pol.electionName                csv.nomeUrnaCandidato
-    pol.internalNumber              csv.sequencialCandidato
-    pol.candidacySituation          csv.desSituacaoCandidatura
-    pol.partyMaxCampaignExpenses    csv.despesaMaxCampanha
+    rdfs.label                      csv.NUME_URNA_CANDIDATO
+    pol.number                      csv.NUMERO_CANDIDATO
+    pol.schooling                   csv.DESCRICAO_GRAU_INSTRUCAO
+    pol.electionName                csv.NUME_URNA_CANDIDATO
+    pol.internalNumber              csv.SEQUENCIAL_CANDIDATO
+    pol.candidacySituation          csv.DES_SITUACAO_CANDIDATURA
+    pol.partyMaxCampaignExpenses    csv.DESPESA_MAX_CAMPANHA
 }

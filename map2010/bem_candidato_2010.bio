@@ -2,7 +2,18 @@
 csv {
     delimiter   ";"
     charset     "ISO-8859-1"
-    header      "dataGeracao;horaGeracao;anoEleicao;descricaoEleicao;siglaUF;sqCandidato;cdTipoBemCandidato;dsTipoBemCandidato;detalheBem;valorBem;dataUltimaAtualizacao;horaUltimaAtualizacao"
+    header      "dataGeracao;
+                horaGeracao;
+                anoEleicao;
+                descricaoEleicao;
+                siglaUF;
+                sqCandidato;
+                cdTipoBemCandidato;
+                dsTipoBemCandidato;
+                detalheBem;
+                valorBem;
+                dataUltimaAtualizacao;
+                horaUltimaAtualizacao"
     null        "#NULO#"
 }
 
