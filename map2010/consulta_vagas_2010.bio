@@ -2,13 +2,13 @@
 csv {
     delimiter   ';'
     charset     'ISO-8859-1'
-    header      'dataGeracao;horaGeracao;anoEleicao;descricaoEleicao;siglaUF;siglaUE;nomeUE;codigoCargo;descricaoCargo;qtdeVagas'
+    header      'DATA_GERACAO;HORA_GERACAO;ANO_ELEICAO;DESCRICAO_ELEICAO;SIGLA_UF;SIGLA_UE;NOME_UE;CODIGO_CARGO;DESCRICAO_CARGO;QTDE_VAGAS'
     null        '#NULO#'
 }
 
 
-type csv.codigoCargo, integer
-type csv.qtdeVagas,   integer
+type csv.CODIGO_CARGO, integer
+type csv.QTDE_VAGAS,   integer
 
 
 prefix pol,     'http://purl.org/onto/politics#'
@@ -21,8 +21,8 @@ prefix wd,      'http://www.wikidata.org/entity/'
 
 base 'http://purl.org/politics/id/'
 
-uri electionURI,    csv.'anoEleicao',    'election'
-uri vacancyURI,     csv.'anoEleicao',    csv.'siglaUE',    'vacancy',    csv.'codigoCargo'
+uri electionURI,    csv.'ANO_ELEICAO',    'election'
+uri vacancyURI,     csv.'ANO_ELEICAO',    csv.'SIGLA_UE',    'vacancy',    csv.'CODIGO_CARGO'
 
 
 // Election (Eleição)
@@ -31,10 +31,10 @@ map(election, electionURI)
 
 // Vacancy (Vagas)
 map(vacancy, vacancyURI) {
-    pol.number      csv.qtdeVagas
+    pol.number      csv.QTDE_VAGAS
 
     // pol.election election
-    // rdfs.label   mapeado em 'consulta_cand_2014.bio'
-    // pol.position mapeado em 'consulta_cand_2014.bio'
-    // rdf.type     mapeado em 'consulta_cand_2014.bio'
+    // rdfs.label   mapeado em 'consulta_cand_2010.bio'
+    // pol.position mapeado em 'consulta_cand_2010.bio'
+    // rdf.type     mapeado em 'consulta_cand_2010.bio'
 }
