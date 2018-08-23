@@ -20,8 +20,8 @@ type csv.'Número do documento', string {
 }
 
 // Data composta por data e hora da despesa
-type csv.'Data da despesa', date {
-   template 'dd/MM/yyyyHH:mm:ss'
+type csv.'Data da receita', date {
+   template 'dd/MM/yyyy'
 }
 
 
@@ -72,7 +72,17 @@ map(agent, agentURI) {
 
 
 // Candidacy (Candidatura - Pagador)
-map (candidacy, candidacyURI)
+// map (candidacy, candidacyURI)
+
+
+matching(candidacyLOD) {
+    endpoint    "http://java.icmc.usp.br:2472/sparql"
+    vendor      GRAPHDB
+    property    pol.politician
+    search      csv.'CPF do candidato' (?p pol.cpf csv.'CPF do candidato') (?p pol.candicacy ?c) (?c pol.turn ?t) (?t pol.election ?e) (?e pol.year "2010")
+    //defaultURI  occupationURI
+    type        pol.candicacy
+}
 
 
 // Expense (Despesa)
