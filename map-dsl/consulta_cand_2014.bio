@@ -1,0 +1,204 @@
+// Mapeamento das planilhas "consulta_cand_2014"
+csv {
+    delimiter   ";"
+    charset     "ISO-8859-1"
+    header      "dataGeracao;horaGeracao;anoEleicao;numTurno;descricaoEleicao;siglaUF;siglaUE;descricaoUE;codigoCargo;descricaoCargo;nomeCandidato;sequencialCandidato;numeroCandidato;cpfCandidato;nomeUrnaCandidato;codSituacaoCandidatura;desSituacaoCandidatura;numeroPartido;siglaPartido;nomePartido;codigoLegenda;siglaLegenda;composicaoLegenda;nomeLegenda;codigoOcupacao;descricaoOcupacao;dataNascimento;numTituloEleitoralCandidato;idadeDataEleicao;codigoSexo;descricaoSexo;codGrauIntrucao;descricaoGrauInstrucao;codigoEstadoCivil;descricaoEstadoCivil;codigoCorRaca;descricaoCorRaca;codigoNacionalidade;descricaoNacionalidade;siglaUFNacimento;codigoMunicipioNascimento;nomeMunicipioNascimento;despesaMaxCampanha;codigoSitTotTurno;descricaoSitTotTurno;emailCandidato"
+    null        "#NULO#"
+}
+
+
+// Tipos de dados
+type csv.numeroPartido,               integer
+type csv.numeroCandidato,             integer
+type csv.idadeDataEleicao,            integer
+type csv.codigoEstadoCivil,           integer
+type csv.sequencialCandidato,         integer
+type csv.numTituloEleitoralCandidato, integer
+
+
+type csv.dataNascimento, date {
+    template "dd/MM/yyyy"
+}
+
+type csv.despesaMaxCampanha, decimal {
+    forbidden "-1,-3"
+}
+
+type csv.anoEleicao, gYear
+
+type csv.nomeLegenda, string {
+    forbidden "PARTIDO ISOLADO"
+}
+
+
+// Prefixos
+prefix pol,     "http://purl.org/onto/politics#"
+prefix prop,    "http://dbpedia.org/property/"
+prefix dbr,     "http://dbpedia.org/resource/"
+prefix dbo,     "http://dbpedia.org/ontology/"
+prefix foaf,    "http://xmlns.com/foaf/0.1/"
+prefix wd,      "http://www.wikidata.org/entity/"
+
+
+// URIs
+base "http://purl.org/politics/id/"
+
+uri partyURI,       "party",            csv.'numeroPartido'
+uri civilStatusURI, "civilStatus",      csv.'codigoEstadoCivil'
+uri occupationURI,  "occupation",       csv.'codigoOcupacao'
+uri politicianURI,  "politician",       csv.'cpfCandidato'
+uri positionURI,    "position",         csv.'codigoCargo'
+uri electionURI,    csv.'anoEleicao',   "election"
+uri turnURI,        csv.'anoEleicao',   "turn",         csv.'numTurno'
+uri coalitionURI,   csv.'anoEleicao',   "coalition",    csv.'codigoLegenda'
+uri vacancyURI,     csv.'anoEleicao',   csv.'siglaUE',  "vacancy",          csv.'codigoCargo'
+uri candidacyURI,   csv.'anoEleicao',   csv.'siglaUE',  "candidacy",        csv.'sequencialCandidato'
+
+
+// Mapeamento
+// Civil Status (Estado Civil)
+matching(civilStatusLOD) {
+    endpoint    "http://dbpedia.org/sparql"
+    vendor      VIRTUOSO
+    search      csv.descricaoEstadoCivil
+    defaultURI  civilStatusURI
+    type        pol.CivilStatus
+}
+
+map(civilStatus, civilStatusLOD) {
+    rdfs.label  csv.descricaoEstadoCivil
+    pol.code    csv.codigoEstadoCivil
+    rdf.type    pol.CivilStatus
+}
+
+
+// Occupation (Ocupação - Emprego durante a candidatura)
+matching(occupationLOD) {
+    endpoint    "http://dbpedia.org/sparql"
+    vendor      VIRTUOSO
+    search      csv.descricaoOcupacao
+    defaultURI  occupationURI
+    type        pol.occupation
+}
+
+map(occupation, occupationLOD) {
+    rdfs.label  csv.descricaoOcupacao
+    pol.code    csv.codigoOcupacao
+    rdf.type    pol.occupation
+}
+
+
+// Position (Posição - Cargo da candidatura)
+matching(positionLOD) {
+    endpoint    "http://dbpedia.org/sparql"
+    vendor      VIRTUOSO
+    search      csv.descricaoCargo
+    defaultURI  positionURI
+    type        pol.position
+}
+
+map(position, positionLOD) {
+    rdfs.label  csv.descricaoCargo
+    pol.code    csv.codigoCargo
+}
+
+
+// Election (Eleição)
+map(election, electionURI) {
+    rdfs.label  csv.descricaoEleicao
+    rdf.type    pol.election
+    pol.year    csv.anoEleicao
+}
+
+
+// Vacancy (Vagas)
+matching(vacancyLOD) {
+    endpoint    "http://dbpedia.org/sparql"
+    vendor      VIRTUOSO
+    search      csv.descricaoCargo
+    defaultURI  vacancyURI
+    type        pol.vacancy
+    sparql      'select distinct ?s where {?s rdfs:label "Recife"@pt .} limit 10'
+}
+
+map(vacancy, vacancyLOD) {
+    rdfs.label      csv.descricaoCargo
+    pol.code        csv.codigoCargo
+    rdf.type        pol.vacancy
+    pol.election    election
+    pol.position    position
+}
+
+
+// Turn (Turno)
+map(turn, turnURI) {
+    pol.label       csv.numTurno
+    pol.number      csv.numTurno
+    pol.election    election
+}
+
+
+// Party (Partido)
+matching(partyLOD) {
+    endpoint    "http://dbpedia.org/sparql"
+    vendor      VIRTUOSO
+    search      csv.nomePartido
+    defaultURI  partyURI
+    type        pol.party
+}
+
+map(party, partyLOD) {
+    rdfs.label          csv.nomePartido
+    pol.number          csv.numeroPartido
+    pol.abbreviation    csv.siglaPartido
+    rdf.type            pol.party
+}
+
+
+// Coalition (Legenda/Coligação)
+// Só até 2020 pode ser do partido ou da coligacao entre partidos
+// feita para disputar uma determinada eleicao
+map(coalition, coalitionURI) {
+    rdfs.label          csv.nomeLegenda
+    pol.internalNumber  csv.codigoLegenda
+    pol.coalition       csv.composicaoLegenda
+    rdf.type            wd.Q124964
+    pol.party           party
+    pol.election        election
+}
+
+
+// Politician (Politico - Pessoa de uma Candidatura)
+map(politician, politicianURI) {
+    rdfs.label                  csv.nomeCandidato
+    foaf.name                   csv.nomeCandidato
+    pol.voterNumber             csv.numTituloEleitoralCandidato
+    foaf.mbox                   csv.emailCandidato
+    pol.cpf                     csv.cpfCandidato
+    pol.birthday                csv.dataNascimento
+    dbo.hometown                csv.nomeMunicipioNascimento
+    pol.citizenshipDescription  csv.descricaoNacionalidade
+    wd.Q3254959                 csv.descricaoCorRaca
+    rdf.type                    pol.politician
+}
+
+
+// Candidacy (Candidatura)
+map(candidacy, candidacyURI) {
+    pol.turn                        turn
+    pol.party                       party
+    pol.vacancy                     vacancy
+    pol.coalition                   coalition
+    pol.occupation                  occupation
+    pol.politician                  politician
+    pol.civilStatus                 civilStatus
+    pol.age                         csv.idadeDataEleicao
+    rdf.type                        pol.candidacy
+    rdfs.label                      csv.nomeUrnaCandidato
+    pol.number                      csv.numeroCandidato
+    pol.schooling                   csv.descricaoGrauInstrucao
+    pol.electionName                csv.nomeUrnaCandidato
+    pol.internalNumber              csv.sequencialCandidato
+    pol.candidacySituation          csv.desSituacaoCandidatura
+    pol.partyMaxCampaignExpenses    csv.despesaMaxCampanha
+}

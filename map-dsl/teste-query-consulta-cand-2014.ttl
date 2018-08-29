@@ -1,0 +1,1652 @@
+@prefix :      <http://purl.org/politics/id/> .
+
+<http://purl.org/politics/id/2014/BR/candidacy/280000000062>
+        a       <http://purl.org/onto/politics#candidacy> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "CÉLIA SACRAMENTO" ;
+        <http://purl.org/onto/politics#age>
+                47 ;
+        <http://purl.org/onto/politics#candidacySituation>
+                "DEFERIDO" ;
+        <http://purl.org/onto/politics#civilStatus>
+                <http://purl.org/politics/id/civilStatus/9> ;
+        <http://purl.org/onto/politics#coalition>
+                <http://purl.org/politics/id/2014/coalition/280000000061> ;
+        <http://purl.org/onto/politics#electionName>
+                "CÉLIA SACRAMENTO" ;
+        <http://purl.org/onto/politics#internalNumber>
+                280000000062 ;
+        <http://purl.org/onto/politics#number>
+                43 ;
+        <http://purl.org/onto/politics#occupation>
+                <http://purl.org/politics/id/occupation/142> ;
+        <http://purl.org/onto/politics#party>
+                <http://purl.org/politics/id/party/43> ;
+        <http://purl.org/onto/politics#politician>
+                <http://purl.org/politics/id/politician/40686744500> ;
+        <http://purl.org/onto/politics#schooling>
+                "SUPERIOR COMPLETO" ;
+        <http://purl.org/onto/politics#turn>
+                <http://purl.org/politics/id/2014/turn/1> ;
+        <http://purl.org/onto/politics#vacancy>
+                <http://dbpedia.org/resource/Recife> .
+
+<http://purl.org/politics/id/politician/45334773487>
+        a       <http://purl.org/onto/politics#politician> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "EDUARDO HENRIQUE ACCIOLY CAMPOS" ;
+        <http://dbpedia.org/ontology/hometown>
+                "RECIFE" ;
+        <http://purl.org/onto/politics#birthday>
+                "1965-07-10"^^<http://www.w3.org/2001/XMLSchema#date> ;
+        <http://purl.org/onto/politics#citizenshipDescription>
+                "BRASILEIRA NATA" ;
+        <http://purl.org/onto/politics#cpf>
+                "45334773487" ;
+        <http://purl.org/onto/politics#voterNumber>
+                3439640809 ;
+        <http://www.wikidata.org/entity/Q3254959>
+                "BRANCA" ;
+        <http://xmlns.com/foaf/0.1/mbox>
+                "EDUARDOHACAMPOS@GMAIL.COM" ;
+        <http://xmlns.com/foaf/0.1/name>
+                "EDUARDO HENRIQUE ACCIOLY CAMPOS" .
+
+<http://purl.org/politics/id/politician/26135574868>
+        a       <http://purl.org/onto/politics#politician> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "JORGE LEONARDO PAZ" ;
+        <http://dbpedia.org/ontology/hometown>
+                "BIRITIBA MIRIM" ;
+        <http://purl.org/onto/politics#birthday>
+                "1949-01-25"^^<http://www.w3.org/2001/XMLSchema#date> ;
+        <http://purl.org/onto/politics#citizenshipDescription>
+                "BRASILEIRA NATA" ;
+        <http://purl.org/onto/politics#cpf>
+                "26135574868" ;
+        <http://purl.org/onto/politics#voterNumber>
+                80417160175 ;
+        <http://www.wikidata.org/entity/Q3254959>
+                "BRANCA" ;
+        <http://xmlns.com/foaf/0.1/mbox>
+                "JORGEPAZ@UOL.COM.BR" ;
+        <http://xmlns.com/foaf/0.1/name>
+                "JORGE LEONARDO PAZ" .
+
+<http://purl.org/politics/id/2014/coalition/280000000003>
+        a       <http://www.wikidata.org/entity/Q124964> ;
+        <http://purl.org/onto/politics#coalition>
+                "PSTU" ;
+        <http://purl.org/onto/politics#election>
+                <http://purl.org/politics/id/2014/election> ;
+        <http://purl.org/onto/politics#internalNumber>
+                "280000000003" ;
+        <http://purl.org/onto/politics#party>
+                <http://purl.org/politics/id/party/16> .
+
+<http://purl.org/politics/id/party/13>
+        a       <http://purl.org/onto/politics#party> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "PARTIDO DOS TRABALHADORES" ;
+        <http://purl.org/onto/politics#abbreviation>
+                "PT" ;
+        <http://purl.org/onto/politics#number>
+                13 .
+
+<http://purl.org/politics/id/politician/30656893915>
+        a       <http://purl.org/onto/politics#politician> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "BELSASAR ROBERTO LOPES" ;
+        <http://dbpedia.org/ontology/hometown>
+                "JOAQUIM TÁVORA" ;
+        <http://purl.org/onto/politics#birthday>
+                "1958-06-30"^^<http://www.w3.org/2001/XMLSchema#date> ;
+        <http://purl.org/onto/politics#citizenshipDescription>
+                "BRASILEIRA NATA" ;
+        <http://purl.org/onto/politics#cpf>
+                "30656893915" ;
+        <http://purl.org/onto/politics#voterNumber>
+                13168830655 ;
+        <http://www.wikidata.org/entity/Q3254959>
+                "BRANCA" ;
+        <http://xmlns.com/foaf/0.1/mbox>
+                "ARATERORAIMA@GMAILO.COM" ;
+        <http://xmlns.com/foaf/0.1/name>
+                "BELSASAR ROBERTO LOPES" .
+
+<http://purl.org/politics/id/politician/03325634800>
+        a       <http://purl.org/onto/politics#politician> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "JOSÉ MARIA DE ALMEIDA" ;
+        <http://dbpedia.org/ontology/hometown>
+                "SANTA ALBERTINA" ;
+        <http://purl.org/onto/politics#birthday>
+                "1957-09-02"^^<http://www.w3.org/2001/XMLSchema#date> ;
+        <http://purl.org/onto/politics#citizenshipDescription>
+                "BRASILEIRA NATA" ;
+        <http://purl.org/onto/politics#cpf>
+                "03325634800" ;
+        <http://purl.org/onto/politics#voterNumber>
+                14488880248 ;
+        <http://www.wikidata.org/entity/Q3254959>
+                "BRANCA" ;
+        <http://xmlns.com/foaf/0.1/mbox>
+                "ZEMARIAALMEIDA@UOL.COM.BR" ;
+        <http://xmlns.com/foaf/0.1/name>
+                "JOSÉ MARIA DE ALMEIDA" .
+
+<http://purl.org/politics/id/politician/09544712704>
+        a       <http://purl.org/onto/politics#politician> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "JOSÉ LEVY FIDELIX DA CRUZ" ;
+        <http://dbpedia.org/ontology/hometown>
+                "MUTUM" ;
+        <http://purl.org/onto/politics#birthday>
+                "1951-11-27"^^<http://www.w3.org/2001/XMLSchema#date> ;
+        <http://purl.org/onto/politics#citizenshipDescription>
+                "BRASILEIRA NATA" ;
+        <http://purl.org/onto/politics#cpf>
+                "09544712704" ;
+        <http://purl.org/onto/politics#voterNumber>
+                96252400159 ;
+        <http://www.wikidata.org/entity/Q3254959>
+                "BRANCA" ;
+        <http://xmlns.com/foaf/0.1/mbox>
+                "PRTB@PRTB.ORG.BR" ;
+        <http://xmlns.com/foaf/0.1/name>
+                "JOSÉ LEVY FIDELIX DA CRUZ" .
+
+<http://purl.org/politics/id/position/2>
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "VICE-PRESIDENTE" ;
+        <http://purl.org/onto/politics#code>
+                "2" .
+
+<http://purl.org/politics/id/2014/BR/candidacy/280000000041>
+        a       <http://purl.org/onto/politics#candidacy> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "MAURO IASI" ;
+        <http://purl.org/onto/politics#age>
+                54 ;
+        <http://purl.org/onto/politics#candidacySituation>
+                "DEFERIDO" ;
+        <http://purl.org/onto/politics#civilStatus>
+                <http://purl.org/politics/id/civilStatus/1> ;
+        <http://purl.org/onto/politics#coalition>
+                <http://purl.org/politics/id/2014/coalition/280000000041> ;
+        <http://purl.org/onto/politics#electionName>
+                "MAURO IASI" ;
+        <http://purl.org/onto/politics#internalNumber>
+                280000000041 ;
+        <http://purl.org/onto/politics#number>
+                21 ;
+        <http://purl.org/onto/politics#occupation>
+                <http://purl.org/politics/id/occupation/142> ;
+        <http://purl.org/onto/politics#party>
+                <http://purl.org/politics/id/party/21> ;
+        <http://purl.org/onto/politics#partyMaxCampaignExpenses>
+                "300000"^^<http://www.w3.org/2001/XMLSchema#decimal> ;
+        <http://purl.org/onto/politics#politician>
+                <http://purl.org/politics/id/politician/03340657807> ;
+        <http://purl.org/onto/politics#schooling>
+                "SUPERIOR COMPLETO" ;
+        <http://purl.org/onto/politics#turn>
+                <http://purl.org/politics/id/2014/turn/1> ;
+        <http://purl.org/onto/politics#vacancy>
+                <http://dbpedia.org/resource/Recife> .
+
+<http://purl.org/politics/id/2014/BR/candidacy/280000000082>
+        a       <http://purl.org/onto/politics#candidacy> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "RICARDO MACHADO" ;
+        <http://purl.org/onto/politics#age>
+                53 ;
+        <http://purl.org/onto/politics#candidacySituation>
+                "DEFERIDO" ;
+        <http://purl.org/onto/politics#civilStatus>
+                <http://purl.org/politics/id/civilStatus/9> ;
+        <http://purl.org/onto/politics#coalition>
+                <http://purl.org/politics/id/2014/coalition/280000000081> ;
+        <http://purl.org/onto/politics#electionName>
+                "RICARDO MACHADO" ;
+        <http://purl.org/onto/politics#internalNumber>
+                280000000082 ;
+        <http://purl.org/onto/politics#number>
+                29 ;
+        <http://purl.org/onto/politics#occupation>
+                <http://purl.org/politics/id/occupation/395> ;
+        <http://purl.org/onto/politics#party>
+                <http://purl.org/politics/id/party/29> ;
+        <http://purl.org/onto/politics#politician>
+                <http://purl.org/politics/id/politician/22650253134> ;
+        <http://purl.org/onto/politics#schooling>
+                "SUPERIOR COMPLETO" ;
+        <http://purl.org/onto/politics#turn>
+                <http://purl.org/politics/id/2014/turn/1> ;
+        <http://purl.org/onto/politics#vacancy>
+                <http://dbpedia.org/resource/Recife> .
+
+<http://purl.org/politics/id/politician/61952370000>
+        a       <http://purl.org/onto/politics#politician> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "LUCIANA KREBS GENRO" ;
+        <http://dbpedia.org/ontology/hometown>
+                "SANTA MARIA" ;
+        <http://purl.org/onto/politics#birthday>
+                "1971-00-17"^^<http://www.w3.org/2001/XMLSchema#date> ;
+        <http://purl.org/onto/politics#citizenshipDescription>
+                "BRASILEIRA NATA" ;
+        <http://purl.org/onto/politics#cpf>
+                "61952370000" ;
+        <http://purl.org/onto/politics#voterNumber>
+                58020930442 ;
+        <http://www.wikidata.org/entity/Q3254959>
+                "BRANCA" ;
+        <http://xmlns.com/foaf/0.1/mbox>
+                "LUCIANAGENRO@GMAIL.COM" ;
+        <http://xmlns.com/foaf/0.1/name>
+                "LUCIANA KREBS GENRO" .
+
+<http://purl.org/politics/id/2014/BR/candidacy/280000000067>
+        a       <http://purl.org/onto/politics#candidacy> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "EYMAEL" ;
+        <http://purl.org/onto/politics#age>
+                74 ;
+        <http://purl.org/onto/politics#candidacySituation>
+                "DEFERIDO" ;
+        <http://purl.org/onto/politics#civilStatus>
+                <http://purl.org/politics/id/civilStatus/3> ;
+        <http://purl.org/onto/politics#coalition>
+                <http://purl.org/politics/id/2014/coalition/280000000064> ;
+        <http://purl.org/onto/politics#electionName>
+                "EYMAEL" ;
+        <http://purl.org/onto/politics#internalNumber>
+                280000000067 ;
+        <http://purl.org/onto/politics#number>
+                27 ;
+        <http://purl.org/onto/politics#occupation>
+                <http://purl.org/politics/id/occupation/131> ;
+        <http://purl.org/onto/politics#party>
+                <http://purl.org/politics/id/party/27> ;
+        <http://purl.org/onto/politics#partyMaxCampaignExpenses>
+                "25000000"^^<http://www.w3.org/2001/XMLSchema#decimal> ;
+        <http://purl.org/onto/politics#politician>
+                <http://purl.org/politics/id/politician/01061712834> ;
+        <http://purl.org/onto/politics#schooling>
+                "SUPERIOR COMPLETO" ;
+        <http://purl.org/onto/politics#turn>
+                <http://purl.org/politics/id/2014/turn/1> ;
+        <http://purl.org/onto/politics#vacancy>
+                <http://dbpedia.org/resource/Recife> .
+
+<http://purl.org/politics/id/party/20>
+        a       <http://purl.org/onto/politics#party> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "PARTIDO SOCIAL CRISTÃO" ;
+        <http://purl.org/onto/politics#abbreviation>
+                "PSC" ;
+        <http://purl.org/onto/politics#number>
+                20 .
+
+<http://purl.org/politics/id/occupation/266>
+        a       <http://purl.org/onto/politics#occupation> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "PROFESSOR DE ENSINO MÉDIO" ;
+        <http://purl.org/onto/politics#code>
+                "266" .
+
+<http://purl.org/politics/id/2014/coalition/280000000064>
+        a       <http://www.wikidata.org/entity/Q124964> ;
+        <http://purl.org/onto/politics#coalition>
+                "PSDC" ;
+        <http://purl.org/onto/politics#election>
+                <http://purl.org/politics/id/2014/election> ;
+        <http://purl.org/onto/politics#internalNumber>
+                "280000000064" ;
+        <http://purl.org/onto/politics#party>
+                <http://purl.org/politics/id/party/27> .
+
+<http://purl.org/politics/id/occupation/125>
+        a       <http://purl.org/onto/politics#occupation> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "ADMINISTRADOR" ;
+        <http://purl.org/onto/politics#code>
+                "125" .
+
+<http://purl.org/politics/id/2014/BR/candidacy/280000000061>
+        a       <http://purl.org/onto/politics#candidacy> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "EDUARDO JORGE" ;
+        <http://purl.org/onto/politics#age>
+                64 ;
+        <http://purl.org/onto/politics#candidacySituation>
+                "DEFERIDO" ;
+        <http://purl.org/onto/politics#civilStatus>
+                <http://purl.org/politics/id/civilStatus/3> ;
+        <http://purl.org/onto/politics#coalition>
+                <http://purl.org/politics/id/2014/coalition/280000000061> ;
+        <http://purl.org/onto/politics#electionName>
+                "EDUARDO JORGE" ;
+        <http://purl.org/onto/politics#internalNumber>
+                280000000061 ;
+        <http://purl.org/onto/politics#number>
+                43 ;
+        <http://purl.org/onto/politics#occupation>
+                <http://purl.org/politics/id/occupation/111> ;
+        <http://purl.org/onto/politics#party>
+                <http://purl.org/politics/id/party/43> ;
+        <http://purl.org/onto/politics#partyMaxCampaignExpenses>
+                "90000000"^^<http://www.w3.org/2001/XMLSchema#decimal> ;
+        <http://purl.org/onto/politics#politician>
+                <http://purl.org/politics/id/politician/63458691804> ;
+        <http://purl.org/onto/politics#schooling>
+                "SUPERIOR COMPLETO" ;
+        <http://purl.org/onto/politics#turn>
+                <http://purl.org/politics/id/2014/turn/1> ;
+        <http://purl.org/onto/politics#vacancy>
+                <http://dbpedia.org/resource/Recife> .
+
+<http://purl.org/politics/id/politician/35139706334>
+        a       <http://purl.org/onto/politics#politician> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "CLAUDIA ALVES DURANS" ;
+        <http://dbpedia.org/ontology/hometown>
+                "SÃO LUIZ" ;
+        <http://purl.org/onto/politics#birthday>
+                "1965-02-07"^^<http://www.w3.org/2001/XMLSchema#date> ;
+        <http://purl.org/onto/politics#citizenshipDescription>
+                "BRASILEIRA NATA" ;
+        <http://purl.org/onto/politics#cpf>
+                "35139706334" ;
+        <http://purl.org/onto/politics#voterNumber>
+                42269421139 ;
+        <http://www.wikidata.org/entity/Q3254959>
+                "PRETA" ;
+        <http://xmlns.com/foaf/0.1/mbox>
+                "CDURANS@UOL.COM.BR" ;
+        <http://xmlns.com/foaf/0.1/name>
+                "CLAUDIA ALVES DURANS" .
+
+<http://purl.org/politics/id/party/40>
+        a       <http://purl.org/onto/politics#party> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "PARTIDO SOCIALISTA BRASILEIRO" ;
+        <http://purl.org/onto/politics#abbreviation>
+                "PSB" ;
+        <http://purl.org/onto/politics#number>
+                40 .
+
+<http://purl.org/politics/id/position/1>
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "PRESIDENTE" ;
+        <http://purl.org/onto/politics#code>
+                "1" .
+
+<http://purl.org/politics/id/civilStatus/9>
+        a       <http://purl.org/onto/politics#CivilStatus> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "DIVORCIADO(A)" ;
+        <http://purl.org/onto/politics#code>
+                9 .
+
+<http://purl.org/politics/id/2014/BR/candidacy/280000000081>
+        a       <http://purl.org/onto/politics#candidacy> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "RUI COSTA PIMENTA" ;
+        <http://purl.org/onto/politics#age>
+                57 ;
+        <http://purl.org/onto/politics#candidacySituation>
+                "DEFERIDO" ;
+        <http://purl.org/onto/politics#civilStatus>
+                <http://purl.org/politics/id/civilStatus/3> ;
+        <http://purl.org/onto/politics#coalition>
+                <http://purl.org/politics/id/2014/coalition/280000000081> ;
+        <http://purl.org/onto/politics#electionName>
+                "RUI COSTA PIMENTA" ;
+        <http://purl.org/onto/politics#internalNumber>
+                280000000081 ;
+        <http://purl.org/onto/politics#number>
+                29 ;
+        <http://purl.org/onto/politics#occupation>
+                <http://purl.org/politics/id/occupation/171> ;
+        <http://purl.org/onto/politics#party>
+                <http://purl.org/politics/id/party/29> ;
+        <http://purl.org/onto/politics#partyMaxCampaignExpenses>
+                "300000"^^<http://www.w3.org/2001/XMLSchema#decimal> ;
+        <http://purl.org/onto/politics#politician>
+                <http://purl.org/politics/id/politician/95624589891> ;
+        <http://purl.org/onto/politics#schooling>
+                "SUPERIOR COMPLETO" ;
+        <http://purl.org/onto/politics#turn>
+                <http://purl.org/politics/id/2014/turn/1> ;
+        <http://purl.org/onto/politics#vacancy>
+                <http://dbpedia.org/resource/Recife> .
+
+<http://purl.org/politics/id/politician/11980761272>
+        a       <http://purl.org/onto/politics#politician> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "MARIA OSMARINA MARINA DA SILVA VAZ DE LIMA" ;
+        <http://dbpedia.org/ontology/hometown>
+                "RIO BRANCO" ;
+        <http://purl.org/onto/politics#birthday>
+                "1958-01-08"^^<http://www.w3.org/2001/XMLSchema#date> ;
+        <http://purl.org/onto/politics#citizenshipDescription>
+                "BRASILEIRA NATA" ;
+        <http://purl.org/onto/politics#cpf>
+                "11980761272" ;
+        <http://purl.org/onto/politics#voterNumber>
+                962092402 ;
+        <http://www.wikidata.org/entity/Q3254959>
+                "PRETA" ;
+        <http://xmlns.com/foaf/0.1/mbox>
+                "ESCRITORIOMARINASILVA@GMAIL.COM" ;
+        <http://xmlns.com/foaf/0.1/name>
+                "MARIA OSMARINA MARINA DA SILVA VAZ DE LIMA" .
+
+<http://purl.org/politics/id/2014/BR/candidacy/280000000066>
+        a       <http://purl.org/onto/politics#candidacy> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "LEONARDO GADELHA" ;
+        <http://purl.org/onto/politics#age>
+                39 ;
+        <http://purl.org/onto/politics#candidacySituation>
+                "DEFERIDO" ;
+        <http://purl.org/onto/politics#civilStatus>
+                <http://purl.org/politics/id/civilStatus/3> ;
+        <http://purl.org/onto/politics#coalition>
+                <http://purl.org/politics/id/2014/coalition/280000000063> ;
+        <http://purl.org/onto/politics#electionName>
+                "LEONARDO GADELHA" ;
+        <http://purl.org/onto/politics#internalNumber>
+                280000000066 ;
+        <http://purl.org/onto/politics#number>
+                20 ;
+        <http://purl.org/onto/politics#occupation>
+                <http://purl.org/politics/id/occupation/296> ;
+        <http://purl.org/onto/politics#party>
+                <http://purl.org/politics/id/party/20> ;
+        <http://purl.org/onto/politics#politician>
+                <http://purl.org/politics/id/politician/76553787115> ;
+        <http://purl.org/onto/politics#schooling>
+                "SUPERIOR COMPLETO" ;
+        <http://purl.org/onto/politics#turn>
+                <http://purl.org/politics/id/2014/turn/1> ;
+        <http://purl.org/onto/politics#vacancy>
+                <http://dbpedia.org/resource/Recife> .
+
+<http://purl.org/politics/id/civilStatus/3>
+        a       <http://purl.org/onto/politics#CivilStatus> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "CASADO(A)" ;
+        <http://purl.org/onto/politics#code>
+                3 .
+
+<http://purl.org/politics/id/occupation/111>
+        a       <http://purl.org/onto/politics#occupation> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "MÉDICO" ;
+        <http://purl.org/onto/politics#code>
+                "111" .
+
+<http://dbpedia.org/resource/Recife>
+        a       <http://purl.org/onto/politics#vacancy> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "PRESIDENTE" , "VICE-PRESIDENTE" ;
+        <http://purl.org/onto/politics#code>
+                "1" , "2" ;
+        <http://purl.org/onto/politics#election>
+                <http://purl.org/politics/id/2014/election> ;
+        <http://purl.org/onto/politics#position>
+                <http://purl.org/politics/id/position/1> , <http://purl.org/politics/id/position/2> .
+
+<http://purl.org/politics/id/2014/coalition/280000000063>
+        a       <http://www.wikidata.org/entity/Q124964> ;
+        <http://purl.org/onto/politics#coalition>
+                "PSC" ;
+        <http://purl.org/onto/politics#election>
+                <http://purl.org/politics/id/2014/election> ;
+        <http://purl.org/onto/politics#internalNumber>
+                "280000000063" ;
+        <http://purl.org/onto/politics#party>
+                <http://purl.org/politics/id/party/20> .
+
+<http://purl.org/politics/id/politician/22650253134>
+        a       <http://purl.org/onto/politics#politician> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "RICARDO DE SOUSA MACHADO" ;
+        <http://dbpedia.org/ontology/hometown>
+                "RIO DE JANEIRO" ;
+        <http://purl.org/onto/politics#birthday>
+                "1961-02-01"^^<http://www.w3.org/2001/XMLSchema#date> ;
+        <http://purl.org/onto/politics#citizenshipDescription>
+                "BRASILEIRA NATA" ;
+        <http://purl.org/onto/politics#cpf>
+                "22650253134" ;
+        <http://purl.org/onto/politics#voterNumber>
+                7257592070 ;
+        <http://www.wikidata.org/entity/Q3254959>
+                "PARDA" ;
+        <http://xmlns.com/foaf/0.1/name>
+                "RICARDO DE SOUSA MACHADO" .
+
+<http://purl.org/politics/id/party/45>
+        a       <http://purl.org/onto/politics#party> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "PARTIDO DA SOCIAL DEMOCRACIA BRASILEIRA" ;
+        <http://purl.org/onto/politics#abbreviation>
+                "PSDB" ;
+        <http://purl.org/onto/politics#number>
+                45 .
+
+<http://purl.org/politics/id/politician/03340657807>
+        a       <http://purl.org/onto/politics#politician> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "MAURO LUÍS IASI" ;
+        <http://dbpedia.org/ontology/hometown>
+                "SÃO PAULO" ;
+        <http://purl.org/onto/politics#birthday>
+                "1960-01-10"^^<http://www.w3.org/2001/XMLSchema#date> ;
+        <http://purl.org/onto/politics#citizenshipDescription>
+                "BRASILEIRA NATA" ;
+        <http://purl.org/onto/politics#cpf>
+                "03340657807" ;
+        <http://purl.org/onto/politics#voterNumber>
+                117891340175 ;
+        <http://www.wikidata.org/entity/Q3254959>
+                "BRANCA" ;
+        <http://xmlns.com/foaf/0.1/mbox>
+                "MAUROIASI@GMAIL.COM" ;
+        <http://xmlns.com/foaf/0.1/name>
+                "MAURO LUÍS IASI" .
+
+<http://purl.org/politics/id/occupation/272>
+        a       <http://purl.org/onto/politics#occupation> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "PRESIDENTE DA REPÚBLICA" ;
+        <http://purl.org/onto/politics#code>
+                "272" .
+
+<http://purl.org/politics/id/2014/BR/candidacy/280000000086>
+        a       <http://purl.org/onto/politics#candidacy> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "ALOYSIO NUNES FERREIRA" ;
+        <http://purl.org/onto/politics#age>
+                69 ;
+        <http://purl.org/onto/politics#candidacySituation>
+                "DEFERIDO" ;
+        <http://purl.org/onto/politics#civilStatus>
+                <http://purl.org/politics/id/civilStatus/3> ;
+        <http://purl.org/onto/politics#coalition>
+                <http://purl.org/politics/id/2014/coalition/280000000083> ;
+        <http://purl.org/onto/politics#electionName>
+                "ALOYSIO NUNES FERREIRA" ;
+        <http://purl.org/onto/politics#internalNumber>
+                280000000086 ;
+        <http://purl.org/onto/politics#number>
+                45 ;
+        <http://purl.org/onto/politics#occupation>
+                <http://purl.org/politics/id/occupation/276> ;
+        <http://purl.org/onto/politics#party>
+                <http://purl.org/politics/id/party/45> ;
+        <http://purl.org/onto/politics#politician>
+                <http://purl.org/politics/id/politician/01329335864> ;
+        <http://purl.org/onto/politics#schooling>
+                "SUPERIOR COMPLETO" ;
+        <http://purl.org/onto/politics#turn>
+                <http://purl.org/politics/id/2014/turn/1> , <http://purl.org/politics/id/2014/turn/2> ;
+        <http://purl.org/onto/politics#vacancy>
+                <http://dbpedia.org/resource/Recife> .
+
+<http://purl.org/politics/id/politician/66728983791>
+        a       <http://purl.org/onto/politics#politician> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "AÉCIO NEVES DA CUNHA" ;
+        <http://dbpedia.org/ontology/hometown>
+                "BELO HORIZONTE" ;
+        <http://purl.org/onto/politics#birthday>
+                "1960-02-10"^^<http://www.w3.org/2001/XMLSchema#date> ;
+        <http://purl.org/onto/politics#citizenshipDescription>
+                "BRASILEIRA NATA" ;
+        <http://purl.org/onto/politics#cpf>
+                "66728983791" ;
+        <http://purl.org/onto/politics#voterNumber>
+                42025850213 ;
+        <http://www.wikidata.org/entity/Q3254959>
+                "BRANCA" ;
+        <http://xmlns.com/foaf/0.1/mbox>
+                "JURIDICO2014@PSDB.ORG.BR" ;
+        <http://xmlns.com/foaf/0.1/name>
+                "AÉCIO NEVES DA CUNHA" .
+
+<http://purl.org/politics/id/politician/40686744500>
+        a       <http://purl.org/onto/politics#politician> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "CELIA OLIVEIRA DE JESUS SACRAMENTO" ;
+        <http://dbpedia.org/ontology/hometown>
+                "SÃO PAULO" ;
+        <http://purl.org/onto/politics#birthday>
+                "1967-06-28"^^<http://www.w3.org/2001/XMLSchema#date> ;
+        <http://purl.org/onto/politics#citizenshipDescription>
+                "BRASILEIRA NATA" ;
+        <http://purl.org/onto/politics#cpf>
+                "40686744500" ;
+        <http://purl.org/onto/politics#voterNumber>
+                21926510540 ;
+        <http://www.wikidata.org/entity/Q3254959>
+                "PRETA" ;
+        <http://xmlns.com/foaf/0.1/mbox>
+                "CELIA@AUDPEC.COM.BR" ;
+        <http://xmlns.com/foaf/0.1/name>
+                "CELIA OLIVEIRA DE JESUS SACRAMENTO" .
+
+<http://purl.org/politics/id/occupation/257>
+        a       <http://purl.org/onto/politics#occupation> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "EMPRESÁRIO" ;
+        <http://purl.org/onto/politics#code>
+                "257" .
+
+<http://purl.org/politics/id/occupation/131>
+        a       <http://purl.org/onto/politics#occupation> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "ADVOGADO" ;
+        <http://purl.org/onto/politics#code>
+                "131" .
+
+<http://purl.org/politics/id/2014/coalition/280000000042>
+        a       <http://www.wikidata.org/entity/Q124964> ;
+        <http://purl.org/onto/politics#coalition>
+                "PSOL" ;
+        <http://purl.org/onto/politics#election>
+                <http://purl.org/politics/id/2014/election> ;
+        <http://purl.org/onto/politics#internalNumber>
+                "280000000042" ;
+        <http://purl.org/onto/politics#party>
+                <http://purl.org/politics/id/party/50> .
+
+<http://purl.org/politics/id/2014/coalition/280000000083>
+        a       <http://www.wikidata.org/entity/Q124964> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "MUDA BRASIL" ;
+        <http://purl.org/onto/politics#coalition>
+                "PSDB / PMN / SD / DEM / PEN / PTN / PTB / PTC / PT do B" ;
+        <http://purl.org/onto/politics#election>
+                <http://purl.org/politics/id/2014/election> ;
+        <http://purl.org/onto/politics#internalNumber>
+                "280000000083" ;
+        <http://purl.org/onto/politics#party>
+                <http://purl.org/politics/id/party/45> .
+
+<http://purl.org/politics/id/2014/BR/candidacy/280000000065>
+        a       <http://purl.org/onto/politics#candidacy> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "PASTOR EVERALDO" ;
+        <http://purl.org/onto/politics#age>
+                58 ;
+        <http://purl.org/onto/politics#candidacySituation>
+                "DEFERIDO" ;
+        <http://purl.org/onto/politics#civilStatus>
+                <http://purl.org/politics/id/civilStatus/3> ;
+        <http://purl.org/onto/politics#coalition>
+                <http://purl.org/politics/id/2014/coalition/280000000063> ;
+        <http://purl.org/onto/politics#electionName>
+                "PASTOR EVERALDO" ;
+        <http://purl.org/onto/politics#internalNumber>
+                280000000065 ;
+        <http://purl.org/onto/politics#number>
+                20 ;
+        <http://purl.org/onto/politics#occupation>
+                <http://purl.org/politics/id/occupation/257> ;
+        <http://purl.org/onto/politics#party>
+                <http://purl.org/politics/id/party/20> ;
+        <http://purl.org/onto/politics#partyMaxCampaignExpenses>
+                "50000000"^^<http://www.w3.org/2001/XMLSchema#decimal> ;
+        <http://purl.org/onto/politics#politician>
+                <http://purl.org/politics/id/politician/25881558715> ;
+        <http://purl.org/onto/politics#schooling>
+                "SUPERIOR COMPLETO" ;
+        <http://purl.org/onto/politics#turn>
+                <http://purl.org/politics/id/2014/turn/1> ;
+        <http://purl.org/onto/politics#vacancy>
+                <http://dbpedia.org/resource/Recife> .
+
+<http://purl.org/politics/id/2014/coalition/280000000021>
+        a       <http://www.wikidata.org/entity/Q124964> ;
+        <http://purl.org/onto/politics#coalition>
+                "PRTB" ;
+        <http://purl.org/onto/politics#election>
+                <http://purl.org/politics/id/2014/election> ;
+        <http://purl.org/onto/politics#internalNumber>
+                "280000000021" ;
+        <http://purl.org/onto/politics#party>
+                <http://purl.org/politics/id/party/28> .
+
+<http://purl.org/politics/id/occupation/707>
+        a       <http://purl.org/onto/politics#occupation> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "TRABALHADOR METALÚRGICO E SIDERÚRGICO" ;
+        <http://purl.org/onto/politics#code>
+                "707" .
+
+<http://purl.org/politics/id/occupation/277>
+        a       <http://purl.org/onto/politics#occupation> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "DEPUTADO" ;
+        <http://purl.org/onto/politics#code>
+                "277" .
+
+<http://purl.org/politics/id/2014/coalition/280000000062>
+        a       <http://www.wikidata.org/entity/Q124964> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "UNIDOS PELO BRASIL" ;
+        <http://purl.org/onto/politics#coalition>
+                "PHS / PRP / PPS / PPL / PSB / PSL" ;
+        <http://purl.org/onto/politics#election>
+                <http://purl.org/politics/id/2014/election> ;
+        <http://purl.org/onto/politics#internalNumber>
+                "280000000062" ;
+        <http://purl.org/onto/politics#party>
+                <http://purl.org/politics/id/party/40> .
+
+<http://purl.org/politics/id/party/16>
+        a       <http://purl.org/onto/politics#party> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "PARTIDO SOCIALISTA DOS TRABALHADORES UNIFICADO" ;
+        <http://purl.org/onto/politics#abbreviation>
+                "PSTU" ;
+        <http://purl.org/onto/politics#number>
+                16 .
+
+<http://purl.org/politics/id/politician/13326724691>
+        a       <http://purl.org/onto/politics#politician> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "DILMA VANA ROUSSEFF" ;
+        <http://dbpedia.org/ontology/hometown>
+                "BELO HORIZONTE" ;
+        <http://purl.org/onto/politics#birthday>
+                "1947-11-14"^^<http://www.w3.org/2001/XMLSchema#date> ;
+        <http://purl.org/onto/politics#citizenshipDescription>
+                "BRASILEIRA NATA" ;
+        <http://purl.org/onto/politics#cpf>
+                "13326724691" ;
+        <http://purl.org/onto/politics#voterNumber>
+                22370630434 ;
+        <http://www.wikidata.org/entity/Q3254959>
+                "BRANCA" ;
+        <http://xmlns.com/foaf/0.1/name>
+                "DILMA VANA ROUSSEFF" .
+
+<http://purl.org/politics/id/party/29>
+        a       <http://purl.org/onto/politics#party> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "PARTIDO DA CAUSA OPERÁRIA" ;
+        <http://purl.org/onto/politics#abbreviation>
+                "PCO" ;
+        <http://purl.org/onto/politics#number>
+                29 .
+
+<http://purl.org/politics/id/2014/BR/candidacy/280000000044>
+        a       <http://purl.org/onto/politics#candidacy> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "JORGE PAZ" ;
+        <http://purl.org/onto/politics#age>
+                65 ;
+        <http://purl.org/onto/politics#candidacySituation>
+                "DEFERIDO" ;
+        <http://purl.org/onto/politics#civilStatus>
+                <http://purl.org/politics/id/civilStatus/9> ;
+        <http://purl.org/onto/politics#coalition>
+                <http://purl.org/politics/id/2014/coalition/280000000042> ;
+        <http://purl.org/onto/politics#electionName>
+                "JORGE PAZ" ;
+        <http://purl.org/onto/politics#internalNumber>
+                280000000044 ;
+        <http://purl.org/onto/politics#number>
+                50 ;
+        <http://purl.org/onto/politics#occupation>
+                <http://purl.org/politics/id/occupation/266> ;
+        <http://purl.org/onto/politics#party>
+                <http://purl.org/politics/id/party/50> ;
+        <http://purl.org/onto/politics#politician>
+                <http://purl.org/politics/id/politician/26135574868> ;
+        <http://purl.org/onto/politics#schooling>
+                "SUPERIOR COMPLETO" ;
+        <http://purl.org/onto/politics#turn>
+                <http://purl.org/politics/id/2014/turn/1> ;
+        <http://purl.org/onto/politics#vacancy>
+                <http://dbpedia.org/resource/Recife> .
+
+<http://purl.org/politics/id/2014/turn/2>
+        <http://purl.org/onto/politics#election>
+                <http://purl.org/politics/id/2014/election> ;
+        <http://purl.org/onto/politics#label>
+                "2" ;
+        <http://purl.org/onto/politics#number>
+                "2" .
+
+<http://purl.org/politics/id/2014/BR/candidacy/280000000085>
+        a       <http://purl.org/onto/politics#candidacy> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "AÉCIO NEVES" ;
+        <http://purl.org/onto/politics#age>
+                54 ;
+        <http://purl.org/onto/politics#candidacySituation>
+                "DEFERIDO" ;
+        <http://purl.org/onto/politics#civilStatus>
+                <http://purl.org/politics/id/civilStatus/3> ;
+        <http://purl.org/onto/politics#coalition>
+                <http://purl.org/politics/id/2014/coalition/280000000083> ;
+        <http://purl.org/onto/politics#electionName>
+                "AÉCIO NEVES" ;
+        <http://purl.org/onto/politics#internalNumber>
+                280000000085 ;
+        <http://purl.org/onto/politics#number>
+                45 ;
+        <http://purl.org/onto/politics#occupation>
+                <http://purl.org/politics/id/occupation/276> ;
+        <http://purl.org/onto/politics#party>
+                <http://purl.org/politics/id/party/45> ;
+        <http://purl.org/onto/politics#partyMaxCampaignExpenses>
+                "290000000"^^<http://www.w3.org/2001/XMLSchema#decimal> ;
+        <http://purl.org/onto/politics#politician>
+                <http://purl.org/politics/id/politician/66728983791> ;
+        <http://purl.org/onto/politics#schooling>
+                "SUPERIOR COMPLETO" ;
+        <http://purl.org/onto/politics#turn>
+                <http://purl.org/politics/id/2014/turn/1> , <http://purl.org/politics/id/2014/turn/2> ;
+        <http://purl.org/onto/politics#vacancy>
+                <http://dbpedia.org/resource/Recife> .
+
+<http://purl.org/politics/id/politician/01329335864>
+        a       <http://purl.org/onto/politics#politician> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "ALOYSIO NUNES FERREIRA FILHO" ;
+        <http://dbpedia.org/ontology/hometown>
+                "SÃO JOSÉ DO RIO PRETO" ;
+        <http://purl.org/onto/politics#birthday>
+                "1945-03-05"^^<http://www.w3.org/2001/XMLSchema#date> ;
+        <http://purl.org/onto/politics#citizenshipDescription>
+                "BRASILEIRA NATA" ;
+        <http://purl.org/onto/politics#cpf>
+                "01329335864" ;
+        <http://purl.org/onto/politics#voterNumber>
+                44638280116 ;
+        <http://www.wikidata.org/entity/Q3254959>
+                "BRANCA" ;
+        <http://xmlns.com/foaf/0.1/mbox>
+                "JURIDICO2014@PSDB.ORG.BR" ;
+        <http://xmlns.com/foaf/0.1/name>
+                "ALOYSIO NUNES FERREIRA FILHO" .
+
+<http://purl.org/politics/id/occupation/921>
+        a       <http://purl.org/onto/politics#occupation> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "MILITAR REFORMADO" ;
+        <http://purl.org/onto/politics#code>
+                "921" .
+
+<http://purl.org/politics/id/2014/coalition/280000000041>
+        a       <http://www.wikidata.org/entity/Q124964> ;
+        <http://purl.org/onto/politics#coalition>
+                "PCB" ;
+        <http://purl.org/onto/politics#election>
+                <http://purl.org/politics/id/2014/election> ;
+        <http://purl.org/onto/politics#internalNumber>
+                "280000000041" ;
+        <http://purl.org/onto/politics#party>
+                <http://purl.org/politics/id/party/21> .
+
+<http://purl.org/politics/id/2014/BR/candidacy/280000000123>
+        a       <http://purl.org/onto/politics#candidacy> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "BETO ALBUQUERQUE" ;
+        <http://purl.org/onto/politics#age>
+                51 ;
+        <http://purl.org/onto/politics#candidacySituation>
+                "DEFERIDO" ;
+        <http://purl.org/onto/politics#civilStatus>
+                <http://purl.org/politics/id/civilStatus/3> ;
+        <http://purl.org/onto/politics#coalition>
+                <http://purl.org/politics/id/2014/coalition/280000000062> ;
+        <http://purl.org/onto/politics#electionName>
+                "BETO ALBUQUERQUE" ;
+        <http://purl.org/onto/politics#internalNumber>
+                280000000123 ;
+        <http://purl.org/onto/politics#number>
+                40 ;
+        <http://purl.org/onto/politics#occupation>
+                <http://purl.org/politics/id/occupation/277> ;
+        <http://purl.org/onto/politics#party>
+                <http://purl.org/politics/id/party/40> ;
+        <http://purl.org/onto/politics#politician>
+                <http://purl.org/politics/id/politician/33769460006> ;
+        <http://purl.org/onto/politics#schooling>
+                "SUPERIOR COMPLETO" ;
+        <http://purl.org/onto/politics#turn>
+                <http://purl.org/politics/id/2014/turn/1> ;
+        <http://purl.org/onto/politics#vacancy>
+                <http://dbpedia.org/resource/Recife> .
+
+<http://purl.org/politics/id/occupation/171>
+        a       <http://purl.org/onto/politics#occupation> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "JORNALISTA E REDATOR" ;
+        <http://purl.org/onto/politics#code>
+                "171" .
+
+<http://purl.org/politics/id/2014/coalition/280000000082>
+        a       <http://www.wikidata.org/entity/Q124964> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "COLIGAÇÃO COM A FORÇA DO POVO" ;
+        <http://purl.org/onto/politics#coalition>
+                "PT / PMDB / PSD / PP / PR / PROS / PDT / PC do B / PRB" ;
+        <http://purl.org/onto/politics#election>
+                <http://purl.org/politics/id/2014/election> ;
+        <http://purl.org/onto/politics#internalNumber>
+                "280000000082" ;
+        <http://purl.org/onto/politics#party>
+                <http://purl.org/politics/id/party/15> , <http://purl.org/politics/id/party/13> .
+
+<http://purl.org/politics/id/politician/15256440845>
+        a       <http://purl.org/onto/politics#politician> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "SOFIA PÁDUA MANZANO" ;
+        <http://dbpedia.org/ontology/hometown>
+                "SÃO PAULO" ;
+        <http://purl.org/onto/politics#birthday>
+                "1971-04-19"^^<http://www.w3.org/2001/XMLSchema#date> ;
+        <http://purl.org/onto/politics#citizenshipDescription>
+                "BRASILEIRA NATA" ;
+        <http://purl.org/onto/politics#cpf>
+                "15256440845" ;
+        <http://purl.org/onto/politics#voterNumber>
+                199476820191 ;
+        <http://www.wikidata.org/entity/Q3254959>
+                "BRANCA" ;
+        <http://xmlns.com/foaf/0.1/mbox>
+                "SOFIAMANZANO@HOTMAIL.COM" ;
+        <http://xmlns.com/foaf/0.1/name>
+                "SOFIA PÁDUA MANZANO" .
+
+<http://purl.org/politics/id/politician/63458691804>
+        a       <http://purl.org/onto/politics#politician> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "EDUARDO JORGE MARTINS ALVES SOBRINHO" ;
+        <http://dbpedia.org/ontology/hometown>
+                "SALVADOR" ;
+        <http://purl.org/onto/politics#birthday>
+                "1949-09-26"^^<http://www.w3.org/2001/XMLSchema#date> ;
+        <http://purl.org/onto/politics#citizenshipDescription>
+                "BRASILEIRA NATA" ;
+        <http://purl.org/onto/politics#cpf>
+                "63458691804" ;
+        <http://purl.org/onto/politics#voterNumber>
+                80840590116 ;
+        <http://www.wikidata.org/entity/Q3254959>
+                "BRANCA" ;
+        <http://xmlns.com/foaf/0.1/mbox>
+                "EDUARDOJORGE5@HOTMAIL.COM" ;
+        <http://xmlns.com/foaf/0.1/name>
+                "EDUARDO JORGE MARTINS ALVES SOBRINHO" .
+
+<http://purl.org/politics/id/2014/BR/candidacy/280000000064>
+        a       <http://purl.org/onto/politics#candidacy> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "MARINA SILVA" ;
+        <http://purl.org/onto/politics#age>
+                56 ;
+        <http://purl.org/onto/politics#candidacySituation>
+                "RENÚNCIA" ;
+        <http://purl.org/onto/politics#civilStatus>
+                <http://purl.org/politics/id/civilStatus/3> ;
+        <http://purl.org/onto/politics#coalition>
+                <http://purl.org/politics/id/2014/coalition/280000000062> ;
+        <http://purl.org/onto/politics#electionName>
+                "MARINA SILVA" ;
+        <http://purl.org/onto/politics#internalNumber>
+                280000000064 ;
+        <http://purl.org/onto/politics#number>
+                40 ;
+        <http://purl.org/onto/politics#occupation>
+                <http://purl.org/politics/id/occupation/200> ;
+        <http://purl.org/onto/politics#party>
+                <http://purl.org/politics/id/party/40> ;
+        <http://purl.org/onto/politics#politician>
+                <http://purl.org/politics/id/politician/11980761272> ;
+        <http://purl.org/onto/politics#schooling>
+                "SUPERIOR COMPLETO" ;
+        <http://purl.org/onto/politics#turn>
+                <http://purl.org/politics/id/2014/turn/1> ;
+        <http://purl.org/onto/politics#vacancy>
+                <http://dbpedia.org/resource/Recife> .
+
+<http://purl.org/politics/id/politician/01061712834>
+        a       <http://purl.org/onto/politics#politician> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "JOSE MARIA EYMAEL" ;
+        <http://dbpedia.org/ontology/hometown>
+                "PORTO ALEGRE" ;
+        <http://purl.org/onto/politics#birthday>
+                "1939-10-02"^^<http://www.w3.org/2001/XMLSchema#date> ;
+        <http://purl.org/onto/politics#citizenshipDescription>
+                "BRASILEIRA NATA" ;
+        <http://purl.org/onto/politics#cpf>
+                "01061712834" ;
+        <http://purl.org/onto/politics#voterNumber>
+                86137520124 ;
+        <http://www.wikidata.org/entity/Q3254959>
+                "BRANCA" ;
+        <http://xmlns.com/foaf/0.1/mbox>
+                "EYMAEL@UOL.COM.BR" ;
+        <http://xmlns.com/foaf/0.1/name>
+                "JOSE MARIA EYMAEL" .
+
+<http://purl.org/politics/id/civilStatus/1>
+        a       <http://purl.org/onto/politics#CivilStatus> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "SOLTEIRO(A)" ;
+        <http://purl.org/onto/politics#code>
+                1 .
+
+<http://purl.org/politics/id/2014/coalition/280000000061>
+        a       <http://www.wikidata.org/entity/Q124964> ;
+        <http://purl.org/onto/politics#coalition>
+                "PV" ;
+        <http://purl.org/onto/politics#election>
+                <http://purl.org/politics/id/2014/election> ;
+        <http://purl.org/onto/politics#internalNumber>
+                "280000000061" ;
+        <http://purl.org/onto/politics#party>
+                <http://purl.org/politics/id/party/43> .
+
+<http://purl.org/politics/id/occupation/276>
+        a       <http://purl.org/onto/politics#occupation> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "SENADOR" ;
+        <http://purl.org/onto/politics#code>
+                "276" .
+
+<http://purl.org/politics/id/politician/76553787115>
+        a       <http://purl.org/onto/politics#politician> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "LEONARDO DE MELO GADELHA" ;
+        <http://dbpedia.org/ontology/hometown>
+                "BRASILIA" ;
+        <http://purl.org/onto/politics#birthday>
+                "1975-04-12"^^<http://www.w3.org/2001/XMLSchema#date> ;
+        <http://purl.org/onto/politics#citizenshipDescription>
+                "BRASILEIRA NATA" ;
+        <http://purl.org/onto/politics#cpf>
+                "76553787115" ;
+        <http://purl.org/onto/politics#voterNumber>
+                21618951201 ;
+        <http://www.wikidata.org/entity/Q3254959>
+                "BRANCA" ;
+        <http://xmlns.com/foaf/0.1/name>
+                "LEONARDO DE MELO GADELHA" .
+
+<http://purl.org/politics/id/party/43>
+        a       <http://purl.org/onto/politics#party> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "PARTIDO VERDE" ;
+        <http://purl.org/onto/politics#abbreviation>
+                "PV" ;
+        <http://purl.org/onto/politics#number>
+                43 .
+
+<http://purl.org/politics/id/party/15>
+        a       <http://purl.org/onto/politics#party> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "PARTIDO DO MOVIMENTO DEMOCRÁTICO BRASILEIRO" ;
+        <http://purl.org/onto/politics#abbreviation>
+                "PMDB" ;
+        <http://purl.org/onto/politics#number>
+                15 .
+
+<http://purl.org/politics/id/2014/BR/candidacy/280000000002>
+        a       <http://purl.org/onto/politics#candidacy> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "CLAUDIA DURANS" ;
+        <http://purl.org/onto/politics#age>
+                49 ;
+        <http://purl.org/onto/politics#candidacySituation>
+                "DEFERIDO" ;
+        <http://purl.org/onto/politics#civilStatus>
+                <http://purl.org/politics/id/civilStatus/1> ;
+        <http://purl.org/onto/politics#coalition>
+                <http://purl.org/politics/id/2014/coalition/280000000003> ;
+        <http://purl.org/onto/politics#electionName>
+                "CLAUDIA DURANS" ;
+        <http://purl.org/onto/politics#internalNumber>
+                280000000002 ;
+        <http://purl.org/onto/politics#number>
+                16 ;
+        <http://purl.org/onto/politics#occupation>
+                <http://purl.org/politics/id/occupation/296> ;
+        <http://purl.org/onto/politics#party>
+                <http://purl.org/politics/id/party/16> ;
+        <http://purl.org/onto/politics#politician>
+                <http://purl.org/politics/id/politician/35139706334> ;
+        <http://purl.org/onto/politics#schooling>
+                "SUPERIOR COMPLETO" ;
+        <http://purl.org/onto/politics#turn>
+                <http://purl.org/politics/id/2014/turn/1> ;
+        <http://purl.org/onto/politics#vacancy>
+                <http://dbpedia.org/resource/Recife> .
+
+<http://purl.org/politics/id/politician/33769460006>
+        a       <http://purl.org/onto/politics#politician> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "LUIZ ROBERTO DE ALBUQUERQUE" ;
+        <http://dbpedia.org/ontology/hometown>
+                "PASSO FUNDO" ;
+        <http://purl.org/onto/politics#birthday>
+                "1963-00-06"^^<http://www.w3.org/2001/XMLSchema#date> ;
+        <http://purl.org/onto/politics#citizenshipDescription>
+                "BRASILEIRA NATA" ;
+        <http://purl.org/onto/politics#cpf>
+                "33769460006" ;
+        <http://purl.org/onto/politics#voterNumber>
+                14809240493 ;
+        <http://www.wikidata.org/entity/Q3254959>
+                "BRANCA" ;
+        <http://xmlns.com/foaf/0.1/name>
+                "LUIZ ROBERTO DE ALBUQUERQUE" .
+
+<http://purl.org/politics/id/party/28>
+        a       <http://purl.org/onto/politics#party> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "PARTIDO RENOVADOR TRABALHISTA BRASILEIRO" ;
+        <http://purl.org/onto/politics#abbreviation>
+                "PRTB" ;
+        <http://purl.org/onto/politics#number>
+                28 .
+
+<http://purl.org/politics/id/2014/BR/candidacy/280000000043>
+        a       <http://purl.org/onto/politics#candidacy> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "LUCIANA GENRO" ;
+        <http://purl.org/onto/politics#age>
+                43 ;
+        <http://purl.org/onto/politics#candidacySituation>
+                "DEFERIDO" ;
+        <http://purl.org/onto/politics#civilStatus>
+                <http://purl.org/politics/id/civilStatus/3> ;
+        <http://purl.org/onto/politics#coalition>
+                <http://purl.org/politics/id/2014/coalition/280000000042> ;
+        <http://purl.org/onto/politics#electionName>
+                "LUCIANA GENRO" ;
+        <http://purl.org/onto/politics#internalNumber>
+                280000000043 ;
+        <http://purl.org/onto/politics#number>
+                50 ;
+        <http://purl.org/onto/politics#occupation>
+                <http://purl.org/politics/id/occupation/131> ;
+        <http://purl.org/onto/politics#party>
+                <http://purl.org/politics/id/party/50> ;
+        <http://purl.org/onto/politics#partyMaxCampaignExpenses>
+                "900000"^^<http://www.w3.org/2001/XMLSchema#decimal> ;
+        <http://purl.org/onto/politics#politician>
+                <http://purl.org/politics/id/politician/61952370000> ;
+        <http://purl.org/onto/politics#schooling>
+                "SUPERIOR COMPLETO" ;
+        <http://purl.org/onto/politics#turn>
+                <http://purl.org/politics/id/2014/turn/1> ;
+        <http://purl.org/onto/politics#vacancy>
+                <http://dbpedia.org/resource/Recife> .
+
+<http://purl.org/politics/id/2014/turn/1>
+        <http://purl.org/onto/politics#election>
+                <http://purl.org/politics/id/2014/election> ;
+        <http://purl.org/onto/politics#label>
+                "1" ;
+        <http://purl.org/onto/politics#number>
+                "1" .
+
+<http://purl.org/politics/id/2014/BR/candidacy/280000000084>
+        a       <http://purl.org/onto/politics#candidacy> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "MICHEL TEMER" ;
+        <http://purl.org/onto/politics#age>
+                74 ;
+        <http://purl.org/onto/politics#candidacySituation>
+                "DEFERIDO" ;
+        <http://purl.org/onto/politics#civilStatus>
+                <http://purl.org/politics/id/civilStatus/3> ;
+        <http://purl.org/onto/politics#coalition>
+                <http://purl.org/politics/id/2014/coalition/280000000082> ;
+        <http://purl.org/onto/politics#electionName>
+                "MICHEL TEMER" ;
+        <http://purl.org/onto/politics#internalNumber>
+                280000000084 ;
+        <http://purl.org/onto/politics#number>
+                13 ;
+        <http://purl.org/onto/politics#occupation>
+                <http://purl.org/politics/id/occupation/131> ;
+        <http://purl.org/onto/politics#party>
+                <http://purl.org/politics/id/party/15> ;
+        <http://purl.org/onto/politics#politician>
+                <http://purl.org/politics/id/politician/06931987887> ;
+        <http://purl.org/onto/politics#schooling>
+                "SUPERIOR COMPLETO" ;
+        <http://purl.org/onto/politics#turn>
+                <http://purl.org/politics/id/2014/turn/1> , <http://purl.org/politics/id/2014/turn/2> ;
+        <http://purl.org/onto/politics#vacancy>
+                <http://dbpedia.org/resource/Recife> .
+
+<http://purl.org/politics/id/party/50>
+        a       <http://purl.org/onto/politics#party> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "PARTIDO SOCIALISMO E LIBERDADE" ;
+        <http://purl.org/onto/politics#abbreviation>
+                "PSOL" ;
+        <http://purl.org/onto/politics#number>
+                50 .
+
+<http://purl.org/politics/id/2014/coalition/280000000081>
+        a       <http://www.wikidata.org/entity/Q124964> ;
+        <http://purl.org/onto/politics#coalition>
+                "PCO" ;
+        <http://purl.org/onto/politics#election>
+                <http://purl.org/politics/id/2014/election> ;
+        <http://purl.org/onto/politics#internalNumber>
+                "280000000081" ;
+        <http://purl.org/onto/politics#party>
+                <http://purl.org/politics/id/party/29> .
+
+<http://purl.org/politics/id/occupation/296>
+        a       <http://purl.org/onto/politics#occupation> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "SERVIDOR PÚBLICO FEDERAL" ;
+        <http://purl.org/onto/politics#code>
+                "296" .
+
+<http://purl.org/politics/id/occupation/142>
+        a       <http://purl.org/onto/politics#occupation> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "PROFESSOR DE ENSINO SUPERIOR" ;
+        <http://purl.org/onto/politics#code>
+                "142" .
+
+<http://purl.org/politics/id/2014/BR/candidacy/280000000022>
+        a       <http://purl.org/onto/politics#candidacy> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "CEL. JOSÉ ALVES" ;
+        <http://purl.org/onto/politics#age>
+                74 ;
+        <http://purl.org/onto/politics#candidacySituation>
+                "DEFERIDO" ;
+        <http://purl.org/onto/politics#civilStatus>
+                <http://purl.org/politics/id/civilStatus/3> ;
+        <http://purl.org/onto/politics#coalition>
+                <http://purl.org/politics/id/2014/coalition/280000000021> ;
+        <http://purl.org/onto/politics#electionName>
+                "CEL. JOSÉ ALVES" ;
+        <http://purl.org/onto/politics#internalNumber>
+                280000000022 ;
+        <http://purl.org/onto/politics#number>
+                28 ;
+        <http://purl.org/onto/politics#occupation>
+                <http://purl.org/politics/id/occupation/921> ;
+        <http://purl.org/onto/politics#party>
+                <http://purl.org/politics/id/party/28> ;
+        <http://purl.org/onto/politics#politician>
+                <http://purl.org/politics/id/politician/00179477315> ;
+        <http://purl.org/onto/politics#schooling>
+                "SUPERIOR COMPLETO" ;
+        <http://purl.org/onto/politics#turn>
+                <http://purl.org/politics/id/2014/turn/1> ;
+        <http://purl.org/onto/politics#vacancy>
+                <http://dbpedia.org/resource/Recife> .
+
+<http://purl.org/politics/id/2014/BR/candidacy/280000000063>
+        a       <http://purl.org/onto/politics#candidacy> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "EDUARDO CAMPOS" ;
+        <http://purl.org/onto/politics#age>
+                49 ;
+        <http://purl.org/onto/politics#candidacySituation>
+                "FALECIDO" ;
+        <http://purl.org/onto/politics#civilStatus>
+                <http://purl.org/politics/id/civilStatus/3> ;
+        <http://purl.org/onto/politics#coalition>
+                <http://purl.org/politics/id/2014/coalition/280000000062> ;
+        <http://purl.org/onto/politics#electionName>
+                "EDUARDO CAMPOS" ;
+        <http://purl.org/onto/politics#internalNumber>
+                280000000063 ;
+        <http://purl.org/onto/politics#number>
+                40 ;
+        <http://purl.org/onto/politics#occupation>
+                <http://purl.org/politics/id/occupation/121> ;
+        <http://purl.org/onto/politics#party>
+                <http://purl.org/politics/id/party/40> ;
+        <http://purl.org/onto/politics#politician>
+                <http://purl.org/politics/id/politician/45334773487> ;
+        <http://purl.org/onto/politics#schooling>
+                "SUPERIOR COMPLETO" ;
+        <http://purl.org/onto/politics#turn>
+                <http://purl.org/politics/id/2014/turn/1> ;
+        <http://purl.org/onto/politics#vacancy>
+                <http://dbpedia.org/resource/Recife> .
+
+<http://purl.org/politics/id/occupation/121>
+        a       <http://purl.org/onto/politics#occupation> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "ECONOMISTA" ;
+        <http://purl.org/onto/politics#code>
+                "121" .
+
+<http://purl.org/politics/id/2014/BR/candidacy/280000000001>
+        a       <http://purl.org/onto/politics#candidacy> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "ZÉ MARIA" ;
+        <http://purl.org/onto/politics#age>
+                57 ;
+        <http://purl.org/onto/politics#candidacySituation>
+                "DEFERIDO" ;
+        <http://purl.org/onto/politics#civilStatus>
+                <http://purl.org/politics/id/civilStatus/1> ;
+        <http://purl.org/onto/politics#coalition>
+                <http://purl.org/politics/id/2014/coalition/280000000003> ;
+        <http://purl.org/onto/politics#electionName>
+                "ZÉ MARIA" ;
+        <http://purl.org/onto/politics#internalNumber>
+                280000000001 ;
+        <http://purl.org/onto/politics#number>
+                16 ;
+        <http://purl.org/onto/politics#occupation>
+                <http://purl.org/politics/id/occupation/707> ;
+        <http://purl.org/onto/politics#party>
+                <http://purl.org/politics/id/party/16> ;
+        <http://purl.org/onto/politics#partyMaxCampaignExpenses>
+                "400000"^^<http://www.w3.org/2001/XMLSchema#decimal> ;
+        <http://purl.org/onto/politics#politician>
+                <http://purl.org/politics/id/politician/03325634800> ;
+        <http://purl.org/onto/politics#schooling>
+                "ENSINO MÉDIO COMPLETO" ;
+        <http://purl.org/onto/politics#turn>
+                <http://purl.org/politics/id/2014/turn/1> ;
+        <http://purl.org/onto/politics#vacancy>
+                <http://dbpedia.org/resource/Recife> .
+
+<http://purl.org/politics/id/party/27>
+        a       <http://purl.org/onto/politics#party> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "PARTIDO SOCIAL DEMOCRATA CRISTÃO" ;
+        <http://purl.org/onto/politics#abbreviation>
+                "PSDC" ;
+        <http://purl.org/onto/politics#number>
+                27 .
+
+<http://purl.org/politics/id/politician/00179477315>
+        a       <http://purl.org/onto/politics#politician> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "JOSÉ ALVES DE OLIVEIRA" ;
+        <http://dbpedia.org/ontology/hometown>
+                "ARACOIABA" ;
+        <http://purl.org/onto/politics#birthday>
+                "1939-11-21"^^<http://www.w3.org/2001/XMLSchema#date> ;
+        <http://purl.org/onto/politics#citizenshipDescription>
+                "BRASILEIRA NATA" ;
+        <http://purl.org/onto/politics#cpf>
+                "00179477315" ;
+        <http://purl.org/onto/politics#voterNumber>
+                5625360809 ;
+        <http://www.wikidata.org/entity/Q3254959>
+                "BRANCA" ;
+        <http://xmlns.com/foaf/0.1/mbox>
+                "PRTB@PRTB.ORG.BR" ;
+        <http://xmlns.com/foaf/0.1/name>
+                "JOSÉ ALVES DE OLIVEIRA" .
+
+<http://purl.org/politics/id/2014/BR/candidacy/280000000042>
+        a       <http://purl.org/onto/politics#candidacy> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "SOFIA MANZANO" ;
+        <http://purl.org/onto/politics#age>
+                43 ;
+        <http://purl.org/onto/politics#candidacySituation>
+                "DEFERIDO" ;
+        <http://purl.org/onto/politics#civilStatus>
+                <http://purl.org/politics/id/civilStatus/1> ;
+        <http://purl.org/onto/politics#coalition>
+                <http://purl.org/politics/id/2014/coalition/280000000041> ;
+        <http://purl.org/onto/politics#electionName>
+                "SOFIA MANZANO" ;
+        <http://purl.org/onto/politics#internalNumber>
+                280000000042 ;
+        <http://purl.org/onto/politics#number>
+                21 ;
+        <http://purl.org/onto/politics#occupation>
+                <http://purl.org/politics/id/occupation/142> ;
+        <http://purl.org/onto/politics#party>
+                <http://purl.org/politics/id/party/21> ;
+        <http://purl.org/onto/politics#politician>
+                <http://purl.org/politics/id/politician/15256440845> ;
+        <http://purl.org/onto/politics#schooling>
+                "SUPERIOR COMPLETO" ;
+        <http://purl.org/onto/politics#turn>
+                <http://purl.org/politics/id/2014/turn/1> ;
+        <http://purl.org/onto/politics#vacancy>
+                <http://dbpedia.org/resource/Recife> .
+
+<http://purl.org/politics/id/occupation/200>
+        a       <http://purl.org/onto/politics#occupation> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "HISTORIADOR" ;
+        <http://purl.org/onto/politics#code>
+                "200" .
+
+<http://purl.org/politics/id/2014/BR/candidacy/280000000083>
+        a       <http://purl.org/onto/politics#candidacy> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "DILMA" ;
+        <http://purl.org/onto/politics#age>
+                66 ;
+        <http://purl.org/onto/politics#candidacySituation>
+                "DEFERIDO" ;
+        <http://purl.org/onto/politics#civilStatus>
+                <http://purl.org/politics/id/civilStatus/9> ;
+        <http://purl.org/onto/politics#coalition>
+                <http://purl.org/politics/id/2014/coalition/280000000082> ;
+        <http://purl.org/onto/politics#electionName>
+                "DILMA" ;
+        <http://purl.org/onto/politics#internalNumber>
+                280000000083 ;
+        <http://purl.org/onto/politics#number>
+                13 ;
+        <http://purl.org/onto/politics#occupation>
+                <http://purl.org/politics/id/occupation/272> ;
+        <http://purl.org/onto/politics#party>
+                <http://purl.org/politics/id/party/13> ;
+        <http://purl.org/onto/politics#partyMaxCampaignExpenses>
+                "383000000"^^<http://www.w3.org/2001/XMLSchema#decimal> ;
+        <http://purl.org/onto/politics#politician>
+                <http://purl.org/politics/id/politician/13326724691> ;
+        <http://purl.org/onto/politics#schooling>
+                "SUPERIOR COMPLETO" ;
+        <http://purl.org/onto/politics#turn>
+                <http://purl.org/politics/id/2014/turn/1> , <http://purl.org/politics/id/2014/turn/2> ;
+        <http://purl.org/onto/politics#vacancy>
+                <http://dbpedia.org/resource/Recife> .
+
+<http://purl.org/politics/id/occupation/395>
+        a       <http://purl.org/onto/politics#occupation> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "BANCÁRIO E ECONOMIÁRIO" ;
+        <http://purl.org/onto/politics#code>
+                "395" .
+
+<http://purl.org/politics/id/2014/BR/candidacy/280000000068>
+        a       <http://purl.org/onto/politics#candidacy> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "ROBERTO LOPES" ;
+        <http://purl.org/onto/politics#age>
+                56 ;
+        <http://purl.org/onto/politics#candidacySituation>
+                "DEFERIDO" ;
+        <http://purl.org/onto/politics#civilStatus>
+                <http://purl.org/politics/id/civilStatus/3> ;
+        <http://purl.org/onto/politics#coalition>
+                <http://purl.org/politics/id/2014/coalition/280000000064> ;
+        <http://purl.org/onto/politics#electionName>
+                "ROBERTO LOPES" ;
+        <http://purl.org/onto/politics#internalNumber>
+                280000000068 ;
+        <http://purl.org/onto/politics#number>
+                27 ;
+        <http://purl.org/onto/politics#occupation>
+                <http://purl.org/politics/id/occupation/125> ;
+        <http://purl.org/onto/politics#party>
+                <http://purl.org/politics/id/party/27> ;
+        <http://purl.org/onto/politics#politician>
+                <http://purl.org/politics/id/politician/30656893915> ;
+        <http://purl.org/onto/politics#schooling>
+                "SUPERIOR COMPLETO" ;
+        <http://purl.org/onto/politics#turn>
+                <http://purl.org/politics/id/2014/turn/1> ;
+        <http://purl.org/onto/politics#vacancy>
+                <http://dbpedia.org/resource/Recife> .
+
+<http://purl.org/politics/id/2014/BR/candidacy/280000000121>
+        a       <http://purl.org/onto/politics#candidacy> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "MARINA SILVA" ;
+        <http://purl.org/onto/politics#age>
+                56 ;
+        <http://purl.org/onto/politics#candidacySituation>
+                "DEFERIDO" ;
+        <http://purl.org/onto/politics#civilStatus>
+                <http://purl.org/politics/id/civilStatus/3> ;
+        <http://purl.org/onto/politics#coalition>
+                <http://purl.org/politics/id/2014/coalition/280000000062> ;
+        <http://purl.org/onto/politics#electionName>
+                "MARINA SILVA" ;
+        <http://purl.org/onto/politics#internalNumber>
+                280000000121 ;
+        <http://purl.org/onto/politics#number>
+                40 ;
+        <http://purl.org/onto/politics#occupation>
+                <http://purl.org/politics/id/occupation/200> ;
+        <http://purl.org/onto/politics#party>
+                <http://purl.org/politics/id/party/40> ;
+        <http://purl.org/onto/politics#partyMaxCampaignExpenses>
+                "150000000"^^<http://www.w3.org/2001/XMLSchema#decimal> ;
+        <http://purl.org/onto/politics#politician>
+                <http://purl.org/politics/id/politician/11980761272> ;
+        <http://purl.org/onto/politics#schooling>
+                "SUPERIOR COMPLETO" ;
+        <http://purl.org/onto/politics#turn>
+                <http://purl.org/politics/id/2014/turn/1> ;
+        <http://purl.org/onto/politics#vacancy>
+                <http://dbpedia.org/resource/Recife> .
+
+<http://purl.org/politics/id/politician/95624589891>
+        a       <http://purl.org/onto/politics#politician> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "RUI COSTA PIMENTA" ;
+        <http://dbpedia.org/ontology/hometown>
+                "BUTANTÃ" ;
+        <http://purl.org/onto/politics#birthday>
+                "1957-05-25"^^<http://www.w3.org/2001/XMLSchema#date> ;
+        <http://purl.org/onto/politics#citizenshipDescription>
+                "BRASILEIRA NATA" ;
+        <http://purl.org/onto/politics#cpf>
+                "95624589891" ;
+        <http://purl.org/onto/politics#voterNumber>
+                99286850183 ;
+        <http://www.wikidata.org/entity/Q3254959>
+                "BRANCA" ;
+        <http://xmlns.com/foaf/0.1/name>
+                "RUI COSTA PIMENTA" .
+
+<http://purl.org/politics/id/party/21>
+        a       <http://purl.org/onto/politics#party> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "PARTIDO COMUNISTA BRASILEIRO" ;
+        <http://purl.org/onto/politics#abbreviation>
+                "PCB" ;
+        <http://purl.org/onto/politics#number>
+                21 .
+
+<http://purl.org/politics/id/2014/election>
+        a       <http://purl.org/onto/politics#election> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "Eleições Gerais 2014" ;
+        <http://purl.org/onto/politics#year>
+                "2014"^^<http://www.w3.org/2001/XMLSchema#gYear> .
+
+<http://purl.org/politics/id/politician/06931987887>
+        a       <http://purl.org/onto/politics#politician> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "MICHEL MIGUEL ELIAS TEMER LULIA" ;
+        <http://dbpedia.org/ontology/hometown>
+                "TIETÊ" ;
+        <http://purl.org/onto/politics#birthday>
+                "1940-08-23"^^<http://www.w3.org/2001/XMLSchema#date> ;
+        <http://purl.org/onto/politics#citizenshipDescription>
+                "BRASILEIRA NATA" ;
+        <http://purl.org/onto/politics#cpf>
+                "06931987887" ;
+        <http://purl.org/onto/politics#voterNumber>
+                1970380116 ;
+        <http://www.wikidata.org/entity/Q3254959>
+                "BRANCA" ;
+        <http://xmlns.com/foaf/0.1/mbox>
+                "MICHELTEMER@MICHELTEMER.COM.BR" ;
+        <http://xmlns.com/foaf/0.1/name>
+                "MICHEL MIGUEL ELIAS TEMER LULIA" .
+
+<http://purl.org/politics/id/politician/25881558715>
+        a       <http://purl.org/onto/politics#politician> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "EVERALDO DIAS PEREIRA" ;
+        <http://dbpedia.org/ontology/hometown>
+                "RIO DE JANEIRO" ;
+        <http://purl.org/onto/politics#birthday>
+                "1956-01-22"^^<http://www.w3.org/2001/XMLSchema#date> ;
+        <http://purl.org/onto/politics#citizenshipDescription>
+                "BRASILEIRA NATA" ;
+        <http://purl.org/onto/politics#cpf>
+                "25881558715" ;
+        <http://purl.org/onto/politics#voterNumber>
+                24463490337 ;
+        <http://www.wikidata.org/entity/Q3254959>
+                "BRANCA" ;
+        <http://xmlns.com/foaf/0.1/name>
+                "EVERALDO DIAS PEREIRA" .
+
+<http://purl.org/politics/id/2014/BR/candidacy/280000000021>
+        a       <http://purl.org/onto/politics#candidacy> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "LEVY FIDELIX" ;
+        <http://purl.org/onto/politics#age>
+                62 ;
+        <http://purl.org/onto/politics#candidacySituation>
+                "DEFERIDO" ;
+        <http://purl.org/onto/politics#civilStatus>
+                <http://purl.org/politics/id/civilStatus/3> ;
+        <http://purl.org/onto/politics#coalition>
+                <http://purl.org/politics/id/2014/coalition/280000000021> ;
+        <http://purl.org/onto/politics#electionName>
+                "LEVY FIDELIX" ;
+        <http://purl.org/onto/politics#internalNumber>
+                280000000021 ;
+        <http://purl.org/onto/politics#number>
+                28 ;
+        <http://purl.org/onto/politics#occupation>
+                <http://purl.org/politics/id/occupation/171> ;
+        <http://purl.org/onto/politics#party>
+                <http://purl.org/politics/id/party/28> ;
+        <http://purl.org/onto/politics#partyMaxCampaignExpenses>
+                "12000000"^^<http://www.w3.org/2001/XMLSchema#decimal> ;
+        <http://purl.org/onto/politics#politician>
+                <http://purl.org/politics/id/politician/09544712704> ;
+        <http://purl.org/onto/politics#schooling>
+                "SUPERIOR INCOMPLETO" ;
+        <http://purl.org/onto/politics#turn>
+                <http://purl.org/politics/id/2014/turn/1> ;
+        <http://purl.org/onto/politics#vacancy>
+                <http://dbpedia.org/resource/Recife> .
