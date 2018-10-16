@@ -20,6 +20,12 @@ Grafos: Vá a [http://java.icmc.usp.br:2472/graphs-visualizations](http://java.i
 escolha politics e coloque [http://purl.org/politics/id/2014/BR/candidacy/280000000083](http://purl.org/politics/id/2014/BR/candidacy/280000000083)
 para navegar no grafo (Candidatura da Dilma).
 
+## Contributors
+
+* Dilvan A. Moreira (dilvan @ icmc.usp.br)
+* Allan S. Domingues (allan.domingues @ usp.br)
+* Brendon H. Cardoso (brendon @ usp.br)
+
 ## License
 
 Copyright © 2018 Dilvan Moreira
