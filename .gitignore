@@ -1,3 +1,15 @@
+# Ignore temporary Emacs files
+*~
+
+#Ignore Eclipse directories
+.settings
+.project
+.classpath
+
+#Ignore Intellij files
+*.iml
+.idea
+
 pom.xml
 pom.xml.asc
 *.jar
@@ -7,7 +19,6 @@ pom.xml.asc
 /classes/
 /target/
 /checkouts/
-/owls/
 .lein-deps-sum
 .lein-repl-history
 .lein-plugins/
