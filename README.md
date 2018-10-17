@@ -20,6 +20,15 @@ Grafos: Vá a [http://java.icmc.usp.br:2472/graphs-visualizations](http://java.i
 escolha politics e coloque [http://purl.org/politics/id/2014/BR/candidacy/280000000083](http://purl.org/politics/id/2014/BR/candidacy/280000000083)
 para navegar no grafo (Candidatura da Dilma).
 
+## Possíveis Projetos
+
+Essas são alguns possíveis projetos que voluntários poderiam se envolver:
+* Documentação explicando como usar o sistema
+* Scripts para ler mais eleições
+* Interface para navegação dos dados
+* Web service para acesso usando o [GraphQL do Facebook](https://graphql.org/)
+* Acesso aos [Web Services do Senado](https://www12.senado.leg.br/dados-abertos) e da [Câmara dos Deputados](http://www2.camara.leg.br/transparencia/dados-abertos/dados-abertos-legislativo/webservices)
+
 ## Contributors
 
 * Dilvan A. Moreira (dilvan @ icmc.usp.br)
